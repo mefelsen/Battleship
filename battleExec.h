@@ -11,7 +11,6 @@
 ---------------------------------------------------------------------------- */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
-
 //#include <fstream>
 //#include <limits>
 
@@ -44,6 +43,7 @@ private:
 
       int rows;
       int cols;
+      int ship_num;
 
 
 

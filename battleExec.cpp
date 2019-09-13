@@ -9,11 +9,12 @@
 * Date: 9-12-19
 *
 ---------------------------------------------------------------------------- */
-#include "Executive.h"
+#include "battleExec.h"
+#include <iostream>
 
 Executive::Executive()
 {
-
+    ship_num = 0;
 }
 
 Executive::~Executive()
@@ -24,7 +25,9 @@ Executive::~Executive()
 void Executive::startMenu()
 {
   std::cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-            << "Battleship\n"
-            << "Enter the number of ships: ";
+            << "                   Battleship\n"
+            << "Enter the number of ships(You may have up to 5 ships): \n";
+  std::cin >> ship_num;
+
 }
 
