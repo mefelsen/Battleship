@@ -36,8 +36,13 @@ public:
      @pre  N/A
      @post Gives data to Flood class
      @param None  */
-
     void startMenu();
+
+    /** Clears the screen for the next player
+     @pre  N/A
+     @post Empty console screen
+     @param None  */
+    void ClearScreen();
 
 private:
 

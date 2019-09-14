@@ -6,21 +6,13 @@ using namespace std;
 class player
 {
     private:
-    string name;
-    int health;
-
-    int numship;
-    int flags;//[sep13 stop mark] tring to make a flag for each ships
-
+      board my_board;
+      board enemy_board;
+      int num_ships;
 
     public:
-    player();
-    void setname(string name);
-    string getname() const;
-
-    void acct(int row,int col);
-
-    int gethealth();
+      player();
+      player(int ships);
 
 
 };
