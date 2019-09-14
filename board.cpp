@@ -34,19 +34,19 @@ void board::PrintMap() {
 
 bool board::DimensionCheck(int x, int y, int num, string z)
 {
-    if (z == "up" && x - num >= 0)
+    if (z == "up" && x - num+1 >= 0)
     {
         return true;
     }
-    else if (z == "down" && x + num < 8)
+    else if (z == "down" && x + num+1 <= 8)
     {
         return true;
     }
-    else if (z == "left" && y - num >= 0)
+    else if (z == "left" && y - num+1 >= 0)
     {
         return true;
     }
-    else if (z == "right" && y + num < 8)
+    else if (z == "right" && y + num+1 <= 8)
     {
         return true;
     }
