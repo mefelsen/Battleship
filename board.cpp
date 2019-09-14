@@ -59,7 +59,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
 
 bool board::OverlapCheck(int x, int y, int num, string z)
 {
-    if (num > 1)
+    if (num > 0)
     {
 
         if (z == "up" && map[x][y] == '~')
