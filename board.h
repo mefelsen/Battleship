@@ -1,13 +1,18 @@
 #ifndef BOARD_H
 #define BOARD_H
+#include"player.h"
+using namespace std;
+
+
 
 class board {
 public:
-  char grid[8][8];
-  board();
-  void printBoard();
-  void addShip();
+  void run();
+  
+ 
 private:
+player one;//player one
+player two;//player two
 
 };
 

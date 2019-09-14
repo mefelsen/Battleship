@@ -16,11 +16,8 @@
 //using namespace std;
 
 int main() {
-
-  Executive start;
-  start.startMenu();
+board exe;
+exe.run();
   
-  board player1_grid;
-  player1_grid.printBoard();
   return 0;
 }

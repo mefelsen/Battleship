@@ -1,23 +1,25 @@
 #include "board.h"
 #include <iostream>
 using namespace std;
-board::board() {
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
-      grid[i][j] = '~';
-    }
-  }
-}
 
-void board::printBoard(){
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
-      cout << grid[i][j];
-    }
-    cout << endl;
-  }
-}
+void board::run()
+{
+   one.printgetmap();
+   if(one.placeship(2,3,"down",3))
+   {
+       cout<<"complete!!"<<endl;
+       one.printgetmap();
+   }
+   cout<<"overlap test"<<endl;
 
-void board::addShip(){
-
+   if(one.placeship(2,2,"right",3))
+   {
+       cout<<"complete!!"<<endl;
+       one.printgetmap();
+   }
+   else
+   {    cout<<"not complete!!"<<endl;
+        one.printgetmap();
+   }
+   
 }
