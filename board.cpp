@@ -90,7 +90,7 @@ bool board::OverlapCheck(int x, int y, int num, string z)
     }
 }
 
-bool board::PlaceShip(int x, int y, string z, int num)
+bool board::PlaceShip(int x, int y, string z, int num,char mark)
 {
     if (x >= 8 || x < 0)
     {
@@ -102,7 +102,7 @@ bool board::PlaceShip(int x, int y, string z, int num)
     }
     else if (DimensionCheck(x, y, num, z)&&OverlapCheck(x,y,num,z))
     {
-        MarkShip(x,y,num,z);
+        MarkShip(x,y,num,z,mark);
         return true;
     }
     else
@@ -111,30 +111,30 @@ bool board::PlaceShip(int x, int y, string z, int num)
     }
 }
 
-void board::MarkShip(int x,int y,int num, string z)
+void board::MarkShip(int x,int y,int num, string z,char mark)
 {
     if (num >= 1)
     {
 
         if (z == "up")
         {
-            map[x][y]='A';
-            MarkShip(x-1,y,num-1,z);
+            map[x][y]=mark;
+            MarkShip(x-1,y,num-1,z,mark);
         }
         else if (z == "down" )
         {
-            map[x][y]='A';
-            MarkShip(x+1,y,num-1,z);
+            map[x][y]=mark;
+            MarkShip(x+1,y,num-1,z,mark);
         }
         else if (z == "left" )
         {
-            map[x][y]='A';
-            MarkShip(x,y-1,num-1,z);
+            map[x][y]=mark;
+            MarkShip(x,y-1,num-1,z,mark);
         }
         else if (z == "right" )
         {
-           map[x][y]='A';
-           MarkShip(x,y+1,num-1,z);
+           map[x][y]=mark;
+           MarkShip(x,y+1,num-1,z,mark);
         }
     }
 }
