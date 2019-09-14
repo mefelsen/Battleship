@@ -45,17 +45,17 @@ public:
  @pre none
  @post returns true if valid, false if not valid
  @param x,y are position. x is horizontal position, y is vertical position,
- num is the size of the ship in question. z is the orientation (up,down,left,right)
+ num is the size of the ship in question. z is the orientation (up,down,left,right),mark is a flag for a single ship
    */
-  bool PlaceShip(int x, int y, string z, int num);
+  bool PlaceShip(int x, int y, string z, int num,char mark);
 
   /* Places ship on board (changes ~ to A)
  @pre none
  @post none
  @param x,y are position. x is horizontal position, y is vertical position,
- num is the size of the ship in question. z is the orientation (up,down,left,right)
+ num is the size of the ship in question. z is the orientation (up,down,left,right), mark is a flag for a single ship
    */
-  void MarkShip(int x,int y,int num, string z);
+  void MarkShip(int x,int y,int num, string z,char mark);
 private:
   /*
 
