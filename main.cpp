@@ -16,8 +16,6 @@
 //using namespace std;
 
 int main() {
-  board c1;
-  c1.PrintMap();
-  c1.ClearScreen();
+  
   return 0;
 }

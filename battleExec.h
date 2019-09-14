@@ -11,6 +11,7 @@
 ---------------------------------------------------------------------------- */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
+using namespace std;
 //#include <fstream>
 //#include <limits>
 

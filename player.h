@@ -1,6 +1,7 @@
 #ifndef player_h
 #define player_h
 #include<iostream>
+#include"board.h"
 using namespace std;
 
 class player
