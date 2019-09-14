@@ -16,8 +16,8 @@
 //using namespace std;
 
 int main() {
-board exe;
-exe.run();
+ 
+
   
   return 0;
 }
