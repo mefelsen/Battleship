@@ -11,13 +11,13 @@
 #include <fstream>
 #include <stdio.h>
 #include <string>
-#include "board.h"
+//#include "board.h"
 #include "battleExec.h"
-//using namespace std;
+using namespace std;
 
 int main() {
-board exe;
-exe.run();
-  
+
+  Executive test;
+  test.testrun();
   return 0;
 }

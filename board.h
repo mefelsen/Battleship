@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------------------
  *
 * File Name: board.h
-* Author: Matt Felsen
+* Author:team
 * Assignment:   EECS-448 Project Battleship
 * Description:  Handles Console Output of Board
 * Date: 9-14-19
@@ -9,7 +9,8 @@
 ---------------------------------------------------------------------------- */
 #ifndef BOARD_H
 #define BOARD_H
-#include"player.h"
+//#include"player.h"
+#include<stdexcept>
 using namespace std;
 
 

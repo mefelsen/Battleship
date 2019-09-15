@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------------------
  *
 * File Name: board.cpp
-* Author: Matt Felsen
+* Author: team
 * Assignment:   EECS-448 Project Battleship
 * Description:  Handles Console Output of Board
 * Date: 9-14-19
@@ -52,7 +52,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
     }
     else
     {
-        cout<<"Out of Board!"<<endl;
+        //cout<<"Out of Board!"<<endl;
         return false;
     }
 }
@@ -80,7 +80,7 @@ bool board::OverlapCheck(int x, int y, int num, string z)
         }
         else
         {
-            cout<<"overlap!"<<endl;
+            //cout<<"overlap!"<<endl;
             return false;
         }
     }
@@ -107,6 +107,7 @@ bool board::PlaceShip(int x, int y, string z, int num,char mark)
     }
     else
     {
+        throw(std::runtime_error("unable to place ship"));
         return false;
     }
 }

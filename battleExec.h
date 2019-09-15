@@ -13,7 +13,7 @@
 #define EXECUTIVE_H
 //#include <fstream>
 //#include <limits>
-
+#include"player.h"
 
 class Executive
 {
@@ -39,10 +39,15 @@ public:
 
     void startMenu();
 
-private:
+    bool transfor(string x);
 
-      int rows;
-      int cols;
+    void testrun();
+
+private:
+    player one;
+    int row;
+    int col;
+      
       int ship_num;
 
 
