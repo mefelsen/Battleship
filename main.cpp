@@ -18,6 +18,7 @@ using namespace std;
 int main() {
 
   Executive test;
-  test.testrun();
+  //test.testrun();
+  test.testrun2();
   return 0;
 }

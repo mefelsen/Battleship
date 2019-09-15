@@ -12,7 +12,7 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 //#include <fstream>
-//#include <limits>
+#include <limits>
 #include"player.h"
 
 class Executive
@@ -40,8 +40,11 @@ public:
     void startMenu();
 
     bool transfor(string x);
+    bool transtoint(char x);
+    bool transfromchar(int x);
 
     void testrun();
+    void testrun2();
 
 private:
     player one;

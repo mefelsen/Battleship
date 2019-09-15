@@ -31,8 +31,54 @@ void Executive::startMenu()
 
 bool Executive::transfor(string x)
 {
+  int value=stoi(x.substr(0,1));
+  cout<<value<<endl;
+  if(x.size()!=2)
+  {
+    
+    return false;
+  }
+  else if(transtoint(x.at(1))&&transfromchar(value))
+  {
+
+    return true;
+  }
+  else
+  {
+   
+    return false;
+  }
   
 }
+bool Executive::transfromchar(int x)
+{
+  bool flag=false;
+  for(int i=0;i<8;i++)
+  {
+    if(x==i)
+    {
+      row=i;
+      flag=true;
+    }
+  }
+  return flag;
+}
+bool Executive::transtoint(char x)
+{
+  string y="ABCDEFGH";
+  bool flag=false;
+  for(int i=0;i<8;i++)
+  {
+    if(x==y.at(i))
+    {
+      col=i;
+      flag=true;
+      
+    }
+  }
+  return flag;
+}
+
 
 void Executive::testrun()
 {
@@ -60,5 +106,18 @@ void Executive::testrun()
     }
     one.print();
   }
+}
+void Executive::testrun2()
+{
+  string x;
+  cout<<"give a co eg 1A,1 is row A is col:"<<endl;
+  cin>>x;
+  //cout<<x.size()<<endl;
+  if(transfor(x))
+  {
+    cout<<"row: "<<row<<" col: "<<col<<endl;
+  }
+
+
 }
 
