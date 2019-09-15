@@ -19,6 +19,11 @@ using namespace std;
 class Executive
 {
 public:
+    /** funtion that runs the program
+    @pre
+    @post
+    @param None  */
+    void run();
 
     /** Default constructor
    @pre
