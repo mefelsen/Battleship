@@ -42,5 +42,11 @@ class player
  @post return true if all ships are marked, false otherwise
  @param None  */
     bool IsAllMarked();
+
+    /* Gets current hits
+     @pre none
+     @post returns current_hits
+     @param None  */
+    int GetHits();
 };
 #endif

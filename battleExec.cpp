@@ -28,8 +28,8 @@ void Executive::run()
   string spot;
   string dir;
   startMenu(); //opens start menu
-  player player1(ship_num); //creates player 1 with the number of ships obtained from input
-  player player2(ship_num); //creates player 2 with the same number of ships as p1
+  player player1; //creates player 1 with the number of ships obtained from input
+  player player2; //creates player 2 with the same number of ships as p1
   cout << endl;
   board board1; //creates board for player 1
   board board2; //creates board for player 2
@@ -64,12 +64,12 @@ void Executive::run()
       cin >> dir;
     } //this is 'z' in PlaceShip() and MarkShip()
   }
-  while(player1.current_hits != win_hits && player2.current_hits != win_hits) {
+  while(player1.GetHits() != win_hits && player2.GetHits() != win_hits) {
       //attack method here
       //make sure to increment current hits if attack method hits enemy ship
   }
-  if(player1.current_hits == win_hits) cout << "Player1 Wins!\n";
-  else cout << "Player2 Wins!\n"
+  if(player1.GetHits() == win_hits) cout << "Player1 Wins!\n";
+  else cout << "Player2 Wins!\n";
   return;
 
 }
