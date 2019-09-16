@@ -108,6 +108,7 @@ bool board::PlaceShip(int x, int y, string z, int num,char mark)
     }
     else
     {
+      throw(std::runtime_error("can't place ship"));
         return false;
     }
 }
