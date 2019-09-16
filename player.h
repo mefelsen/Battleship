@@ -12,6 +12,7 @@ class player
     string marks;
     int marked;//ships that are marked
     int unmark;//ships that are unmarked
+    int current_hits;//number of times player has hit enemy ships, used to check if player wins
 
     int numofship;
 

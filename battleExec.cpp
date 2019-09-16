@@ -64,6 +64,14 @@ void Executive::run()
       cin >> dir;
     } //this is 'z' in PlaceShip() and MarkShip()
   }
+  while(player1.current_hits != win_hits && player2.current_hits != win_hits) {
+      //attack method here
+      //make sure to increment current hits if attack method hits enemy ship
+  }
+  if(player1.current_hits == win_hits) cout << "Player1 Wins!\n";
+  else cout << "Player2 Wins!\n"
+  return;
+
 }
 
 Executive::~Executive()
@@ -98,5 +106,12 @@ void Executive::ClearScreen()
   for(int i = 0; i < 100; i++)
   {
     cout << '\n';
+  }
+}
+void Executive::CalculateWinHits()
+{
+  for(int i = ship_num; i > 0; i--)
+  {
+    win_hits += ship_num;
   }
 }

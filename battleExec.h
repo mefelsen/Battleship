@@ -50,10 +50,15 @@ public:
      @param None  */
     void ClearScreen();
 
+    /** Calculate the total number of hits a player needs to win
+     @pre  number of ships must be defined
+     @post returns none, but updates win_hits
+     @param num_ships  */
+    void CalculateWinHits();
+
 private:
 
-      int rows;
-      int cols;
+      int win_hits;
       int ship_num;
 
 

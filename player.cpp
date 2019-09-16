@@ -2,8 +2,8 @@
 player::player()
 {
   marks="abcde";
-   
-   marked=0;
+  marked=0;
+  current_hits = 0;
 }
 void player::setnum(int x)
 {
@@ -34,7 +34,7 @@ void player::placement(int x,int y,int z)
     {
         throw(std::runtime_error(" "));
     }
-    
+
     if(marked<numofship)
     {
         try
@@ -49,9 +49,9 @@ void player::placement(int x,int y,int z)
         {
             cout<<"fail,try again"<<endl;
         }
-        
+
     }
-    
+
 }
 bool player::IsAllMarked()
 {
@@ -63,7 +63,7 @@ bool player::IsAllMarked()
     {
         return true;
     }
-    
+
 }
 
 
