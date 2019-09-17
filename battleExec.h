@@ -11,9 +11,9 @@
 ---------------------------------------------------------------------------- */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
-using namespace std;
+#include <string>
 //#include <fstream>
-//#include <limits>
+#include <limits>
 
 
 class Executive
@@ -21,13 +21,13 @@ class Executive
 public:
     /** funtion that runs the program
     @pre
-    @post
+    @post runs the program
     @param None  */
     void run();
 
     /** Default constructor
    @pre
-   @post
+   @post class that houses the functions that will run the program
    @param None  */
     Executive();
 
@@ -40,7 +40,7 @@ public:
 
     /** function to print the inital starting screen
      @pre  N/A
-     @post Gives data to Flood class
+     @post sets up a game of Battleship
      @param None  */
     void startMenu();
 
@@ -50,15 +50,36 @@ public:
      @param None  */
     void ClearScreen();
 
+    /**
+     @pre
+     @post checks if the input is valid
+     @param takes a string **/
+    bool inputChecker(std::string x);
+
+    /**
+     @pre
+     @post takes a string input, parses and transforms into coordinates for the board
+     @param takes in a string **/
+    bool transfor(std::string x);
+
+    /**
+     @pre
+     @post transforms the char into coordinates for the board
+     @param takes in a char **/
+    bool transtoint(char x);
+
+    /**
+     @pre
+     @post transforms the string int into an int which is coordinates for the board
+     @param takes an int **/
+    bool transfromchar(int x);
+
+
 private:
 
-      int rows;
-      int cols;
+      int row;
+      int col;
       int ship_num;
-
-
-
-
 
 };
 #endif
