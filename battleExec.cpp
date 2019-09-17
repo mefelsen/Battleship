@@ -29,14 +29,16 @@ void Executive::run()
   string location; //row and column on the map
   int dir; //direction that the ship faces
   startMenu(); //opens start menu
+
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
+
   player player1; //creates player 1 with the number of ships obtained from input
   player1.setnum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
   player1.print();
   while(!player1.IsAllMarked())
   {
-    cout<<"Pick which row (1-8) and which column (A-H) (Must be in the form [row][col] i.e.: 1a): ";
+    cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
     if(transfor(location))
     {
@@ -93,7 +95,7 @@ void Executive::run()
     player2.print();
     while(!player2.IsAllMarked())
     {
-      cout<<"Pick which row (1-8) and which column (A-H) (Must be in the form [row][col] i.e.: 1a): ";
+      cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
       cin>>location;
       if(transfor(location))
       {
@@ -144,13 +146,13 @@ void Executive::run()
   }
   }
   player2.print();
+
     //players attack here
     //while(player1.GetHits() != win_hits && player2.GetHits() != win_hits {
         //player attack method goes here
         //make sure to update each player's number of hits each time they hit a ship
     //}
     
-  
 }
 
 Executive::~Executive()
@@ -205,7 +207,7 @@ bool Executive::inputChecker(string x)
 {
   string y = "ABCDEFGH";
   string z = "abcdefgh";
-  char word = x.at(1);
+  char word = x.at(0);
   bool flag = false;
   for(int i =0; i< 8; i++)
   {
@@ -216,7 +218,6 @@ bool Executive::inputChecker(string x)
   }
   return flag;
 }
-
 bool Executive::transfor(string x)
 {
   //int value = stoi(x.substr(0, 1));
@@ -229,7 +230,7 @@ bool Executive::transfor(string x)
   {
     return false;
   }
-  else if (transtoint(x.at(1)) && transfromchar(stoi(x.substr(0, 1))))
+  else if (transtoint(x.at(0)) && transfromchar(stoi(x.substr(1, 1))))
   {
     return true;
   }

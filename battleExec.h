@@ -73,7 +73,7 @@ public:
      @post transforms the string int into an int which is coordinates for the board
      @param takes an int **/
     bool transfromchar(int x);
-    
+
     /** Calculated number of hits needed to win
      @pre ship_num must be defined
      @post updates win_hits from 0 to the total number of hits needed to win
@@ -81,11 +81,13 @@ public:
     void CalculateWinHits(int ship_num);
 
 
+
 private:
 
       int row;
       int col;
       int ship_num;
+
       int win_hits;
 
 };
