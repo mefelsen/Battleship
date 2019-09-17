@@ -29,7 +29,7 @@ void Executive::run()
   string location; //row and column on the map
   int dir; //direction that the ship faces
   startMenu(); //opens start menu
-  CalculateWinHits();//num_ships is inputted by user, this function is called to find total hits to win game
+  CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
   player player1; //creates player 1 with the number of ships obtained from input
   player1.setnum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
