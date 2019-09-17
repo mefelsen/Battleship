@@ -35,7 +35,7 @@ void Executive::run()
   player1.print();
   while(!player1.IsAllMarked())
   {
-    cout<<"Pick which row (1-8) and which column (A-H) (Must be in the form [row][col] i.e.: 1a): ";
+    cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
     if(transfor(location))
     {
@@ -92,7 +92,7 @@ void Executive::run()
     player2.print();
     while(!player2.IsAllMarked())
     {
-      cout<<"Pick which row (1-8) and which column (A-H) (Must be in the form [row][col] i.e.: 1a): ";
+      cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
       cin>>location;
       if(transfor(location))
       {
@@ -197,7 +197,7 @@ bool Executive::inputChecker(string x)
 {
   string y = "ABCDEFGH";
   string z = "abcdefgh";
-  char word = x.at(1);
+  char word = x.at(0);
   bool flag = false;
   for(int i =0; i< 8; i++)
   {
@@ -221,7 +221,7 @@ bool Executive::transfor(string x)
   {
     return false;
   }
-  else if (transtoint(x.at(1)) && transfromchar(stoi(x.substr(0, 1))))
+  else if (transtoint(x.at(0)) && transfromchar(stoi(x.substr(1, 1))))
   {
     return true;
   }
