@@ -13,6 +13,8 @@
 #include "board.h"
 #include "player.h"
 #include <string>
+#include <cctype>
+#include <limits>
 #include <iostream>
 #include <unistd.h>
 using namespace std;
@@ -20,58 +22,127 @@ using namespace std;
 Executive::Executive()
 {
     ship_num = 0; //sets starting ship amount to zero
-
 }
 
 void Executive::run()
 {
-  string spot;
-  string dir;
+  string location; //row and column on the map
+  int dir; //direction that the ship faces
   startMenu(); //opens start menu
   player player1; //creates player 1 with the number of ships obtained from input
-  player player2; //creates player 2 with the same number of ships as p1
-  cout << endl;
-  board board1; //creates board for player 1
-  board board2; //creates board for player 2
-  board board1Hidden; //creates the hidden version of board1
-  board board2Hidden; //creates the hidden version of board2
-  cout << "PLAYER 1: Place your ships.\n";
-  board1.PrintMap(); //prints out map for player to see
-  for(int i = 0; i < ship_num; i++) //placing ships
+  player1.setnum(ship_num);
+  cout<<"\n---------PLAYER 1----------\n\n";
+  player1.print();
+  while(!player1.IsAllMarked())
   {
-    cout << "Where to place ship " << (i+1) << "?\n";
-    // FROM HERE OUT, also need error checking for when someone enters nonsense
-    cin >> spot;
-    //here we parse spot and use it to get the 'x' and 'y' for
-    //PlaceShip() and MarkShip()
-    if(i > 0)
+    cout<<"Pick which row (1-8) and which column (A-H) (Must be in the form [row][col] i.e.: 1a): ";
+    cin>>location;
+    if(transfor(location))
     {
-      cout << "Choose what direction the ship will be facing (up, down, left, right): ";
-      cin >> dir;
-    } //this is 'z' in PlaceShip() and MarkShip()
-  }
-  cout << "PLAYER 2: Place your ships.\n";
-  board2.PrintMap(); //prints out map for player to see
-  for(int i = 0; i < ship_num; i++) //placing ships
-  {
-    cout << "Where to place ship " << (i+1) << "?\n";
-    cin >> spot;
-    //here we parse spot and use it to get the 'x' and 'y' for
-    //PlaceShip() and MarkShip()
-    if(i > 0)
+    cout<<"Which direction will your ship face?\n"
+        <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
     {
-      cout << "Choose what direction the ship will be facing (up, down, left, right): ";
-      cin >> dir;
-    } //this is 'z' in PlaceShip() and MarkShip()
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
+      }
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    try
+    {
+      player1.placement(row, col, dir);
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
   }
-  while(player1.GetHits() != win_hits && player2.GetHits() != win_hits) {
-      //attack method here
-      //make sure to increment current hits if attack method hits enemy ship
+    player1.print();
+}
+    player player2; //creates player 1 with the number of ships obtained from input
+    player2.setnum(ship_num);
+    cout<<"\n---------PLAYER 2----------\n\n";
+    player2.print();
+    while(!player2.IsAllMarked())
+    {
+      cout<<"Pick which row (1-8) and which column (A-H) (Must be in the form [row][col] i.e.: 1a): ";
+      cin>>location;
+      if(transfor(location))
+      {
+      cout<<"Which direction will your ship face?\n"
+          <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+      while((dir < 1) || (dir > 4)) //error checking
+      {
+        cout<<"You must enter a number between 1 and 4. Try again: ";
+        cin>>dir;
+        while(1) //checking for right input
+        {
+          if(cin.fail())
+          {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+            cin >> dir;
+          }
+          else
+          {
+            break;
+          }
+        }
+      }
+      try
+      {
+        player2.placement(row, col, dir);
+      }
+      catch (const std::runtime_error &e)
+      {
+        cout << "enter a correct direction!" << endl;
+      }
   }
-  if(player1.GetHits() == win_hits) cout << "Player1 Wins!\n";
-  else cout << "Player2 Wins!\n";
-  return;
-
+  }
+  player2.print();
 }
 
 Executive::~Executive()
@@ -86,13 +157,109 @@ void Executive::startMenu()
        << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
        << "Enter the number of ships for this game (You may have up to 5 ships): ";
   cin >> ship_num;
+  while(1) //checking for right input
+  {
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(),'\n');
+      cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+      cin >> ship_num;
+    }
+    else
+    {
+      break;
+    }
+  }
   while((ship_num < 1) || (ship_num > 5))
   {
     cout << "You must enter a number between 0 and 5, try again.\n"
          << "Enter the number of ships for this game (You may have up to 5 ships): ";
     cin >> ship_num;
-  } //need to do error handling for the case in which user does not enter an int i.e.: "asdf"
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> ship_num;
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
 }
+
+bool Executive::inputChecker(string x)
+{
+  string y = "ABCDEFGH";
+  string z = "abcdefgh";
+  char word = x.at(1);
+  bool flag = false;
+  for(int i =0; i< 8; i++)
+  {
+    if (word == y.at(i) || word == z.at(i))
+    {
+      flag = true;
+    }
+  }
+  return flag;
+}
+
+bool Executive::transfor(string x)
+{
+  //int value = stoi(x.substr(0, 1));
+  //cout << value << endl;
+  if (x.size() < 2 || x.size() != 2)
+  {
+    return false;
+  }
+  else if(!inputChecker(x))
+  {
+    return false;
+  }
+  else if (transtoint(x.at(1)) && transfromchar(stoi(x.substr(0, 1))))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool Executive::transfromchar(int x)
+{
+  bool flag = false;
+  for (int i = 0; i < 8; i++)
+  {
+    if (x == i)
+    {
+      row = i-1;
+      flag = true;
+    }
+  }
+  return flag;
+}
+bool Executive::transtoint(char x)
+{
+  string y = "ABCDEFGH";
+  string z="abcdefgh";
+  bool flag = false;
+  for (int i = 0; i < 8; i++)
+  {
+    if (x == y.at(i)||x==z.at(i))
+    {
+      col = i;
+      flag = true;
+    }
+  }
+  return flag;
+}
+
 void Executive::ClearScreen()
 {
   cout << "Switching Players in\n";
@@ -106,12 +273,5 @@ void Executive::ClearScreen()
   for(int i = 0; i < 100; i++)
   {
     cout << '\n';
-  }
-}
-void Executive::CalculateWinHits()
-{
-  for(int i = ship_num; i > 0; i--)
-  {
-    win_hits += ship_num;
   }
 }

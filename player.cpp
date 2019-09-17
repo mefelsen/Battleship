@@ -2,8 +2,8 @@
 player::player()
 {
   marks="abcde";
-  marked=0;
-  current_hits = 0;
+
+   marked=0;
 }
 void player::setnum(int x)
 {
@@ -70,8 +70,4 @@ bool player::IsAllMarked()
 void player::print()
 {
     access.PrintMap();
-}
-
-int player::GetHits(){
-  return current_hits;
 }
