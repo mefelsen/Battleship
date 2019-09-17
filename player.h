@@ -12,7 +12,7 @@ class player
     string marks;
     int marked;//ships that are marked
     int unmark;//ships that are unmarked
-
+    int num_hits;
     int numofship;
 
     public:
@@ -41,5 +41,11 @@ class player
  @post return true if all ships are marked, false otherwise
  @param None  */
     bool IsAllMarked();
+    
+    /* Gets the number of times a player has hit the enemies's ships
+ @pre none
+ @post return num_hits
+ @param None  */
+    int GetHits();
 };
 #endif
