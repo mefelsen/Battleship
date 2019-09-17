@@ -71,3 +71,8 @@ void player::print()
 {
     access.PrintMap();
 }
+
+int player::GetHits()
+{
+  return num_hits;
+}
