@@ -29,6 +29,7 @@ void Executive::run()
   string location; //row and column on the map
   int dir; //direction that the ship faces
   startMenu(); //opens start menu
+  CalculateWinHits();//num_ships is inputted by user, this function is called to find total hits to win game
   player player1; //creates player 1 with the number of ships obtained from input
   player1.setnum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
@@ -143,6 +144,13 @@ void Executive::run()
   }
   }
   player2.print();
+    //players attack here
+    //while(player1.GetHits() != win_hits && player2.GetHits() != win_hits {
+        //player attack method goes here
+        //make sure to update each player's number of hits each time they hit a ship
+    //}
+    
+  
 }
 
 Executive::~Executive()
@@ -274,4 +282,12 @@ void Executive::ClearScreen()
   {
     cout << '\n';
   }
+}
+
+void Executive::CalculateWinHits(int ship_num)
+{
+    for(int i = ship_num; i > 0; i--)
+    {
+        win_hits += i;
+    }
 }
