@@ -23,6 +23,7 @@ board::board() {
 }
 
 void board::PrintMap() {
+  cout <<"Player Hidden Board: \n";
   for(int i = 0; i < 8; i++) {
     if(i == 0) cout << " ABCDEFGH\n";
     for(int j = 0; j < 8; j++) {
@@ -139,4 +140,35 @@ void board::MarkShip(int x,int y,int num, string z,char mark)
            MarkShip(x,y+1,num-1,z,mark);
         }
     }
+}
+
+bool board::Attack(int x, int y)
+{
+  if(!(map[x-1][y-1]=='~'))
+  {
+    cout << "Your attack was successful!\n";
+    map[x-1][y-1] = '*';
+   return true;
+  }
+  else cout <<"Sploosh!! No ship here. \n";
+  return false;
+}
+
+void board::PrintGrid() {
+  cout <<"Map of all previous moves: \n";
+  cout<< "o = miss \n x = hit\n";
+  for(int i = 0; i < 8; i++) {
+    if(i == 0) cout << " ABCDEFGH\n";
+    for(int j = 0; j < 8; j++) {
+      if(j == 0) cout << i+1;
+       cout << grid[i][j];
+    }
+    cout << '\n';
+  }
+}
+void board::update(int x, int y)
+{
+  if(Attack(x,y))  grid[x-1][y-1]= 'x';
+  else grid[x-1][y-1]= 'o';
+  //PrintGrid();
 }

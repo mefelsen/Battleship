@@ -1,3 +1,4 @@
+
 #ifndef player_h
 #define player_h
 #include<iostream>
@@ -47,6 +48,24 @@ class player
  @post return num_hits
  @param None  */
     int GetHits();
+
+    /* Prints the hidden map for the player who called it
+ @pre none
+ @post print the "grid" in board object
+ @param None  */
+ void printHidden();
+
+ /* calls the board class to compare char and update the board
+@pre none
+@post handles the attack/comparison
+@param None  takes in the x and y coordiinate of where the player would like to attack*/
+ void attack(int x, int y);
+
+ /** funtion that runs the playtime of program
+ @pre
+ @post runs attack functions
+ @param None  */
+ void Play();
 
 };
 #endif

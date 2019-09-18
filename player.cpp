@@ -66,6 +66,19 @@ bool player::IsAllMarked()
 
 }
 
+void player::attack(int x, int y)
+{
+//  access.Attack(x,y);
+
+  access.update(x,y);
+  access.PrintMap();
+  access.PrintGrid();
+}
+
+void player::printHidden()
+{
+  access.PrintGrid();
+}
 
 void player::print()
 {
@@ -75,4 +88,16 @@ void player::print()
 int player::GetHits()
 {
   return num_hits;
+}
+void player::Play()
+{
+  int x,y;
+
+  cout <<"Enter the coordinates for your attack: ";
+  
+  cin >>x;
+  cin>> y;
+  attack(x,y);
+
+
 }
