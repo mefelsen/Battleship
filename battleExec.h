@@ -74,12 +74,21 @@ public:
      @param takes an int **/
     bool transfromchar(int x);
 
+    /** Calculated number of hits needed to win
+     @pre ship_num must be defined
+     @post updates win_hits from 0 to the total number of hits needed to win
+     @param ship_num is the number of ships each player has. used to calcualte total hits needed to win **/
+    void CalculateWinHits(int ship_num);
+
+
 
 private:
 
       int row;
       int col;
       int ship_num;
+
+      int win_hits;
 
 };
 #endif
