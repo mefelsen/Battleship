@@ -40,7 +40,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
     {
         return true;
     }
-    else if (z == "down" && x + num+1 <= 8)
+    else if (z == "down" && x + num+1 <= 9)
     {
         return true;
     }
