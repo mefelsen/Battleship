@@ -39,6 +39,7 @@ void Executive::run()
     cin>>location;
     if(transfor(location))
     {
+    cout<<"row"<<row<<"col"<<col<<endl;
     cout<<"Which direction will your ship face?\n"
         <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
     cin>>dir;
@@ -96,6 +97,7 @@ void Executive::run()
       cin>>location;
       if(transfor(location))
       {
+              cout<<"row"<<row<<"col"<<col<<endl;
       cout<<"Which direction will your ship face?\n"
           <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
       cin>>dir;
@@ -199,7 +201,7 @@ bool Executive::inputChecker(string x)
   string z = "abcdefgh";
   char word = x.at(0);
   bool flag = false;
-  for(int i =0; i< 8; i++)
+  for(int i =0; i < 8; i++)
   {
     if (word == y.at(i) || word == z.at(i))
     {
@@ -223,6 +225,7 @@ bool Executive::transfor(string x)
   }
   else if (transtoint(x.at(0)) && transfromchar(stoi(x.substr(1, 1))))
   {
+    //cout<<"row"<<row<<"col"<<col<<endl;
     return true;
   }
   else
@@ -234,7 +237,7 @@ bool Executive::transfor(string x)
 bool Executive::transfromchar(int x)
 {
   bool flag = false;
-  for (int i = 0; i < 8; i++)
+  for (int i = 1; i < 9; i++)
   {
     if (x == i)
     {
