@@ -34,7 +34,8 @@ void board::PrintMap() {
 
 bool board::DimensionCheck(int x, int y, int num, string z)
 {
-    if (z == "up" && x - num >= 0)
+    cout<<num<<endl;
+    if (z == "up" && x+1 - num >= 0)
     {
         return true;
     }
@@ -42,7 +43,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
     {
         return true;
     }
-    else if (z == "left" && y - num >= 0)
+    else if (z == "left" && y+1 - num >= 0)
     {
         return true;
     }
