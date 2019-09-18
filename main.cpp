@@ -15,9 +15,9 @@
 #include "battleExec.h"
 //using namespace std;
 
-int main() {
-board exe;
-exe.run();
-  
+int main()
+{
+  Executive exec;
+  exec.run();
   return 0;
 }
