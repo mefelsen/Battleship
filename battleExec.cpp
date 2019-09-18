@@ -29,9 +29,6 @@ void Executive::run()
   string location; //row and column on the map
   int dir; //direction that the ship faces
   startMenu(); //opens start menu
-
-  CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
-
   player player1; //creates player 1 with the number of ships obtained from input
   player1.setnum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
@@ -42,6 +39,7 @@ void Executive::run()
     cin>>location;
     if(transfor(location))
     {
+    cout<<"row"<<row<<"col"<<col<<endl;
     cout<<"Which direction will your ship face?\n"
         <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
     cin>>dir;
@@ -99,6 +97,7 @@ void Executive::run()
       cin>>location;
       if(transfor(location))
       {
+              cout<<"row"<<row<<"col"<<col<<endl;
       cout<<"Which direction will your ship face?\n"
           <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
       cin>>dir;
@@ -146,13 +145,6 @@ void Executive::run()
   }
   }
   player2.print();
-
-    //players attack here
-    //while(player1.GetHits() != win_hits && player2.GetHits() != win_hits {
-        //player attack method goes here
-        //make sure to update each player's number of hits each time they hit a ship
-    //}
-    
 }
 
 Executive::~Executive()
@@ -209,7 +201,7 @@ bool Executive::inputChecker(string x)
   string z = "abcdefgh";
   char word = x.at(0);
   bool flag = false;
-  for(int i =0; i< 8; i++)
+  for(int i =0; i < 8; i++)
   {
     if (word == y.at(i) || word == z.at(i))
     {
@@ -218,6 +210,7 @@ bool Executive::inputChecker(string x)
   }
   return flag;
 }
+
 bool Executive::transfor(string x)
 {
   //int value = stoi(x.substr(0, 1));
@@ -232,6 +225,7 @@ bool Executive::transfor(string x)
   }
   else if (transtoint(x.at(0)) && transfromchar(stoi(x.substr(1, 1))))
   {
+    //cout<<"row"<<row<<"col"<<col<<endl;
     return true;
   }
   else
@@ -243,7 +237,7 @@ bool Executive::transfor(string x)
 bool Executive::transfromchar(int x)
 {
   bool flag = false;
-  for (int i = 0; i < 8; i++)
+  for (int i = 1; i < 9; i++)
   {
     if (x == i)
     {
@@ -283,12 +277,4 @@ void Executive::ClearScreen()
   {
     cout << '\n';
   }
-}
-
-void Executive::CalculateWinHits(int ship_num)
-{
-    for(int i = ship_num; i > 0; i--)
-    {
-        win_hits += i;
-    }
 }
