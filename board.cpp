@@ -52,7 +52,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
     }
     else
     {
-        //cout<<"Out of Board!"<<endl;
+        cout<<"Out of Board!"<<endl;
         return false;
     }
 }
@@ -80,7 +80,7 @@ bool board::OverlapCheck(int x, int y, int num, string z)
         }
         else
         {
-            //cout<<"overlap!"<<endl;
+            cout<<"overlap!"<<endl;
             return false;
         }
     }

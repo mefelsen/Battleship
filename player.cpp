@@ -47,7 +47,7 @@ void player::placement(int x,int y,int z)
         }
         catch(const std::runtime_error& e)
         {
-            cout<<"fail,try again"<<endl;
+            cout<<"fail,try again!!"<<endl;
         }
         
     }

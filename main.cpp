@@ -19,6 +19,6 @@ int main() {
 
   Executive test;
   //test.testrun();
-  test.testrun2();
+  test.testrun3();
   return 0;
 }

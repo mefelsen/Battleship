@@ -39,12 +39,14 @@ public:
 
     void startMenu();
 
+    bool inputchecker(string x);
     bool transfor(string x);
     bool transtoint(char x);
     bool transfromchar(int x);
 
     void testrun();
     void testrun2();
+    void testrun3();
 
 private:
     player one;
