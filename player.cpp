@@ -1,143 +1,103 @@
 #include "player.h"
 player::player()
 {
-    name = "";
-    map = new char *[8];
-    flags=5;
-    acctmap = new char *[8];
-    for (int i = 0; i < 8; i++)
-    {
-        map[i] = new char[8];
-        acctmap[i] = new char[8];
-        for (int j = 0; j < 8; j++)
-        {
-            map[i][j] = '~';
-            acctmap[i][j] = '~';
-        }
-    }
+  marks="abcde";
+
+   marked=0;
 }
-bool player::dimitioncheck(int x, int y, int num, string z)
+void player::setnum(int x)
 {
-    if (z == "up" && x - num >= 0)
+    unmark=x;
+    numofship=x;
+}
+
+void player::placement(int x,int y,int z)
+{
+    string direct;
+    if(z==1)
     {
-        return true;
+        direct="up";
     }
-    else if (z == "down" && x + num < 8)
+    else if (z==2)
     {
-        return true;
+        direct="down";
     }
-    else if (z == "left" && y - num >= 0)
+    else if(z==3)
     {
-        return true;
+        direct="left";
     }
-    else if (z == "right" && y + num < 8)
+    else if(z==4)
     {
-        return true;
+        direct="right";
     }
     else
     {
-        cout<<"out of borad"<<endl;
-        return false;
+        throw(std::runtime_error(" "));
     }
-}
-bool player::overlapcheck(int x, int y, int num, string z)
-{
-    if (num > 1)
-    {
 
-        if (z == "up" && map[x][y] == '~')
+    if(marked<numofship)
+    {
+        try
         {
-            return overlapcheck(x-1, y , num - 1, z);
+            char label=marks.at(marked);
+            //cout<<label<<endl;
+            access.PlaceShip(x,y,direct,marked+1,label);
+            marked=marked+1;
+            unmark=unmark-1;
         }
-        else if (z == "down" && map[x][y] == '~')
+        catch(const std::runtime_error& e)
         {
-            return overlapcheck(x+1, y , num - 1, z);
+            cout<<"fail,try again"<<endl;
         }
-        else if (z == "left" && map[x][y] == '~')
-        {
-            return overlapcheck(x , y-1, num - 1, z);
-        }
-        else if (z == "right" && map[x][y] == '~')
-        {
-            return overlapcheck(x , y+1, num - 1, z);
-        }
-        else
-        {
-            cout<<"overlap!"<<endl;
-            return false;
-        }
+
+    }
+
+}
+bool player::IsAllMarked()
+{
+    if(numofship>marked)
+    {
+        return false;
     }
     else
     {
         return true;
     }
-}
-bool player::placeship(int x, int y, string z, int num)
-{
-    if (x >= 8 || x < 0)
-    {
-        return false;
-    }
-    else if (y >= 8 || y < 0)
-    {
-        return false;
-    }
-    else if (dimitioncheck(x, y, num, z)&&overlapcheck(x,y,num,z))
-    {
-        markship(x,y,num,z);
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-void player::markship(int x,int y,int num, string z)
-{
-    if (num >= 1)
-    {
 
-        if (z == "up")
-        {
-            map[x][y]='A';
-            markship(x-1,y,num-1,z);
-        }
-        else if (z == "down" )
-        {
-            map[x][y]='A';
-            markship(x+1,y,num-1,z);
-        }
-        else if (z == "left" )
-        {
-            map[x][y]='A';
-            markship(x,y-1,num-1,z);
-        }
-        else if (z == "right" )
-        {
-           map[x][y]='A';
-           markship(x,y+1,num-1,z);
-        }
-    }
-}
-void player::setname(string n)
-{
-    name = n;
 }
 
-string player::getname() const
+void player::attack(int x, int y)
 {
-    return name;
+//  access.Attack(x,y);
+
+  access.update(x,y);
+  access.PrintMap();
+  access.PrintGrid();
 }
 
-void player::printgetmap()
+void player::printHidden()
 {
-    for (int i = 0; i < 8; i++)
-    {
+  access.PrintGrid();
+}
 
-        for (int j = 0; j < 8; j++)
-        {
-            cout << map[i][j] << ' ';
-        }
-        cout << endl;
-    }
+void player::print()
+{
+    access.PrintMap();
+}
+
+int player::GetHits()
+{
+  return num_hits;
+}
+void player::Play()
+{
+  int x,y;
+
+  cout <<"Enter the coordinates for your attack: ";
+  
+  cin >>x;
+  cin>> y;
+  attack(x,y);
+
+
 }
