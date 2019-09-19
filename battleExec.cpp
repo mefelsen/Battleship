@@ -146,7 +146,7 @@ void Executive::run()
   }
   }
   player2.print();
-//  while(CalculateWinHits(num_ships) != )   /////add while loop to check win condition
+  while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
   {   string x;
       cout<<"\n---------PLAYER 1----------\n\n";
 
@@ -158,7 +158,10 @@ void Executive::run()
         // cout << row <<" " <<col;
 
         if(player2.attack(row,col)) //here we want to change map
-            player1.update(row,col, true); //here, we want to only update grid
+        {
+          player1.update(row,col, true); //here, we want to only update grid
+
+        }
         else   player1.update(row,col, false);
         player1.printHidden();
         player1.print();
@@ -173,7 +176,10 @@ void Executive::run()
       {
 
         if(player1.attack(row,col)) //here we want to change map
-            player2.update(row,col, true); //here, we want to only update grid
+        {
+          player2.update(row,col, true); //here, we want to only update grid
+
+        }
         else   player2.update(row,col, false);
         player2.printHidden();
         player2.print();

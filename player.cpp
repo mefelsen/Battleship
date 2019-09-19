@@ -72,6 +72,7 @@ bool player::IsAllMarked()
 
 bool player::attack(int x, int y)
 {
+  if(access.Attack(x,y)) num_hits++;  
   return(access.Attack(x,y));
 }
 
