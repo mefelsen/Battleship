@@ -256,7 +256,7 @@ bool Executive::transfor(string x)
 bool Executive::transfromchar(int x)
 {
   bool flag = false;
-  for (int i = 0; i < 8; i++)
+  for (int i = 1; i < 9; i++)
   {
     if (x == i)
     {
