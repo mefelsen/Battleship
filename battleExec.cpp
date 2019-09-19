@@ -147,17 +147,37 @@ void Executive::run()
   }
   player2.print();
 //  while(CalculateWinHits(num_ships) != )   /////add while loop to check win condition
-  {   int x, y;
+  {   string x;
       cout<<"\n---------PLAYER 1----------\n\n";
 
       cout <<"Enter the coordinates for your attack: ";
       cin >>x;
-      cin >>y;
-    //  transfor(x);
-      player1.attack(x,y);
+      if(transfor(x))
+      {
+        // cout <<x;
+        // cout << row <<" " <<col;
+
+        if(player2.attack(row,col)) //here we want to change map
+            player1.update(row,col, true); //here, we want to only update grid
+        else   player1.update(row,col, false);
+        player1.printHidden();
+        player1.print();
+      }
+
       //player1.Play();
-        cout<<"\n---------PLAYER 2----------\n\n";
-      player2.Play();
+      cout<<"\n---------PLAYER 2----------\n\n";
+
+      cout <<"Enter the coordinates for your attack: ";
+      cin >>x;
+      if(transfor(x))
+      {
+
+        if(player1.attack(row,col)) //here we want to change map
+            player2.update(row,col, true); //here, we want to only update grid
+        else   player2.update(row,col, false);
+        player2.printHidden();
+        player2.print();
+      }
   }
 
     //players attack here
@@ -256,7 +276,7 @@ bool Executive::transfor(string x)
 bool Executive::transfromchar(int x)
 {
   bool flag = false;
-  for (int i = 0; i < 8; i++)
+  for (int i = 1; i < 9; i++)
   {
     if (x == i)
     {

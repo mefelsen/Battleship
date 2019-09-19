@@ -1,3 +1,4 @@
+
 #ifndef player_h
 #define player_h
 #include<iostream>
@@ -54,17 +55,25 @@ class player
  @param None  */
  void printHidden();
 
- /* calls the board class to compare char and update the board
+ /* calls the board class to compare char and attck if match is found
 @pre none
 @post handles the attack/comparison
-@param None  takes in the x and y coordiinate of where the player would like to attack*/
- void attack(int x, int y);
+@param  takes in the x and y coordiinate of where the player would like to attack*/
+ bool attack(int x, int y);
 
  /** funtion that runs the playtime of program
  @pre
  @post runs attack functions
  @param None  */
  void Play();
+
+
+ /* calls the board class to compare char and update the board
+@pre none
+@post handles the attack/comparison
+@param  takes in the x and y coordiinate of where the player would like to attack
+ the bool is for determining if it was a success or not -- "x" or "o"  */
+ void update(int,int, bool);
 
 };
 #endif
