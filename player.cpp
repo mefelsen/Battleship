@@ -95,6 +95,7 @@ int player::GetHits()
 {
   return num_hits;
 }
+
 void player::Play()
 {
   int x,y;
