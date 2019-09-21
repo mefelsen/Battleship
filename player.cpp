@@ -79,10 +79,10 @@ bool player::attack(int x, int y)
 {
   if(access.Attack(x,y)) {
     num_hits++;
-    cout << "Your attack was successful!\n";
+    cout << "\nYour attack was SUCCESSFUL!\n";
     return true;
   }
-  cout <<"Sploosh!! No ship here. \n";
+  cout <<"\nSPLOOSH!! No ship here. \n";
   return false;
 
 }

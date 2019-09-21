@@ -38,14 +38,14 @@ void Executive::run()
   player1.print();
   while(!player1.IsAllMarked())
   {
-    cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
     while(!transfor(location))
     {
       cout<<"Invalid Position. Try again: ";
       cin>>location;
     }
-    cout<<"Which direction will your ship face?\n";
+    cout<<"\nWhich direction will your ship face?\n";
     cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
     cin>>dir;
     while(1) //checking for right input
@@ -91,7 +91,7 @@ void Executive::run()
       cout << "enter a correct direction!" << endl;
     }
   }
-    cout << "Press any key to switch players\n";
+    cout << "\nTYPE anything THEN PRESS ENTER to place Player2 Ships\n";
     string dummy;
     cin >> dummy;
     ClearScreen();
@@ -100,16 +100,17 @@ void Executive::run()
     player2.setnum(ship_num);
     cout<<"\n---------PLAYER 2----------\n\n";
     player2.print();
+
     while(!player2.IsAllMarked())
     {
-      cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+      cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
       cin>>location;
       while(!transfor(location))
       {
         cout<<"Invalid Position. Try again: ";
         cin>>location;
       }
-      cout<<"Which direction will your ship face?\n";
+      cout<<"\nWhich direction will your ship face?\n";
       cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
       cin>>dir;
       while(1) //checking for right input
@@ -123,7 +124,7 @@ void Executive::run()
         }
         else
         {
-          player2.print();
+          player2.printHidden();
           break;
         }
       }
@@ -156,7 +157,7 @@ void Executive::run()
         cout << "enter a correct direction!" << endl;
       }
   }
-  cout << "Press any key to switch players\n";
+  cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
   cin >> dummy;
   ClearScreen();
   while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
@@ -165,7 +166,10 @@ void Executive::run()
       cout<<"\n---------PLAYER 1----------\n\n";
 
         player1.printHidden();
-      cout <<"Enter attack coordinates (A-H),(1-8) (i.e. A1): ";
+        player1.print();
+
+
+      cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
       while(!transfor(x))
       {
@@ -185,27 +189,25 @@ void Executive::run()
 
       }
 
-
-
       player1.printHidden();
       player1.print();
 
 
       if (player2.GetHits() == win_hits)
       {
-        cout<<"PLAYER 1 WINS. Thanks for playing!\n";
+        cout<<"\nPLAYER 1 WINS. Thanks for playing!\n";
         break;
       }
 
-      cout << "Press any key to switch players\n";
+      cout << "\nEND OF TURN TYPE anything and PRESS ENTER to SWTICH players -> \n";
       cin >> dummy;
       ClearScreen();
 
       cout<<"\n---------PLAYER 2----------\n\n";
 
-
       player2.printHidden();
-      cout <<"Enter attack coordinates (A-H),(1-8) (i.e. A1): ";
+
+      cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
 
       while(!transfor(x))
@@ -230,10 +232,11 @@ void Executive::run()
 
       if (player1.GetHits() == win_hits)
       {
-        cout<<"PLAYER 2 WINS. Thanks for playing!\n";
+        cout<<"\nPLAYER 2 WINS. Thanks for playing!\n";
         break;
       }
-      cout << "Press any key to switch players\n";
+
+      cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWTICH players -> \n";
       cin >> dummy;
       ClearScreen();
   }
@@ -291,13 +294,21 @@ bool Executive::inputChecker(string x)
 {
   string y = "ABCDEFGH";
   string z = "abcdefgh";
-  char word = x.at(0);
+  string nums = "12345678";
+  char first_char = x.at(0);
+  char second_char = x.at(1);
   bool flag = false;
   for(int i =0; i< 8; i++)
   {
-    if (word == y.at(i) || word == z.at(i))
+    if ((first_char == y.at(i) || first_char == z.at(i)))
     {
-      flag = true;
+      for(int k=0; k < 8; k++)
+      {
+        if(second_char == nums.at(k))
+        {
+          flag = true;
+        }
+      }
     }
   }
   return flag;

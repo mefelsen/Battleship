@@ -23,12 +23,12 @@ board::board() {
 }
 
 void board::PrintMap() {
-  cout <<"Your Board: \n";
+  cout <<"\n       Your Board: \n\n";
   for(int i = 0; i < 8; i++) {
-    if(i == 0) cout << " ABCDEFGH\n";
+    if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
     for(int j = 0; j < 8; j++) {
       if(j == 0) cout << i+1;
-       cout << map[i][j];
+       cout << "  " << map[i][j];
     }
     cout << '\n';
   }
@@ -153,13 +153,13 @@ bool board::Attack(int x, int y)
 }
 
 void board::PrintGrid() {
-  cout <<"Enemy's Board: \n";
-  cout<< "o = miss \n x = hit\n";
+  cout <<"\n       Enemy Board: \n\n";
+  cout<< "         o = MISS \n         x = !HIT!\n\n";
   for(int i = 0; i < 8; i++) {
-    if(i == 0) cout << " ABCDEFGH\n";
+    if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
     for(int j = 0; j < 8; j++) {
       if(j == 0) cout << i+1;
-       cout << grid[i][j];
+       cout << "  " << grid[i][j];
     }
     cout << '\n';
   }
