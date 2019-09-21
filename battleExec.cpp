@@ -42,11 +42,20 @@ void Executive::run()
     cin>>location;
     while(!transfor(location))
     {
+<<<<<<< HEAD
       cout<<"Invalid Position. Try again: ";
       cin>>location;
     }
     cout<<"Which direction will your ship face?\n";
     cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+||||||| merged common ancestors
+    cout<<"row"<<row<<"col"<<col<<endl;
+    cout<<"Which direction will your ship face?\n"
+        <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+=======
+    cout<<"Which direction will your ship face?\n"
+        <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+>>>>>>> master
     cin>>dir;
     while(1) //checking for right input
     {
@@ -102,11 +111,20 @@ void Executive::run()
       cin>>location;
       while(!transfor(location))
       {
+<<<<<<< HEAD
         cout<<"Invalid Position. Try again: ";
         cin>>location;
       }
       cout<<"Which direction will your ship face?\n";
       cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+||||||| merged common ancestors
+              cout<<"row"<<row<<"col"<<col<<endl;
+      cout<<"Which direction will your ship face?\n"
+          <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+=======
+      cout<<"Which direction will your ship face?\n"
+          <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+>>>>>>> master
       cin>>dir;
       while(1) //checking for right input
       {
@@ -151,6 +169,7 @@ void Executive::run()
       }
   }
   player2.print();
+<<<<<<< HEAD
   while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
   {   string x;
       cout<<"\n---------PLAYER 1----------\n\n";
@@ -207,6 +226,29 @@ void Executive::run()
       cout<<endl<<win_hits<<endl;
   }
 
+||||||| merged common ancestors
+=======
+//  while(CalculateWinHits(num_ships) != )   /////add while loop to check win condition
+  {   int x, y;
+      cout<<"\n---------PLAYER 1----------\n\n";
+
+      cout <<"Enter the coordinates for your attack: ";
+      cin >>x;
+      cin >>y;
+    //  transfor(x);
+      player1.attack(x,y);
+      //player1.Play();
+        cout<<"\n---------PLAYER 2----------\n\n";
+      player2.Play();
+  }
+
+    //players attack here
+    //while(player1.GetHits() != win_hits && player2.GetHits() != win_hits {
+        //player attack method goes here
+        //make sure to update each player's number of hits each time they hit a ship
+    //}
+
+>>>>>>> master
 }
 
 Executive::~Executive()
