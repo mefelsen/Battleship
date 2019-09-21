@@ -56,9 +56,30 @@ public:
  num is the size of the ship in question. z is the orientation (up,down,left,right), mark is a flag for a single ship
    */
   void MarkShip(int x,int y,int num, string z,char mark);
+
+  /* Checks for hit
+ @pre none
+ @post none
+ @param x,y are position. x is horizontal position, y is vertical position,
+    */
+  bool Attack(int, int);
+
+  /* Prints the hidden board to console
+ @pre
+ @post
+ @param None  */
+  void PrintGrid();
+
+  /* updates the hidden board to reflect players attack
+ @pre
+ @post
+ @param  the x and y coordinates of the place to update the map
+ the bool is for determining if it was a success or not -- "x" or "o"  */
+  void update(int,int, bool);
+
+
 private:
   /*
-
   */
   char grid[8][8];
   char map[8][8];
