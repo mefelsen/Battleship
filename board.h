@@ -73,13 +73,13 @@ public:
   /* updates the hidden board to reflect players attack
  @pre
  @post
- @param  the x and y coordinates of the place to update the map  */
-  void update(int,int);
+ @param  the x and y coordinates of the place to update the map
+ the bool is for determining if it was a success or not -- "x" or "o"  */
+  void update(int,int, bool);
 
 
 private:
   /*
-
   */
   char grid[8][8];
   char map[8][8];

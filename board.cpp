@@ -144,10 +144,10 @@ void board::MarkShip(int x,int y,int num, string z,char mark)
 
 bool board::Attack(int x, int y)
 {
-  if(!(map[x-1][y-1]=='~'))
+  if(!(map[x][y]=='~'))
   {
     cout << "Your attack was successful!\n";
-    map[x-1][y-1] = '*';
+    map[x][y] = '*';
    return true;
   }
   else cout <<"Sploosh!! No ship here. \n";
@@ -166,9 +166,12 @@ void board::PrintGrid() {
     cout << '\n';
   }
 }
-void board::update(int x, int y)
+void board::update(int x, int y, bool hit)
 {
-  if(Attack(x,y))  grid[x-1][y-1]= 'x';
-  else grid[x-1][y-1]= 'o';
+  if(hit){
+  grid[x][y]= 'x';
+  //xCount++;
+  }
+  else grid[x][y]= 'o';
   //PrintGrid();
 }

@@ -11,6 +11,11 @@ void player::setnum(int x)
     numofship=x;
 }
 
+int player::getmarks()
+{
+  return(marked);
+}
+
 void player::placement(int x,int y,int z)
 {
     string direct;
@@ -65,14 +70,15 @@ bool player::IsAllMarked()
     }
 
 }
+ void player::update(int x,int y, bool hit)
+ {
+   access.update(x,y, hit);
+ }
 
-void player::attack(int x, int y)
+bool player::attack(int x, int y)
 {
-//  access.Attack(x,y);
-
-  access.update(x,y);
-  access.PrintMap();
-  access.PrintGrid();
+  if(access.Attack(x,y)) num_hits++;
+  return(access.Attack(x,y));
 }
 
 void player::printHidden()
@@ -94,10 +100,7 @@ void player::Play()
   int x,y;
 
   cout <<"Enter the coordinates for your attack: ";
-  
   cin >>x;
   cin>> y;
   attack(x,y);
-
-
 }
