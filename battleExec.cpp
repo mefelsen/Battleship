@@ -29,6 +29,9 @@ void Executive::run()
   string location; //row and column on the map
   int dir; //direction that the ship faces
   startMenu(); //opens start menu
+
+  CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
+
   player player1; //creates player 1 with the number of ships obtained from input
   player1.setnum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
@@ -37,11 +40,13 @@ void Executive::run()
   {
     cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
-    if(transfor(location))
+    while(!transfor(location))
     {
-    cout<<"row"<<row<<"col"<<col<<endl;
-    cout<<"Which direction will your ship face?\n"
-        <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+      cout<<"Invalid Position. Try again: ";
+      cin>>location;
+    }
+    cout<<"Which direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
     cin>>dir;
     while(1) //checking for right input
     {
@@ -86,7 +91,7 @@ void Executive::run()
     }
   }
     player1.print();
-}
+
     player player2; //creates player 1 with the number of ships obtained from input
     player2.setnum(ship_num);
     cout<<"\n---------PLAYER 2----------\n\n";
@@ -95,11 +100,13 @@ void Executive::run()
     {
       cout<<"Pick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
       cin>>location;
-      if(transfor(location))
+      while(!transfor(location))
       {
-              cout<<"row"<<row<<"col"<<col<<endl;
-      cout<<"Which direction will your ship face?\n"
-          <<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+        cout<<"Invalid Position. Try again: ";
+        cin>>location;
+      }
+      cout<<"Which direction will your ship face?\n";
+      cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
       cin>>dir;
       while(1) //checking for right input
       {
@@ -143,8 +150,63 @@ void Executive::run()
         cout << "enter a correct direction!" << endl;
       }
   }
-  }
   player2.print();
+  while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
+  {   string x;
+      cout<<"\n---------PLAYER 1----------\n\n";
+
+      cout <<"Enter the coordinates for your attack: ";
+      cin >>x;
+      while(!transfor(x))
+      {
+        // cout <<x;
+        // cout << row <<" " <<col;
+        cout<<"Invalid position. Try again: ";
+        cin>>x;
+      }
+      if(player2.attack(row,col)) //here we want to change map
+      {
+        player1.update(row,col, true); //here, we want to only update grid
+      }
+      else   player1.update(row,col, false);
+      player1.printHidden();
+      player1.print();
+      if (player2.GetHits() == win_hits)
+      {
+        cout<<"PLAYER 1 WINS. Thanks for playing!\n";
+        break;
+      }
+      /*if(player2.getmarks() == 0)
+      {
+        cout<<"PLAYER 1 WINS. Thanks for playing!\n\n";
+        break;
+      }*/
+
+      //player1.Play();
+      cout<<"\n---------PLAYER 2----------\n\n";
+
+      cout <<"Enter the coordinates for your attack: ";
+      cin >>x;
+      while(!transfor(x))
+      {
+        cout<<"Invalid position. Try again: ";
+        cin>>x;
+      }
+      if(player1.attack(row,col)) //here we want to change map
+      {
+        player2.update(row,col, true); //here, we want to only update grid
+      }
+      else   player2.update(row,col, false);
+      player2.printHidden();
+      player2.print();
+      if (player1.GetHits() == win_hits)
+      {
+        cout<<"PLAYER 2 WINS. Thanks for playing!\n";
+        break;
+      }
+      cout<<endl<<win_hits<<endl;
+  }
+
 }
 
 Executive::~Executive()
@@ -201,7 +263,7 @@ bool Executive::inputChecker(string x)
   string z = "abcdefgh";
   char word = x.at(0);
   bool flag = false;
-  for(int i =0; i < 8; i++)
+  for(int i =0; i< 8; i++)
   {
     if (word == y.at(i) || word == z.at(i))
     {
@@ -210,7 +272,6 @@ bool Executive::inputChecker(string x)
   }
   return flag;
 }
-
 bool Executive::transfor(string x)
 {
   //int value = stoi(x.substr(0, 1));
@@ -225,7 +286,6 @@ bool Executive::transfor(string x)
   }
   else if (transtoint(x.at(0)) && transfromchar(stoi(x.substr(1, 1))))
   {
-    //cout<<"row"<<row<<"col"<<col<<endl;
     return true;
   }
   else
@@ -277,4 +337,12 @@ void Executive::ClearScreen()
   {
     cout << '\n';
   }
+}
+
+void Executive::CalculateWinHits(int ship_num)
+{
+    for(int i = ship_num; i > 0; i--)
+    {
+        win_hits += i;
+    }
 }
