@@ -88,7 +88,7 @@ private:
       int col;
       int ship_num;
 
-      int win_hits;
+      int win_hits = 0;
 
 };
 #endif
