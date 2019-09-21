@@ -100,10 +100,7 @@ void player::Play()
   int x,y;
 
   cout <<"Enter the coordinates for your attack: ";
-
   cin >>x;
   cin>> y;
   attack(x,y);
-
-
 }

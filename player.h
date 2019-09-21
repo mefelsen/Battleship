@@ -67,7 +67,6 @@ class player
  @param None  */
  void Play();
 
-
  /* calls the board class to compare char and update the board
 @pre none
 @post handles the attack/comparison

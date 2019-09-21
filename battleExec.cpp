@@ -206,7 +206,6 @@ void Executive::run()
       }
       cout<<endl<<win_hits<<endl;
   }
-
 }
 
 Executive::~Executive()
