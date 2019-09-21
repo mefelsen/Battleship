@@ -161,9 +161,9 @@ void Executive::run()
   ClearScreen();
   while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
   {   string x;
-      bool go_again = false;
+
       cout<<"\n---------PLAYER 1----------\n\n";
-      do {
+
         player1.printHidden();
       cout <<"Enter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
@@ -177,14 +177,14 @@ void Executive::run()
       if(player2.attack(row,col)) //here we want to change map
       {
         player1.update(row,col, true); //here, we want to only update grid
-        go_again = true;
-        if(player2.GetHits() == win_hits) break;
+
+        //if(player2.GetHits() == win_hits) break;
       }
       else   {
         player1.update(row,col, false);
-        go_again = false;
+
       }
-    } while(go_again);
+
 
 
       player1.printHidden();
@@ -203,7 +203,7 @@ void Executive::run()
 
       cout<<"\n---------PLAYER 2----------\n\n";
 
-      do {
+
       player2.printHidden();
       cout <<"Enter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
@@ -217,13 +217,13 @@ void Executive::run()
       if(player1.attack(row,col)) //here we want to change map
       {
         player2.update(row,col, true); //here, we want to only update grid
-        if(player1.GetHits() == win_hits) break;
+        //if(player1.GetHits() == win_hits) break;
       }
       else {
         player2.update(row,col, false);
-        go_again = false;
+
       }
-    }while(go_again);
+
 
       player2.printHidden();
       player2.print();
