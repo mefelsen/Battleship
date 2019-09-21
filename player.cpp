@@ -2,7 +2,7 @@
 player::player()
 {
   marks="abcde";
-
+  num_hits = 0;
    marked=0;
 }
 void player::setnum(int x)
@@ -77,8 +77,14 @@ bool player::IsAllMarked()
 
 bool player::attack(int x, int y)
 {
-  if(access.Attack(x,y)) num_hits++;
-  return(access.Attack(x,y));
+  if(access.Attack(x,y)) {
+    num_hits++;
+    cout << "Your attack was successful!\n";
+    return true;
+  }
+  cout <<"Sploosh!! No ship here. \n";
+  return false;
+
 }
 
 void player::printHidden()
@@ -94,13 +100,4 @@ void player::print()
 int player::GetHits()
 {
   return num_hits;
-}
-void player::Play()
-{
-  int x,y;
-
-  cout <<"Enter the coordinates for your attack: ";
-  cin >>x;
-  cin>> y;
-  attack(x,y);
 }

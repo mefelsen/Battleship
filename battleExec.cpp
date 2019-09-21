@@ -84,13 +84,17 @@ void Executive::run()
     try
     {
       player1.placement(row, col, dir);
+      player1.print();
     }
     catch (const std::runtime_error &e)
     {
       cout << "enter a correct direction!" << endl;
     }
   }
-    player1.print();
+    cout << "Press any key to switch players\n";
+    string dummy;
+    cin >> dummy;
+    ClearScreen();
 
     player player2; //creates player 1 with the number of ships obtained from input
     player2.setnum(ship_num);
@@ -119,6 +123,7 @@ void Executive::run()
         }
         else
         {
+          player2.print();
           break;
         }
       }
@@ -144,18 +149,23 @@ void Executive::run()
       try
       {
         player2.placement(row, col, dir);
+        player2.print();
       }
       catch (const std::runtime_error &e)
       {
         cout << "enter a correct direction!" << endl;
       }
   }
-  player2.print();
+  cout << "Press any key to switch players\n";
+  cin >> dummy;
+  ClearScreen();
   while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
   {   string x;
+      bool go_again = false;
       cout<<"\n---------PLAYER 1----------\n\n";
-
-      cout <<"Enter the coordinates for your attack: ";
+      do {
+        player1.printHidden();
+      cout <<"Enter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
       while(!transfor(x))
       {
@@ -167,44 +177,65 @@ void Executive::run()
       if(player2.attack(row,col)) //here we want to change map
       {
         player1.update(row,col, true); //here, we want to only update grid
+        go_again = true;
+        if(player2.GetHits() == win_hits) break;
       }
-      else   player1.update(row,col, false);
+      else   {
+        player1.update(row,col, false);
+        go_again = false;
+      }
+    } while(go_again);
+
+
       player1.printHidden();
       player1.print();
+
+
       if (player2.GetHits() == win_hits)
       {
         cout<<"PLAYER 1 WINS. Thanks for playing!\n";
         break;
       }
-      /*if(player2.getmarks() == 0)
-      {
-        cout<<"PLAYER 1 WINS. Thanks for playing!\n\n";
-        break;
-      }*/
 
-      //player1.Play();
+      cout << "Press any key to switch players\n";
+      cin >> dummy;
+      ClearScreen();
+
       cout<<"\n---------PLAYER 2----------\n\n";
 
-      cout <<"Enter the coordinates for your attack: ";
+      do {
+      player2.printHidden();
+      cout <<"Enter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
+
       while(!transfor(x))
       {
         cout<<"Invalid position. Try again: ";
         cin>>x;
       }
+
       if(player1.attack(row,col)) //here we want to change map
       {
         player2.update(row,col, true); //here, we want to only update grid
+        if(player1.GetHits() == win_hits) break;
       }
-      else   player2.update(row,col, false);
+      else {
+        player2.update(row,col, false);
+        go_again = false;
+      }
+    }while(go_again);
+
       player2.printHidden();
       player2.print();
+
       if (player1.GetHits() == win_hits)
       {
         cout<<"PLAYER 2 WINS. Thanks for playing!\n";
         break;
       }
-      cout<<endl<<win_hits<<endl;
+      cout << "Press any key to switch players\n";
+      cin >> dummy;
+      ClearScreen();
   }
 }
 

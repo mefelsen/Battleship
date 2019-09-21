@@ -23,7 +23,7 @@ board::board() {
 }
 
 void board::PrintMap() {
-  cout <<"Player Hidden Board: \n";
+  cout <<"Your Board: \n";
   for(int i = 0; i < 8; i++) {
     if(i == 0) cout << " ABCDEFGH\n";
     for(int j = 0; j < 8; j++) {
@@ -146,16 +146,14 @@ bool board::Attack(int x, int y)
 {
   if(!(map[x][y]=='~'))
   {
-    cout << "Your attack was successful!\n";
     map[x][y] = '*';
    return true;
   }
-  else cout <<"Sploosh!! No ship here. \n";
   return false;
 }
 
 void board::PrintGrid() {
-  cout <<"Map of all previous moves: \n";
+  cout <<"Enemy's Board: \n";
   cout<< "o = miss \n x = hit\n";
   for(int i = 0; i < 8; i++) {
     if(i == 0) cout << " ABCDEFGH\n";

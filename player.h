@@ -61,12 +61,6 @@ class player
 @param  takes in the x and y coordiinate of where the player would like to attack*/
  bool attack(int x, int y);
 
- /** funtion that runs the playtime of program
- @pre
- @post runs attack functions
- @param None  */
- void Play();
-
  /* calls the board class to compare char and update the board
 @pre none
 @post handles the attack/comparison
