@@ -77,6 +77,8 @@ public:
  the bool is for determining if it was a success or not -- "x" or "o"  */
   void update(int,int, bool);
 
+  bool retryCheck(int x, int y);
+
 
 private:
   /*
