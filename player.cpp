@@ -101,3 +101,8 @@ int player::GetHits()
 {
   return num_hits;
 }
+
+bool player::hitRetry(int x, int y)
+{
+  return(access.retryCheck(x, y));
+}
