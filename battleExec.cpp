@@ -178,6 +178,18 @@ void Executive::run()
         cout<<"Invalid position. Try again: ";
         cin>>x;
       }
+      while(player1.hitRetry(row, col))
+      {
+        cout<<"You've already tried that spot before! Try again: ";
+        cin>>x;
+        while(!transfor(x))
+        {
+          // cout <<x;
+          // cout << row <<" " <<col;
+          cout<<"Invalid position. Try again: ";
+          cin>>x;
+        }
+      }
       if(player2.attack(row,col)) //here we want to change map
       {
         player1.update(row,col, true); //here, we want to only update grid
@@ -199,13 +211,14 @@ void Executive::run()
         break;
       }
 
-      cout << "\nEND OF TURN TYPE anything and PRESS ENTER to SWTICH players -> \n";
+      cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
       cin >> dummy;
       ClearScreen();
 
       cout<<"\n---------PLAYER 2----------\n\n";
 
       player2.printHidden();
+      player2.print();
 
       cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
@@ -214,6 +227,18 @@ void Executive::run()
       {
         cout<<"Invalid position. Try again: ";
         cin>>x;
+      }
+      while(player2.hitRetry(row, col))
+      {
+        cout<<"You've already tried that spot before! Try again: ";
+        cin>>x;
+        while(!transfor(x))
+        {
+          // cout <<x;
+          // cout << row <<" " <<col;
+          cout<<"Invalid position. Try again: ";
+          cin>>x;
+        }
       }
 
       if(player1.attack(row,col)) //here we want to change map
@@ -236,7 +261,7 @@ void Executive::run()
         break;
       }
 
-      cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWTICH players -> \n";
+      cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
       cin >> dummy;
       ClearScreen();
   }
