@@ -173,3 +173,19 @@ void board::update(int x, int y, bool hit)
   else grid[x][y]= 'o';
   //PrintGrid();
 }
+
+bool board::retryCheck(int x, int y)
+{
+  if(grid[x][y] == 'x')
+  {
+    return true;
+  }
+  else if(grid[x][y] == 'o')
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
