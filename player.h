@@ -70,5 +70,7 @@ class player
 
  int getmarks();
 
+ bool hitRetry(int x, int y);
+
 };
 #endif
