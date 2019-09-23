@@ -1,4 +1,4 @@
-/* -----------------------------------------------------------------------------
+/** -----------------------------------------------------------------------------
  *
  * File Name: main.cpp
  * Author: Matthew Felson
@@ -13,7 +13,7 @@
 #include <string>
 #include "board.h"
 #include "battleExec.h"
-//using namespace std;
+
 
 int main()
 {
