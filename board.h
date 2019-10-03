@@ -14,8 +14,8 @@ using namespace std;
 class board {
 public:
   /** Prints board to console
- *@pre
- *@post
+ *@pre none
+ *@post PrintMap will also notify player of any active and sunken ships
  *@param None  */
   void PrintMap();
 
@@ -89,10 +89,13 @@ private:
   /**
   grid = enemy board
   map = personal board
+  actives = is ship being used for current game
+  remainings = is current ship still afloat
+  shipsRemaining = number of ships remaining on the personal board during gameplay
   */
   char grid[8][8];
   char map[8][8];
-  bool aRemaining, bRemaining, cRemaining, dRemaining, eRemaining;
+  bool aActive, aRemaining, bActive, bRemaining, cActive, cRemaining, dActive, dRemaining, eActive, eRemaining;
   int shipsRemaining;
 
 };
