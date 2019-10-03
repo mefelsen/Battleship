@@ -92,6 +92,8 @@ private:
   */
   char grid[8][8];
   char map[8][8];
+  bool aRemaining, bRemaining, cRemaining, dRemaining, eRemaining;
+  int shipsRemaining;
 
 };
 

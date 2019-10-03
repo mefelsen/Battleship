@@ -20,17 +20,69 @@ board::board() {
       map[i][j] = '~';
     }
   }
+  shipsRemaining = 0;
 }
 
 void board::PrintMap() {
+  aRemaining = false;
+  bRemaining = false;
+  cRemaining = false;
+  dRemaining = false;
+  eRemaining = false;
+  shipsRemaining = 0;
+
   cout <<"\n       Your Board: \n\n";
   for(int i = 0; i < 8; i++) {
     if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
     for(int j = 0; j < 8; j++) {
       if(j == 0) cout << i+1;
        cout << "  " << map[i][j];
+       if (map[i][j] == 'a') {
+         aRemaining = true;
+       }
+       if (map[i][j] == 'b') {
+         bRemaining = true;
+       }
+       if (map[i][j] == 'c') {
+         cRemaining = true;
+       }
+       if (map[i][j] == 'd') {
+         dRemaining = true;
+       }
+       if (map[i][j] == 'e') {
+         eRemaining = true;
+       }
     }
     cout << '\n';
+  }
+  
+  cout<< "\n       Ship Legend:\n         a = Patrol Boat\n         b = Submarine\n         c = Destroyer\n         d = Battleship\n         e = Carrier\n\n";
+  if(aRemaining) {
+    shipsRemaining++;
+    cout<< "       Patrol Boat is active\n";
+  }
+  if(bRemaining) {
+    shipsRemaining++;
+    cout<< "       Submarine is active\n";
+  }
+  if(cRemaining) {
+    shipsRemaining++;
+    cout<< "       Destroyer is active\n";
+  }
+  if(dRemaining) {
+    shipsRemaining++;
+    cout<< "       Battleship is active\n";
+  }
+  if(eRemaining) {
+    shipsRemaining++;
+    cout<< "       Carrier is active\n";
+  }
+
+  if (shipsRemaining == 1) {
+    cout << "\n       There is " << shipsRemaining << " ship currently active.\n";
+  }
+  else {
+    cout << "\n       There are " << shipsRemaining << " ships currently active.\n";
   }
 }
 
@@ -48,7 +100,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
     {
         return true;
     }
-    else if (z == "right" && y + num+1 <= 8)
+    else if (z == "right" && y + num+1 <= 9)
     {
         return true;
     }
@@ -154,7 +206,7 @@ bool board::Attack(int x, int y)
 
 void board::PrintGrid() {
   cout <<"\n       Enemy Board: \n\n";
-  cout<< "         o = MISS \n         x = !HIT!\n\n";
+  cout<< "         o = MISS \n         x = !HIT!\n";
   for(int i = 0; i < 8; i++) {
     if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
     for(int j = 0; j < 8; j++) {
