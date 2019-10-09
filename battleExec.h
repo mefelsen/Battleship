@@ -14,7 +14,7 @@
 #include <string>
 //#include <fstream>
 #include <limits>
-
+using namespace std;
 
 class Executive
 {
@@ -24,7 +24,6 @@ public:
     *@post runs the program
     *@param None  */
     void run();
-
 
     /** Default constructor
    *@pre
@@ -38,19 +37,17 @@ public:
      *@param None  */
     ~Executive();
 
+    /** funtion to print the inital starting screen
+    *@pre N/A
+    *@post sets up a player versus player game or player versus AI game
+    *@param None  */
     void selectGame();
 
-    /** function to print the inital starting screen for Player versus Player game.
+    /** function to print the inital starting screen
      *@pre  N/A
      *@post sets up a game of Battleship
      *@param None  */
-    void startMenuPvP();
-
-    /** function to print the inital starting screen for Player versus AI game.
-     *@pre  N/A
-     *@post sets up a game of Battleship
-     *@param None  */
-    void startMenuAI();
+    void startMenu();
 
     /** Clears the screen for the next player
      *@pre  N/A
@@ -89,8 +86,19 @@ public:
     void CalculateWinHits(int ship_num);
 
 
-
 private:
+
+      /** funtion that runs a player versus player game
+      *@pre player_num == 2
+      *@post runs the PvP game
+      *@param None  */
+      void runPvP();
+
+      /** funtion that runs a player versus AI game
+      *@pre player_num == 1
+      *@post runs the PvAI game
+      *@param None  */
+      void runPvAI();
 
       int row;
       int col;
@@ -99,7 +107,7 @@ private:
 
       int win_hits = 0;
 
-      std::string location; //row and column on the map
+      string location; //row and column on the map
       int dir; //direction that the ship faces
 };
 #endif

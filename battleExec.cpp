@@ -26,8 +26,17 @@ Executive::Executive()
 
 void Executive::run()
 {
-  //selectGame();
-  startMenuPvP(); //opens start menu for Player versus Player game
+  selectGame();
+  if (player_num == 1) {
+    runPvAI();
+  } else if (player_num == 2) {
+    runPvP();
+  }
+}
+
+void Executive::runPvP()
+{
+  startMenu(); //opens start menu
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
@@ -266,6 +275,78 @@ void Executive::run()
   }
 }
 
+void Executive::runPvAI()
+{
+  startMenu(); //opens start menu
+
+  CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
+
+  player player; //creates player 1 with the number of ships obtained from input
+  player.setnum(ship_num);
+  cout<<"\n----------PLAYER-----------\n\n";
+  player.print();
+  while(!player.IsAllMarked())
+  {
+    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+    cin>>location;
+    while(!transfor(location))
+    {
+      cout<<"Invalid Position. Try again: ";
+      cin>>location;
+    }
+    cout<<"\nWhich direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
+      }
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    try
+    {
+      player.placement(row, col, dir);
+      player.print();
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
+  }
+
+  cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
+  string dummy;
+  cin >> dummy;
+  ClearScreen();
+}
+
 Executive::~Executive()
 {
 
@@ -276,8 +357,9 @@ void Executive::selectGame()
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
        << "x                  Battleship                x\n"
        << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
-       << "Enter the number of players for this game:\n"
-       << "Player versus Player(2 players)                  Player versus AI(1 player):";
+       << "Player versus AI(1 player)\n"
+       << "Player versus Player(2 players)\n\n"
+       << "Enter the number of players for this game: ";
   cin >> player_num;
   while(1) //checking for right input
   {
@@ -295,9 +377,10 @@ void Executive::selectGame()
   }
   while((player_num < 1) || (player_num > 2))
   {
-    cout << "You must enter a number between 0 and 5, try again.\n"
-         << "Enter the number of players for this game:\n"
-         << "Player versus Player(2 players)                  Player versus AI(1 player):";
+    cout << "You must enter a number between 1 and 2, try again.\n\n"
+         << "Player versus AI(1 player)\n"
+         << "Player versus Player(2 players)\n\n"
+         << "Enter the number of players for this game: ";
     cin >> player_num;
     while(1) //checking for right input
     {
@@ -305,7 +388,7 @@ void Executive::selectGame()
       {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        cout << "Bad entry.  Select either Player versus Player(PvP) or Player versus AI(AI): "; //if neither mode is selected, must try again.
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
         cin >> player_num;
       }
       else
@@ -316,7 +399,7 @@ void Executive::selectGame()
   }
 }
 
-void Executive::startMenuPvP()
+void Executive::startMenu()
 {
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
        << "x                  Battleship                x\n"
