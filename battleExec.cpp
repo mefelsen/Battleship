@@ -26,7 +26,7 @@ Executive::Executive()
 
 void Executive::run()
 {
-  selectGame();
+  //selectGame();
   startMenuPvP(); //opens start menu for Player versus Player game
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
@@ -276,8 +276,8 @@ void Executive::selectGame()
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
        << "x                  Battleship                x\n"
        << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
-       << "Select gamemode:\n"
-       << "Player versus Player(PvP)                  Player versus AI(AI):";
+       << "Enter the number of players for this game:\n"
+       << "Player versus Player(2 players)                  Player versus AI(1 player):";
   cin >> player_num;
   while(1) //checking for right input
   {
@@ -285,7 +285,7 @@ void Executive::selectGame()
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(),'\n');
-      cout << "Bad entry.  Select either Player versus Player(PvP) or Player versus AI(AI): "; //if neither mode is selected, must try again.
+      cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
       cin >> player_num;
     }
     else
@@ -295,9 +295,9 @@ void Executive::selectGame()
   }
   while((player_num < 1) || (player_num > 2))
   {
-    cout << "You must enter either Player versus Player(PvP) or Player versus AI(AI), try again.\n"
-         << "Select gamemode:\n"
-         << "Player versus Player(PvP)                  Player versus AI(AI):";
+    cout << "You must enter a number between 0 and 5, try again.\n"
+         << "Enter the number of players for this game:\n"
+         << "Player versus Player(2 players)                  Player versus AI(1 player):";
     cin >> player_num;
     while(1) //checking for right input
     {

@@ -14,13 +14,23 @@ using namespace std;
 
 board::board() {
 
+  shipsRemaining = 0;
+  aActive = false;
+  aRemaining  = false;
+  bActive  = false;
+  bRemaining  = false;
+  cActive  = false;
+  cRemaining  = false;
+  dActive  = false;
+  dRemaining  = false;
+  eActive  = false;
+  eRemaining  = false;
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
       grid[i][j] = '~';
       map[i][j] = '~';
     }
   }
-  shipsRemaining = 0;
 }
 
 void board::PrintMap() {
