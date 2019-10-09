@@ -11,6 +11,7 @@
 ---------------------------------------------------------------------------- */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
+#include "player.h"
 #include <string>
 //#include <fstream>
 #include <limits>
@@ -48,6 +49,8 @@ public:
      *@post sets up a game of Battleship
      *@param None  */
     void startMenu();
+
+    void playerSetup(player user);
 
     /** Clears the screen for the next player
      *@pre  N/A
