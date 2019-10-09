@@ -26,9 +26,8 @@ Executive::Executive()
 
 void Executive::run()
 {
-  string location; //row and column on the map
-  int dir; //direction that the ship faces
-  startMenu(); //opens start menu
+  selectGame();
+  startMenuPvP(); //opens start menu for Player versus Player game
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
@@ -272,7 +271,52 @@ Executive::~Executive()
 
 }
 
-void Executive::startMenu()
+void Executive::selectGame()
+{
+  cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
+       << "x                  Battleship                x\n"
+       << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
+       << "Select gamemode:\n"
+       << "Player versus Player(PvP)                  Player versus AI(AI):";
+  cin >> player_num;
+  while(1) //checking for right input
+  {
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(),'\n');
+      cout << "Bad entry.  Select either Player versus Player(PvP) or Player versus AI(AI): "; //if neither mode is selected, must try again.
+      cin >> player_num;
+    }
+    else
+    {
+      break;
+    }
+  }
+  while((player_num < 1) || (player_num > 2))
+  {
+    cout << "You must enter either Player versus Player(PvP) or Player versus AI(AI), try again.\n"
+         << "Select gamemode:\n"
+         << "Player versus Player(PvP)                  Player versus AI(AI):";
+    cin >> player_num;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Select either Player versus Player(PvP) or Player versus AI(AI): "; //if neither mode is selected, must try again.
+        cin >> player_num;
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+}
+
+void Executive::startMenuPvP()
 {
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
        << "x                  Battleship                x\n"

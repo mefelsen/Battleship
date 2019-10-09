@@ -38,12 +38,19 @@ public:
      *@param None  */
     ~Executive();
 
+    void selectGame();
 
-    /** function to print the inital starting screen
+    /** function to print the inital starting screen for Player versus Player game.
      *@pre  N/A
      *@post sets up a game of Battleship
      *@param None  */
-    void startMenu();
+    void startMenuPvP();
+
+    /** function to print the inital starting screen for Player versus AI game.
+     *@pre  N/A
+     *@post sets up a game of Battleship
+     *@param None  */
+    void startMenuAI();
 
     /** Clears the screen for the next player
      *@pre  N/A
@@ -88,8 +95,11 @@ private:
       int row;
       int col;
       int ship_num;
+      int player_num;
 
       int win_hits = 0;
 
+      std::string location; //row and column on the map
+      int dir; //direction that the ship faces
 };
 #endif
