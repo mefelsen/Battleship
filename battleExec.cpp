@@ -44,7 +44,62 @@ void Executive::runPvP()
   player1.setnum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
   player1.print();
-  playerSetup(player1);
+  //playerSetup(player1);
+  while(!player1.IsAllMarked())
+  {
+    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+    cin>>location;
+    while(!transfor(location))
+    {
+      cout<<"Invalid Position. Try again: ";
+      cin>>location;
+    }
+    cout<<"\nWhich direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
+      }
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    try
+    {
+      player1.placement(row, col, dir);
+      player1.print();
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
+  }
 
   cout << "\nTYPE anything THEN PRESS ENTER to place Player2 Ships\n";
   string dummy;
@@ -55,7 +110,62 @@ void Executive::runPvP()
   player2.setnum(ship_num);
   cout<<"\n---------PLAYER 2----------\n\n";
   player2.print();
-  playerSetup(player2);
+  //playerSetup(player2);
+  while(!player2.IsAllMarked())
+  {
+    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+    cin>>location;
+    while(!transfor(location))
+    {
+      cout<<"Invalid Position. Try again: ";
+      cin>>location;
+    }
+    cout<<"\nWhich direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
+      }
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    try
+    {
+      player2.placement(row, col, dir);
+      player2.print();
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
+  }
 
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
   cin >> dummy;
@@ -179,7 +289,62 @@ void Executive::runPvAI()
   player.setnum(ship_num);
   cout<<"\n----------PLAYER-----------\n\n";
   player.print();
-  playerSetup(player);
+  //playerSetup(player);
+  while(!player.IsAllMarked())
+  {
+    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+    cin>>location;
+    while(!transfor(location))
+    {
+      cout<<"Invalid Position. Try again: ";
+      cin>>location;
+    }
+    cout<<"\nWhich direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
+      }
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    try
+    {
+      player.placement(row, col, dir);
+      player.print();
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
+  }
 
   /* AI player set up;
   player AI; //creates AI with the number of ships obtained from input
@@ -283,65 +448,6 @@ void Executive::startMenu()
       {
         break;
       }
-    }
-  }
-}
-
-void Executive::playerSetup(player user)
-{
-  while(!user.IsAllMarked())
-  {
-    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
-    cin>>location;
-    while(!transfor(location))
-    {
-      cout<<"Invalid Position. Try again: ";
-      cin>>location;
-    }
-    cout<<"\nWhich direction will your ship face?\n";
-    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
-    cin>>dir;
-    while(1) //checking for right input
-    {
-      if(cin.fail())
-      {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
-        cin >> dir;
-      }
-      else
-      {
-        break;
-      }
-    }
-    while((dir < 1) || (dir > 4)) //error checking
-    {
-      cout<<"You must enter a number between 1 and 4. Try again: ";
-      cin>>dir;
-      while(1) //checking for right input
-      {
-        if(cin.fail())
-        {
-          cin.clear();
-          cin.ignore(numeric_limits<streamsize>::max(),'\n');
-          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
-          cin >> dir;
-        }
-        else
-        {
-          break;
-        }
-      }
-    }
-    try
-    {
-      user.placement(row, col, dir);
-      user.print();
-    }
-    catch (const std::runtime_error &e)
-    {
-      cout << "enter a correct direction!" << endl;
     }
   }
 }

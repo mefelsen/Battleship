@@ -20,16 +20,8 @@ board::board() {
     }
   }
 
-  aActive = false;
-  bActive = false;
-  cActive = false;
-  dActive = false;
-  eActive = false;
+  shipsPartsCount = 0;
   shipsRemaining = 0;
-}
-
-board::~board() {
-
 }
 
 void board::PrintMap() {
@@ -39,21 +31,6 @@ void board::PrintMap() {
     for(int j = 0; j < 8; j++) {
       if(j == 0) cout << i+1;
        cout << "  " << map[i][j];
-       if (map[i][j] == 'a') {
-         aActive = true;
-       }
-       if (map[i][j] == 'b') {
-         bActive = true;
-       }
-       if (map[i][j] == 'c') {
-         cActive = true;
-       }
-       if (map[i][j] == 'd') {
-         dActive = true;
-       }
-       if (map[i][j] == 'e') {
-         eActive = true;
-       }
     }
     cout << '\n';
   }
@@ -84,7 +61,7 @@ void board::statusReport() {
 
   if (aActive) {
     cout<< "       Patrol Boat is active\n";
-    shipsRemaining++;
+    shipsPartsCount++;
     /*
     if (aRemaining) {
       shipsRemaining++;
@@ -96,19 +73,24 @@ void board::statusReport() {
   }
   if (bActive) {
     cout<< "       Submarine is active\n";
-    shipsRemaining++;
+    shipsPartsCount++;
   }
   if (cActive) {
     cout<< "       Destroyer is active\n";
-    shipsRemaining++;
+    shipsPartsCount++;
   }
   if (dActive) {
     cout<< "       Battleship is active\n";
-    shipsRemaining++;
+    shipsPartsCount++;
   }
   if (eActive) {
     cout<< "       Carrier is active\n";
+    shipsPartsCount++;
+  }
+
+  while (shipsPartsCount > 0) {
     shipsRemaining++;
+    shipsPartsCount = shipsPartsCount - shipsRemaining;
   }
 
   if (shipsRemaining == 1) {

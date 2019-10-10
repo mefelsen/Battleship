@@ -25,8 +25,6 @@ public:
  @param None  */
   board();
 
-  ~board();
-
   void statusReport();
 
   /** Checks if the position does not exceed board boundary
@@ -100,7 +98,7 @@ private:
   char grid[8][8];
   char map[8][8];
   bool aActive, bActive, cActive, dActive, eActive; //aRemaining, bRemaining, cRemaining, dRemaining, eRemaining;
-  int shipsRemaining;
+  int shipsPartsCount, shipsRemaining;
 };
 
 #endif

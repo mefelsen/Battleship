@@ -50,12 +50,6 @@ public:
      *@param None  */
     void startMenu();
 
-    /** function to allow player to setup their board before game starts
-     *@pre  player object is created
-     *@post player will place their ships on their board until all ships are placed
-     *@param takes a player object  */
-    void playerSetup(player user);
-
     /** Clears the screen for the next player
      *@pre  N/A
      *@post Empty console screen
