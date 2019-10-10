@@ -1,6 +1,6 @@
 /** -----------------------------------------------------------------------------
  *
-* File Name: battleExec.cpp
+* File Name: battleExec.h
 * Author: Blake Morrell
 * KU ID: 2866535
 * Email Adress: blknm4598@ku.edu
@@ -49,12 +49,6 @@ public:
      *@post sets up a game of Battleship
      *@param None  */
     void startMenu();
-
-    /** function to allow player to setup their board before game starts
-     *@pre  player object is created
-     *@post player will place their ships on their board until all ships are placed
-     *@param takes a player object  */
-    void playerSetup(player user);
 
     /** Clears the screen for the next player
      *@pre  N/A
