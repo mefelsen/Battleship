@@ -19,8 +19,7 @@ board::board() {
       map[i][j] = '~';
     }
   }
-
-  shipsPartsCount = 0;
+  
   shipsRemaining = 0;
 }
 
@@ -35,10 +34,17 @@ void board::PrintMap() {
     cout << '\n';
   }
   cout<< "\n       Ship Legend:\n         a = Patrol Boat\n         b = Submarine\n         c = Destroyer\n         d = Battleship\n         e = Carrier\n\n";
-  //statusReport();
+  statusReport();
 }
 
 void board::statusReport() {
+  aActive = false;
+  bActive = false;
+  cActive = false;
+  dActive = false;
+  eActive = false;
+  shipsRemaining = 0;
+
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
        if (map[i][j] == 'a') {
@@ -61,7 +67,7 @@ void board::statusReport() {
 
   if (aActive) {
     cout<< "       Patrol Boat is active\n";
-    shipsPartsCount++;
+    shipsRemaining++;
     /*
     if (aRemaining) {
       shipsRemaining++;
@@ -73,24 +79,19 @@ void board::statusReport() {
   }
   if (bActive) {
     cout<< "       Submarine is active\n";
-    shipsPartsCount++;
+    shipsRemaining++;
   }
   if (cActive) {
     cout<< "       Destroyer is active\n";
-    shipsPartsCount++;
+    shipsRemaining++;
   }
   if (dActive) {
     cout<< "       Battleship is active\n";
-    shipsPartsCount++;
+    shipsRemaining++;
   }
   if (eActive) {
     cout<< "       Carrier is active\n";
-    shipsPartsCount++;
-  }
-
-  while (shipsPartsCount > 0) {
     shipsRemaining++;
-    shipsPartsCount = shipsPartsCount - shipsRemaining;
   }
 
   if (shipsRemaining == 1) {
