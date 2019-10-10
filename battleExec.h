@@ -1,6 +1,6 @@
 /** -----------------------------------------------------------------------------
  *
-* File Name: battleExec.cpp
+* File Name: battleExec.h
 * Author: Blake Morrell
 * KU ID: 2866535
 * Email Adress: blknm4598@ku.edu

@@ -13,34 +13,26 @@
 using namespace std;
 
 board::board() {
-
-  shipsRemaining = 0;
-  aActive = false;
-  aRemaining  = false;
-  bActive  = false;
-  bRemaining  = false;
-  cActive  = false;
-  cRemaining  = false;
-  dActive  = false;
-  dRemaining  = false;
-  eActive  = false;
-  eRemaining  = false;
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
       grid[i][j] = '~';
       map[i][j] = '~';
     }
   }
+
+  aActive = false;
+  bActive = false;
+  cActive = false;
+  dActive = false;
+  eActive = false;
+  shipsRemaining = 0;
+}
+
+board::~board() {
+
 }
 
 void board::PrintMap() {
-  aRemaining = false;
-  bRemaining = false;
-  cRemaining = false;
-  dRemaining = false;
-  eRemaining = false;
-  shipsRemaining = 0;
-
   cout <<"\n       Your Board: \n\n";
   for(int i = 0; i < 8; i++) {
     if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
@@ -49,68 +41,74 @@ void board::PrintMap() {
        cout << "  " << map[i][j];
        if (map[i][j] == 'a') {
          aActive = true;
-         aRemaining = true;
        }
        if (map[i][j] == 'b') {
          bActive = true;
-         bRemaining = true;
        }
        if (map[i][j] == 'c') {
          cActive = true;
-         cRemaining = true;
        }
        if (map[i][j] == 'd') {
          dActive = true;
-         dRemaining = true;
        }
        if (map[i][j] == 'e') {
          eActive = true;
-         eRemaining = true;
        }
     }
     cout << '\n';
   }
-
   cout<< "\n       Ship Legend:\n         a = Patrol Boat\n         b = Submarine\n         c = Destroyer\n         d = Battleship\n         e = Carrier\n\n";
+  //statusReport();
+}
+
+void board::statusReport() {
+  for(int i = 0; i < 8; i++) {
+    for(int j = 0; j < 8; j++) {
+       if (map[i][j] == 'a') {
+         aActive = true;
+       }
+       if (map[i][j] == 'b') {
+         bActive = true;
+       }
+       if (map[i][j] == 'c') {
+         cActive = true;
+       }
+       if (map[i][j] == 'd') {
+         dActive = true;
+       }
+       if (map[i][j] == 'e') {
+         eActive = true;
+       }
+    }
+  }
+
   if (aActive) {
+    cout<< "       Patrol Boat is active\n";
+    shipsRemaining++;
+    /*
     if (aRemaining) {
       shipsRemaining++;
       cout<< "       Patrol Boat is active\n";
     } else {
       cout<< "       Patrol Boat has been sunk\n";
     }
+    */
   }
   if (bActive) {
-    if (bRemaining) {
-      shipsRemaining++;
-      cout<< "       Submarine is active\n";
-    } else {
-      cout<< "       Submarine has been sunk\n";
-    }
+    cout<< "       Submarine is active\n";
+    shipsRemaining++;
   }
   if (cActive) {
-    if (cRemaining) {
-      shipsRemaining++;
-      cout<< "       Destroyer is active\n";
-    } else {
-      cout<< "       Destroyer has been sunk\n";
-    }
+    cout<< "       Destroyer is active\n";
+    shipsRemaining++;
   }
   if (dActive) {
-    if (dRemaining) {
-      shipsRemaining++;
-      cout<< "       Battleship is active\n";
-    } else {
-      cout<< "       Battleship has been sunk\n";
-    }
+    cout<< "       Battleship is active\n";
+    shipsRemaining++;
   }
   if (eActive) {
-    if (eRemaining) {
-      shipsRemaining++;
-      cout<< "       Carrier is active\n";
-    } else {
-      cout<< "       Carrier has been sunk\n";
-    }
+    cout<< "       Carrier is active\n";
+    shipsRemaining++;
   }
 
   if (shipsRemaining == 1) {

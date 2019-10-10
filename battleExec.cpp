@@ -169,15 +169,25 @@ void Executive::runPvP()
 
 void Executive::runPvAI()
 {
+  // AI difficulty setting could start either before startMenu() or after player setup, but AI set up must be done after player setup.
+
   startMenu(); //opens start menu
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
-  player player; //creates player 1 with the number of ships obtained from input
+  player player; //creates player with the number of ships obtained from input
   player.setnum(ship_num);
   cout<<"\n----------PLAYER-----------\n\n";
   player.print();
   playerSetup(player);
+
+  /* AI player set up;
+  player AI; //creates AI with the number of ships obtained from input
+  AI.setnum(ship_num);
+  cout<<"\n-------------AI--------------\n\n";
+  AI.print();
+  playerSetup(AI);
+  */
 
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
   string dummy;
@@ -195,8 +205,8 @@ void Executive::selectGame()
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
        << "x                  Battleship                x\n"
        << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
-       << "Player versus AI(1 player)\n"
-       << "Player versus Player(2 players)\n\n"
+       << "Player versus AI (1 player)\n"
+       << "Player versus Player (2 players)\n\n"
        << "Enter the number of players for this game: ";
   cin >> player_num;
   while(1) //checking for right input
@@ -216,8 +226,8 @@ void Executive::selectGame()
   while((player_num < 1) || (player_num > 2))
   {
     cout << "You must enter a number between 1 and 2, try again.\n\n"
-         << "Player versus AI(1 player)\n"
-         << "Player versus Player(2 players)\n\n"
+         << "Player versus AI (1 player)\n"
+         << "Player versus Player (2 players)\n\n"
          << "Enter the number of players for this game: ";
     cin >> player_num;
     while(1) //checking for right input
@@ -239,10 +249,7 @@ void Executive::selectGame()
 
 void Executive::startMenu()
 {
-  cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-       << "x                  Battleship                x\n"
-       << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
-       << "Enter the number of ships for this game (You may have up to 5 ships): ";
+  cout << "Enter the number of ships for this game (You may have up to 5 ships): ";
   cin >> ship_num;
   while(1) //checking for right input
   {
@@ -416,13 +423,14 @@ bool Executive::transtoint(char x)
 void Executive::ClearScreen()
 {
   cout << "Switching Players in\n";
-  usleep(1000000);
+  //usleep(1000000);
+  usleep(750000);
   cout << "3\n";
-  usleep(1000000);
+  usleep(750000);
   cout << "2\n";
-  usleep(1000000);
+  usleep(750000);
   cout << "1\n";
-  usleep(1000000);
+  usleep(750000);
   for(int i = 0; i < 100; i++)
   {
     cout << '\n';

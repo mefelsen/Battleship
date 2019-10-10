@@ -25,6 +25,10 @@ public:
  @param None  */
   board();
 
+  ~board();
+
+  void statusReport();
+
   /** Checks if the position does not exceed board boundary
  *@pre none
  *@post returns true if ship placement is valid, false if not valid
@@ -95,7 +99,7 @@ private:
   */
   char grid[8][8];
   char map[8][8];
-  bool aActive, aRemaining, bActive, bRemaining, cActive, cRemaining, dActive, dRemaining, eActive, eRemaining;
+  bool aActive, bActive, cActive, dActive, eActive; //aRemaining, bRemaining, cRemaining, dRemaining, eRemaining;
   int shipsRemaining;
 
 };
