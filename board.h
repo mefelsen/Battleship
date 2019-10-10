@@ -101,7 +101,6 @@ private:
   char map[8][8];
   bool aActive, bActive, cActive, dActive, eActive; //aRemaining, bRemaining, cRemaining, dRemaining, eRemaining;
   int shipsRemaining;
-
 };
 
 #endif
