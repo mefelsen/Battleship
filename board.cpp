@@ -45,7 +45,7 @@ void Board::PrintMap() {
   statusReport();
 }
 
-void board::statusReport() {
+void Board::statusReport() {
   shipsRemaining = 0;
   aActive = false;
   bActive = false;
