@@ -12,6 +12,7 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 #include <string>
+#include "HumanPlayer.h"
 //#include <fstream>
 #include <limits>
 

@@ -10,8 +10,6 @@
 *
 ---------------------------------------------------------------------------- */
 #include "battleExec.h"
-#include "board.h"
-#include "player.h"
 #include <string>
 #include <cctype>
 #include <limits>
@@ -32,11 +30,11 @@ void Executive::run()
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
-  player player1; //creates player 1 with the number of ships obtained from input
-  player1.setnum(ship_num);
+  HumanPlayer player1; //creates player 1 with the number of ships obtained from input
+  player1.setNum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
   player1.print();
-  while(!player1.IsAllMarked())
+  while(!player1.isAllMarked())
   {
     cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
@@ -91,17 +89,17 @@ void Executive::run()
       cout << "enter a correct direction!" << endl;
     }
   }
-    cout << "\nTYPE anything THEN PRESS ENTER to place Player2 Ships\n";
-    string dummy;
-    cin >> dummy;
+    cout << "\nWAIT for AI to finish placing its ships\n";
     ClearScreen();
 
-    player player2; //creates player 1 with the number of ships obtained from input
-    player2.setnum(ship_num);
+
+    //Where AI code will go, replacing player2
+    HumanPlayer player2; //creates player 1 with the number of ships obtained from input
+    player2.setNum(ship_num);
     cout<<"\n---------PLAYER 2----------\n\n";
     player2.print();
 
-    while(!player2.IsAllMarked())
+    while(!player2.isAllMarked())
     {
       cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
       cin>>location;
@@ -158,9 +156,9 @@ void Executive::run()
       }
   }
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
-  cin >> dummy;
+//  cin >> dummy;
   ClearScreen();
-  while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
+  while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
   {   string x;
 
       cout<<"\n---------PLAYER 1----------\n\n";
@@ -194,7 +192,7 @@ void Executive::run()
       {
         player1.update(row,col, true); //here, we want to only update grid
 
-        //if(player2.GetHits() == win_hits) break;
+        //if(player2.getHits() == win_hits) break;
       }
       else   {
         player1.update(row,col, false);
@@ -205,14 +203,14 @@ void Executive::run()
       player1.print();
 
 
-      if (player2.GetHits() == win_hits)
+      if (player2.getHits() == win_hits)
       {
         cout<<"\nPLAYER 1 WINS. Thanks for playing!\n";
         break;
       }
 
       cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
-      cin >> dummy;
+      //cin >> dummy;
       ClearScreen();
 
       cout<<"\n---------PLAYER 2----------\n\n";
@@ -255,14 +253,14 @@ void Executive::run()
       player2.printHidden();
       player2.print();
 
-      if (player1.GetHits() == win_hits)
+      if (player1.getHits() == win_hits)
       {
         cout<<"\nPLAYER 2 WINS. Thanks for playing!\n";
         break;
       }
 
       cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
-      cin >> dummy;
+      //cin >> dummy;
       ClearScreen();
   }
 }
@@ -327,9 +325,9 @@ bool Executive::inputChecker(string x)
   {
     if ((first_char == y.at(i) || first_char == z.at(i)))
     {
-      for(int k=0; k < 8; k++)
+      for(int j=0; j < 8; j++)
       {
-        if(second_char == nums.at(k))
+        if(second_char == nums.at(j))
         {
           flag = true;
         }
@@ -376,7 +374,7 @@ bool Executive::transfromchar(int x)
 bool Executive::transtoint(char x)
 {
   string y = "ABCDEFGH";
-  string z="abcdefgh";
+  string z= "abcdefgh";
   bool flag = false;
   for (int i = 0; i < 8; i++)
   {
@@ -391,7 +389,7 @@ bool Executive::transtoint(char x)
 
 void Executive::ClearScreen()
 {
-  cout << "Switching Players in\n";
+  cout << "\nAI finishing placing ships in\n";
   usleep(1000000);
   cout << "3\n";
   usleep(1000000);
@@ -399,7 +397,7 @@ void Executive::ClearScreen()
   usleep(1000000);
   cout << "1\n";
   usleep(1000000);
-  for(int i = 0; i < 100; i++)
+  for(int i = 0; i < 20; i++)
   {
     cout << '\n';
   }
