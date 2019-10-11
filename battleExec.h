@@ -1,6 +1,6 @@
 /** -----------------------------------------------------------------------------
  *
-* File Name: battleExec.cpp
+* File Name: battleExec.h
 * Author: Blake Morrell
 * KU ID: 2866535
 * Email Adress: blknm4598@ku.edu
@@ -11,11 +11,12 @@
 ---------------------------------------------------------------------------- */
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
+#include "player.h"
 #include <string>
 #include "HumanPlayer.h"
 //#include <fstream>
 #include <limits>
-
+using namespace std;
 
 class Executive
 {
@@ -25,7 +26,6 @@ public:
     *@post runs the program
     *@param None  */
     void run();
-
 
     /** Default constructor
    *@pre
@@ -39,6 +39,11 @@ public:
      *@param None  */
     ~Executive();
 
+    /** funtion to print the inital starting screen
+    *@pre N/A
+    *@post sets up a player versus player game or player versus AI game
+    *@param None  */
+    void selectGame();
 
     /** function to print the inital starting screen
      *@pre  N/A
@@ -83,14 +88,28 @@ public:
     void CalculateWinHits(int ship_num);
 
 
-
 private:
+
+      /** funtion that runs a player versus player game
+      *@pre player_num == 2
+      *@post runs the PvP game
+      *@param None  */
+      void runPvP();
+
+      /** funtion that runs a player versus AI game
+      *@pre player_num == 1
+      *@post runs the PvAI game
+      *@param None  */
+      void runPvAI();
 
       int row;
       int col;
       int ship_num;
+      int player_num;
 
       int win_hits = 0;
 
+      string location; //row and column on the map
+      int dir; //direction that the ship faces
 };
 #endif

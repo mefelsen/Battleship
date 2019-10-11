@@ -24,8 +24,16 @@ Executive::Executive()
 
 void Executive::run()
 {
-  string location; //row and column on the map
-  int dir; //direction that the ship faces
+  selectGame();
+  if (player_num == 1) {
+    runPvAI();
+  } else if (player_num == 2) {
+    runPvP();
+  }
+}
+
+void Executive::runPvP()
+{
   startMenu(); //opens start menu
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
@@ -101,15 +109,29 @@ void Executive::run()
 
     while(!player2.isAllMarked())
     {
-      cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+      cout<<"Invalid Position. Try again: ";
       cin>>location;
-      while(!transfor(location))
+    }
+    cout<<"\nWhich direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
       {
-        cout<<"Invalid Position. Try again: ";
-        cin>>location;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
       }
-      cout<<"\nWhich direction will your ship face?\n";
-      cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
       cin>>dir;
       while(1) //checking for right input
       {
@@ -122,39 +144,21 @@ void Executive::run()
         }
         else
         {
-          player2.printHidden();
           break;
         }
       }
-      while((dir < 1) || (dir > 4)) //error checking
-      {
-        cout<<"You must enter a number between 1 and 4. Try again: ";
-        cin>>dir;
-        while(1) //checking for right input
-        {
-          if(cin.fail())
-          {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
-            cin >> dir;
-          }
-          else
-          {
-            break;
-          }
-        }
-      }
-      try
-      {
-        player2.placement(row, col, dir);
-        player2.print();
-      }
-      catch (const std::runtime_error &e)
-      {
-        cout << "enter a correct direction!" << endl;
-      }
+    }
+    try
+    {
+      player2.placement(row, col, dir);
+      player2.print();
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
   }
+
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
 //  cin >> dummy;
   ClearScreen();
@@ -265,17 +269,144 @@ void Executive::run()
   }
 }
 
+void Executive::runPvAI()
+{
+  // AI difficulty setting could start either before startMenu() or after player setup, but AI set up must be done after player setup.
+
+  startMenu(); //opens start menu
+
+  CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
+
+  player player; //creates player with the number of ships obtained from input
+  player.setnum(ship_num);
+  cout<<"\n----------PLAYER-----------\n\n";
+  player.print();
+  //playerSetup(player);
+  while(!player.IsAllMarked())
+  {
+    cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
+    cin>>location;
+    while(!transfor(location))
+    {
+      cout<<"Invalid Position. Try again: ";
+      cin>>location;
+    }
+    cout<<"\nWhich direction will your ship face?\n";
+    cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
+    cin>>dir;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> dir;
+      }
+      else
+      {
+        break;
+      }
+    }
+    while((dir < 1) || (dir > 4)) //error checking
+    {
+      cout<<"You must enter a number between 1 and 4. Try again: ";
+      cin>>dir;
+      while(1) //checking for right input
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> dir;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+    try
+    {
+      player.placement(row, col, dir);
+      player.print();
+    }
+    catch (const std::runtime_error &e)
+    {
+      cout << "enter a correct direction!" << endl;
+    }
+  }
+
+  /* AI player set up;
+  player AI; //creates AI with the number of ships obtained from input
+  AI.setnum(ship_num);
+  cout<<"\n-------------AI--------------\n\n";
+  AI.print();
+  playerSetup(AI);
+  */
+
+  cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
+  string dummy;
+  cin >> dummy;
+  ClearScreen();
+}
+
 Executive::~Executive()
 {
 
 }
 
-void Executive::startMenu()
+void Executive::selectGame()
 {
   cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
        << "x                  Battleship                x\n"
        << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n\n"
-       << "Enter the number of ships for this game (You may have up to 5 ships): ";
+       << "Player versus AI (1 player)\n"
+       << "Player versus Player (2 players)\n\n"
+       << "Enter the number of players for this game: ";
+  cin >> player_num;
+  while(1) //checking for right input
+  {
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(),'\n');
+      cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+      cin >> player_num;
+    }
+    else
+    {
+      break;
+    }
+  }
+  while((player_num < 1) || (player_num > 2))
+  {
+    cout << "You must enter a number between 1 and 2, try again.\n\n"
+         << "Player versus AI (1 player)\n"
+         << "Player versus Player (2 players)\n\n"
+         << "Enter the number of players for this game: ";
+    cin >> player_num;
+    while(1) //checking for right input
+    {
+      if(cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+        cin >> player_num;
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+}
+
+void Executive::startMenu()
+{
+  cout << "Enter the number of ships for this game (You may have up to 5 ships): ";
   cin >> ship_num;
   while(1) //checking for right input
   {
@@ -392,9 +523,9 @@ void Executive::ClearScreen()
   cout << "\nAI finishing placing ships in\n";
   usleep(1000000);
   cout << "3\n";
-  usleep(1000000);
+  usleep(750000);
   cout << "2\n";
-  usleep(1000000);
+  usleep(750000);
   cout << "1\n";
   usleep(1000000);
   for(int i = 0; i < 20; i++)
