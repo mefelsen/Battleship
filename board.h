@@ -15,7 +15,7 @@ class board {
 public:
   /** Prints board to console
  *@pre none
- *@post PrintMap will also notify player of any active and sunken ships
+ *@post n/a
  *@param None  */
   void PrintMap();
 
@@ -25,6 +25,10 @@ public:
  @param None  */
   board();
 
+  /** notify player of all active ships
+ *@pre PrintMap is called
+ *@post statusReport will notify the player of any ships active during gameplay
+ *@param None  */
   void statusReport();
 
   /** Checks if the position does not exceed board boundary
