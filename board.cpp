@@ -25,11 +25,6 @@ Board::Board() {
 }
 
 void Board::PrintMap() {
-  aRemaining = false;
-  bRemaining = false;
-  cRemaining = false;
-  dRemaining = false;
-  eRemaining = false;
   shipsRemaining = 0;
 
   cout <<"\n       Your Board: \n\n";
