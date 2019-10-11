@@ -21,11 +21,6 @@ board::board() {
   }
 
   shipsRemaining = 0;
-  aActive = false;
-  bActive = false;
-  cActive = false;
-  dActive = false;
-  eActive = false;
 }
 
 void board::PrintMap() {
@@ -43,12 +38,12 @@ void board::PrintMap() {
 }
 
 void board::statusReport() {
-  aSunk = true;
-  bSunk = true;
-  cSunk = true;
-  dSunk = true;
-  eSunk = true;
   shipsRemaining = 0;
+  aActive = false;
+  bActive = false;
+  cActive = false;
+  dActive = false;
+  eActive = false;
 
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
@@ -74,69 +69,25 @@ void board::statusReport() {
     }
   }
 
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
-      if (aActive && map[i][j] == 'a') {
-        aSunk = false;
-      }
-
-      if (bActive && map[i][j] == 'b') {
-        bSunk = false;
-      }
-
-      if (cActive && map[i][j] == 'c') {
-        cSunk = false;
-      }
-
-      if (dActive && map[i][j] == 'd') {
-        dSunk = false;
-      }
-
-      if (eActive && map[i][j] == 'e') {
-        eSunk = false;
-      }
-    }
-  }
-
   if (aActive) {
-    if (!aSunk) {
-      shipsRemaining++;
-      cout<< "       Patrol Boat is active\n";
-    } else {
-      cout<< "       Patrol Boat has been sunk\n";
-    }
+    shipsRemaining++;
+    cout<< "       Patrol Boat is active\n";
   }
   if (bActive) {
-    if (!aSunk) {
-      shipsRemaining++;
-      cout<< "       Submarine is active\n";
-    } else {
-      cout<< "       Submarine has been sunk\n";
-    }
+    shipsRemaining++;
+    cout<< "       Submarine is active\n";
   }
   if (cActive) {
-    if (!aSunk) {
-      shipsRemaining++;
-      cout<< "       Destroyer is active\n";
-    } else {
-      cout<< "       Destroyer has been sunk\n";
-    }
+    shipsRemaining++;
+    cout<< "       Destroyer is active\n";
   }
   if (dActive) {
-    if (!aSunk) {
-      shipsRemaining++;
-      cout<< "       Destroyer is active\n";
-    } else {
-      cout<< "       Destroyer has been sunk\n";
-    }
+    shipsRemaining++;
+    cout<< "       Battleship is active\n";
   }
   if (eActive) {
-    if (!aSunk) {
-      shipsRemaining++;
-      cout<< "       Destroyer is active\n";
-    } else {
-      cout<< "       Destroyer has been sunk\n";
-    }
+    shipsRemaining++;
+    cout<< "       Carrier is active\n";
   }
 
   if (shipsRemaining == 1) {
