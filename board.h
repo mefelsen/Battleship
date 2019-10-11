@@ -11,7 +11,7 @@
 #define BOARD_H
 #include <string>
 using namespace std;
-class board {
+class Board {
 public:
   /** Prints board to console
  *@pre none
@@ -23,7 +23,7 @@ public:
  @pre
  @post
  @param None  */
-  board();
+  Board();
 
   /** Checks if the position does not exceed board boundary
  *@pre none
@@ -47,7 +47,7 @@ public:
  *@param x,y are position. x is horizontal position, y is vertical position,
  num is the size of the ship in question. z is the orientation (up,down,left,right),mark is a flag for a single ship
    */
-  bool PlaceShip(int x, int y, string z, int num,char mark);
+  bool PlaceShip(int x, int y, string z, int num, char mark);
 
   /** Places ship on board (changes ~ to A)
  *@pre none

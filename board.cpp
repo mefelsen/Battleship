@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
  *
-* File Name: board.cpp
+* File Name: Board.cpp
 * Author: Matt Felsen
 * Assignment:   EECS-448 Project Battleship
 * Description:  Handles Console Output of Board
@@ -12,7 +12,7 @@
 #include <string>
 using namespace std;
 
-board::board() {
+Board::Board() {
 
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
@@ -23,7 +23,7 @@ board::board() {
   shipsRemaining = 0;
 }
 
-void board::PrintMap() {
+void Board::PrintMap() {
   aRemaining = false;
   bRemaining = false;
   cRemaining = false;
@@ -111,7 +111,7 @@ void board::PrintMap() {
   }
 }
 
-bool board::DimensionCheck(int x, int y, int num, string z)
+bool Board::DimensionCheck(int x, int y, int num, string z)
 {
     if (z == "up" && x - num+1 >= 0)
     {
@@ -136,7 +136,7 @@ bool board::DimensionCheck(int x, int y, int num, string z)
     }
 }
 
-bool board::OverlapCheck(int x, int y, int num, string z)
+bool Board::OverlapCheck(int x, int y, int num, string z)
 {
     if (num > 0)
     {
@@ -169,7 +169,7 @@ bool board::OverlapCheck(int x, int y, int num, string z)
     }
 }
 
-bool board::PlaceShip(int x, int y, string z, int num,char mark)
+bool Board::PlaceShip(int x, int y, string z, int num,char mark)
 {
     if (x >= 8 || x < 0)
     {
@@ -191,7 +191,7 @@ bool board::PlaceShip(int x, int y, string z, int num,char mark)
     }
 }
 
-void board::MarkShip(int x,int y,int num, string z,char mark)
+void Board::MarkShip(int x,int y,int num, string z,char mark)
 {
     if (num >= 1)
     {
@@ -219,7 +219,7 @@ void board::MarkShip(int x,int y,int num, string z,char mark)
     }
 }
 
-bool board::Attack(int x, int y)
+bool Board::Attack(int x, int y)
 {
   if(!(map[x][y]=='~'))
   {
@@ -229,7 +229,7 @@ bool board::Attack(int x, int y)
   return false;
 }
 
-void board::PrintGrid() {
+void Board::PrintGrid() {
   cout <<"\n       Enemy Board: \n\n";
   cout<< "         o = MISS \n         x = !HIT!\n";
   for(int i = 0; i < 8; i++) {
@@ -242,7 +242,7 @@ void board::PrintGrid() {
   }
 }
 
-void board::update(int x, int y, bool hit)
+void Board::update(int x, int y, bool hit)
 {
   if(hit){
   grid[x][y]= 'x';
@@ -252,7 +252,7 @@ void board::update(int x, int y, bool hit)
   //PrintGrid();
 }
 
-bool board::retryCheck(int x, int y)
+bool Board::retryCheck(int x, int y)
 {
   if(grid[x][y] == 'x')
   {
