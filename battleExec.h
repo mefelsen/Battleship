@@ -12,7 +12,8 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 #include <string>
-#include "HumanPlayer.h"
+#include "player.h"
+//#include "HumanPlayer.h"
 //#include <fstream>
 #include <limits>
 using namespace std;

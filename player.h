@@ -8,7 +8,7 @@ using namespace std;
 class player
 {
     private:
-    board access;//access the board object
+    Board access;//access the board object
 
     string marks;
     int marked;//ships that are marked
@@ -22,7 +22,7 @@ class player
  *@post  initalize marks which is use to mark different ships
  *@param None  */
     player();
-	
+
     /** Default constructor
  *@pre takes in a integer x
  *@post set up # of ships and set those ships are unmark
@@ -75,7 +75,7 @@ class player
 *@param  none
  the bool is for determining if it was a success or not  "o"  */
  int getmarks();
- 
+
 /** retry if you've already shot at the same location twice
 *@pre none
 *@post handles the attack/comparison
