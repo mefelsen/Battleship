@@ -97,7 +97,8 @@ private:
   */
   char grid[8][8];
   char map[8][8];
-  bool aActive, bActive, cActive, dActive, eActive; //aSunk, bSunk, cSunk, dSunk, eSunk;
+  bool aActive, bActive, cActive, dActive, eActive;
+  bool aSunk, bSunk, cSunk, dSunk, eSunk;
   int shipsRemaining;
 };
 
