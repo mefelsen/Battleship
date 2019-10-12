@@ -1,11 +1,8 @@
 battleship: main.o board.o battleExec.o HumanPlayer.o AI.o
-	g++ -std=c++11 -g -Wall main.o board.o battleExec.o player.o HumanPlayer.o AI.o -o battleship
+	g++ -std=c++11 -g -Wall main.o board.o battleExec.o HumanPlayer.o AI.o -o battleship
 
 main.o: main.cpp board.h battleExec.h
 	g++ -std=c++11 -g -Wall -c main.cpp
-
-player.o: player.h player.cpp
-	g++ -std=c++11 -g -Wall -c player.cpp
 
 board.o: board.cpp board.h
 	g++ -std=c++11 -g -Wall -c board.cpp
