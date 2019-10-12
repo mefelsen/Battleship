@@ -46,7 +46,7 @@ void HumanPlayer::placement(int x,int y,int z)
         {
             char label=marks.at(marked);
             //cout<<label<<endl;
-            boardPlayer.PlaceShip(x,y,direction,marked+1,label);
+            playerBoard.PlaceShip(x,y,direction,marked+1,label);
             marked=marked+1;
             unmark=unmark-1;
         }
@@ -74,12 +74,12 @@ bool HumanPlayer::isAllMarked()
 
  void HumanPlayer::update(int x,int y, bool hit)
  {
-   boardPlayer.update(x,y, hit);
+   playerBoard.update(x,y, hit);
  }
 
 bool HumanPlayer::attack(int x, int y)
 {
-  if(boardPlayer.Attack(x,y)) {
+  if(playerBoard.Attack(x,y)) {
     num_hits++;
     cout << "\nYour attack was SUCCESSFUL!\n";
     return true;
@@ -91,12 +91,12 @@ bool HumanPlayer::attack(int x, int y)
 
 void HumanPlayer::printHidden()
 {
-  boardPlayer.PrintGrid();
+  playerBoard.PrintGrid();
 }
 
 void HumanPlayer::print()
 {
-    boardPlayer.PrintMap();
+    playerBoard.PrintMap();
 }
 
 int HumanPlayer::getHits()
@@ -106,5 +106,5 @@ int HumanPlayer::getHits()
 
 bool HumanPlayer::hitRetry(int x, int y)
 {
-  return(boardPlayer.retryCheck(x, y));
+  return(playerBoard.retryCheck(x, y));
 }

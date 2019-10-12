@@ -38,11 +38,11 @@ void Executive::runPvP()
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
-  player player1; //creates player 1 with the number of ships obtained from input
-  player1.setnum(ship_num);
+  HumanPlayer player1; //creates player 1 with the number of ships obtained from input
+  player1.setNum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
   player1.print();
-  while(!player1.IsAllMarked())
+  while(!player1.isAllMarked())
   {
     cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
@@ -103,12 +103,12 @@ void Executive::runPvP()
     cin >> dummy;
     ClearScreen();
 
-    player player2; //creates player 1 with the number of ships obtained from input
-    player2.setnum(ship_num);
+    HumanPlayer player2; //creates player 1 with the number of ships obtained from input
+    player2.setNum(ship_num);
     cout<<"\n---------PLAYER 2----------\n\n";
     player2.print();
 
-    while(!player2.IsAllMarked())
+    while(!player2.isAllMarked())
     {
       cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
       cin>>location;
@@ -168,7 +168,7 @@ void Executive::runPvP()
   cin >> dummy;
   ClearScreen();
 
-  while(player1.GetHits() != win_hits && player2.GetHits() != win_hits)   /////add while loop to check win condition
+  while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
   {   string x;
 
       cout<<"\n---------PLAYER 1----------\n\n";
@@ -213,7 +213,7 @@ void Executive::runPvP()
       player1.print();
 
 
-      if (player2.GetHits() == win_hits)
+      if (player2.getHits() == win_hits)
       {
         cout<<"\nPLAYER 1 WINS. Thanks for playing!\n";
         break;
@@ -263,7 +263,7 @@ void Executive::runPvP()
       player2.printHidden();
       player2.print();
 
-      if (player1.GetHits() == win_hits)
+      if (player1.getHits() == win_hits)
       {
         cout<<"\nPLAYER 2 WINS. Thanks for playing!\n";
         break;
@@ -283,12 +283,17 @@ void Executive::runPvAI()
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
-  player player; //creates player with the number of ships obtained from input
-  player.setnum(ship_num);
+  HumanPlayer player; //creates player object
+  player.setNum(ship_num); //sets number of ships for game from input
+  AI ai;
+  ai.setNum(ship_num);
+
+  setAIDifficulty(ai); //sets AI difficulty
+
   cout<<"\n----------PLAYER-----------\n\n";
   player.print();
   //playerSetup(player);
-  while(!player.IsAllMarked())
+  while(!player.isAllMarked())
   {
     cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
     cin>>location;
@@ -345,11 +350,6 @@ void Executive::runPvAI()
   }
 
   cout << "\nWAIT for AI to finish placing its ships\n";
-  ClearScreen();
-
-  //Where AI code will go, replacing player2
-
-  cout << "\nATTACK phase, Commencing battle \n";
   ClearScreen();
 }
 
@@ -541,4 +541,20 @@ void Executive::CalculateWinHits(int ship_num)
     {
         win_hits += i;
     }
+}
+
+void Executive::setAIDifficulty(AI& someAI)
+{
+  int AIDifficulty;
+
+  cout << "\n\n";
+  cout << "What difficulty of AI do you wish to play against? \n";
+  cout << "1. Easy\n"
+       << "2. Medium\n"
+       << "3. Hard\n";
+  cout << "Choice: ";
+
+  cin >> AIDifficulty;
+
+  someAI.setDifficulty(AIDifficulty);
 }

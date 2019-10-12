@@ -12,9 +12,10 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 #include <string>
-#include "player.h"
-//#include "HumanPlayer.h"
-//#include <fstream>
+//#include "player.h" //Not sure how this got back in the repo, I changed player class and file to HumanPlayer since we're inheriting from interface.
+#include "HumanPlayer.h" //For now, try to stick with HumanPlayer when creating objects.
+#include "AI.h"
+#include <fstream>
 #include <limits>
 using namespace std;
 
@@ -87,9 +88,11 @@ public:
      *@param ship_num is the number of ships each player has. used to calcualte total hits needed to win */
     void CalculateWinHits(int ship_num);
 
+    void setAIDifficulty(AI& someAI);
+
 
 private:
-
+  
       /** funtion that runs a player versus player game
       *@pre player_num == 2
       *@post runs the PvP game

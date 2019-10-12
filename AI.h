@@ -11,18 +11,18 @@ using namespace std;
 class AI : public PlayerInterface
 {
   private:
-    Board boardAI;//access the board object
+    Board aiBoard;//access the board object
     string marks;
     int marked;//ships that are marked
     int unmark;//ships that are unmarked
     int num_hits;
     int numOfShip;
 
-    string difficultyAI = "";
+    string difficultyAI;
 
   public:
 
-     AI(string difficulty);
+     AI();
 
      void setNum(int x);
 
@@ -44,6 +44,8 @@ class AI : public PlayerInterface
 
      bool hitRetry(int x, int y);
 
-     void setDifficulty(string difficulty);
+     void setDifficulty(int difficulty);
+
+     string getDifficulty();
 };
 #endif

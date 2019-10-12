@@ -9,7 +9,7 @@ using namespace std;
 class HumanPlayer : public PlayerInterface
 {
     private:
-    Board boardPlayer;//access the board object
+    Board playerBoard;//access the board object
 
     string marks;
     int marked;//ships that are marked

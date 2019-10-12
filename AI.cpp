@@ -1,11 +1,10 @@
 #include "AI.h"
 
-AI::AI(string difficulty)
+AI::AI()
 {
   marks = "abcde";
   num_hits = 0;
   marked = 0;
-  difficultyAI = difficulty;
 }
 
 void AI::setNum(int x)
@@ -58,7 +57,7 @@ void AI::placement(int x, int y, int z)
     {
       char label=marks.at(marked);
       //cout<<label<<endl;
-      boardAI.PlaceShip(x,y,direction,marked+1,label);
+      aiBoard.PlaceShip(x,y,direction,marked+1,label);
       marked=marked+1;
       unmark=unmark-1;
     }
@@ -81,7 +80,7 @@ bool AI::isAllMarked()
 
 void AI::update(int x, int y, bool hit)
 {
-  boardAI.update(x, y, hit);
+  aiBoard.update(x, y, hit);
 }
 
 bool AI::attack(int x, int y)
@@ -91,12 +90,12 @@ bool AI::attack(int x, int y)
 
 void AI::printHidden()
 {
-  boardAI.PrintGrid();
+  aiBoard.PrintGrid();
 }
 
 void AI::print()
 {
-  boardAI.PrintMap();
+  aiBoard.PrintMap();
 }
 
 int AI::getHits()
@@ -106,10 +105,33 @@ int AI::getHits()
 
 bool AI::hitRetry(int x, int y)
 {
-  return(boardAI.retryCheck(x, y));
+  return(aiBoard.retryCheck(x, y));
 }
 
-void AI::setDifficulty(string difficulty)
+void AI::setDifficulty(int difficulty)
 {
-  difficultyAI = difficulty;
+  if(difficulty == 1)
+  {
+    this->difficultyAI = "Easy";
+  }
+
+  else if(difficulty == 2)
+  {
+    this->difficultyAI = "Medium";
+  }
+
+  else if(difficulty == 3)
+  {
+    this->difficultyAI = "Hard";
+  }
+
+  else
+  {
+
+  }
+}
+
+string AI::getDifficulty()
+{
+  return this->difficultyAI;
 }
