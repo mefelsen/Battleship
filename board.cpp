@@ -38,7 +38,22 @@ void Board::PrintMap() {
   }
   cout<< "\n       Ship Legend:\n         a = Patrol Boat\n         b = Submarine\n         c = Destroyer\n         d = Battleship\n         e = Carrier\n\n";
   statusReport();
+
+  PrintPowerUpMap();
 }
+
+void Board::PrintPowerUpMap() {
+  cout <<"\n       Power Ups: \n\n";
+  for(int i = 0; i < 8; i++) {
+    if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
+    for(int j = 0; j < 8; j++) {
+      if(j == 0) cout << i+1;
+       cout << "  " << map[i][j];
+    }
+    cout << '\n';
+  }
+}
+
 
 void Board::statusReport() {
   shipsRemaining = 0;

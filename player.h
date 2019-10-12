@@ -56,6 +56,13 @@ class player
  *@param None  */
  void printHidden();
 
+ /** Default constructor
+ *@pre none
+ *@post return true if all ships are marked, false otherwise
+ *@param None  */
+
+ void printPowerUps();
+
  /** calls the board class to compare char and attck if match is found
 *@pre none
 *@post handles the attack/comparison

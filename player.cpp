@@ -92,6 +92,12 @@ void player::printHidden()
   access.PrintGrid();
 }
 
+void player::printPowerUps()
+{
+  access.PrintPowerUpMap();
+}
+
+
 void player::print()
 {
     access.PrintMap();

@@ -1,0 +1,752 @@
+[33mcommit 7da2333ff4ff3e3ead0df14c9a63b11a1c142e95[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 20:13:07 2019 -0500
+
+    Removed player.o from Makefile.
+
+[33mcommit 320e52140a707c95dc1f485021fe85d0b1846784[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 20:09:43 2019 -0500
+
+    Fixed complition errors. Added to Makefile to include HumanPlayer and AI as .o files. Updated many variables to camel case.
+
+[33mcommit c77415aeba9d5f65862470c3ef271f0e73579835[m
+Merge: afb3ead 72483e9
+Author: Marco-Borth <33106432+Marco-Borth@users.noreply.github.com>
+Date:   Fri Oct 11 12:44:01 2019 -0500
+
+    Merge pull request #4 from Team-Crossover-KU/mergefixes
+    
+    AI code merge fixes
+
+[33mcommit 72483e927f9b1b7c979ae81f233c0a9e34e0b0e7[m[33m ([m[1;31morigin/mergefixes[m[33m)[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Fri Oct 11 12:38:02 2019 -0500
+
+    working program commit. player interface code problematic for Macbook compilation
+
+[33mcommit afb3ead51fef9584151a98aeea2d70857181e4e2[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 12:07:18 2019 -0500
+
+    Class renaming bug fixed.
+
+[33mcommit a12a0d653bedfbcb2db148d38945963f9fad2485[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 11:57:13 2019 -0500
+
+    Changed player class to be HumanPlayer. Added interface for HumanPlayer and AI to implement from.
+
+[33mcommit 01c2fa915f85a34148dac939e47766c3b1808b01[m
+Merge: f914e93 71e2cfb
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 11:01:31 2019 -0500
+
+    Fixed merge conflicts.
+
+[33mcommit f914e935a89c152a22f304a81af97bdd107f6b9e[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 10:55:11 2019 -0500
+
+    Increase readability.
+
+[33mcommit 71e2cfbec762b7d6405946d27a165fd9675084f6[m
+Merge: bb9a8bc 3dade85
+Author: Marco-Borth <33106432+Marco-Borth@users.noreply.github.com>
+Date:   Fri Oct 11 10:54:56 2019 -0500
+
+    Merge pull request #3 from Team-Crossover-KU/boardShipActivation
+    
+    Ship activation messaging.
+
+[33mcommit 56f671b318d5fa19cfacb09647380ee01f67d594[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 10:54:19 2019 -0500
+
+    Changed some naming conventions and comments to increase readability.
+
+[33mcommit 3dade856166aec502bff3215e9e4f0613ddefa8e[m[33m ([m[1;31morigin/boardShipActivation[m[33m)[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Fri Oct 11 10:54:03 2019 -0500
+
+    statusReport documentation
+
+[33mcommit f1631bf61de51faa87d0ecc59c12bdc8a69c86d0[m
+Author: Jack McClure <jack_mcclure@ku.edu>
+Date:   Fri Oct 11 10:50:55 2019 -0500
+
+    AI header and implementation file without AI difficulty attacking method.
+
+[33mcommit ebf2739eda3b92529a1316269f3e5cfdbe59ef1b[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Fri Oct 11 10:46:09 2019 -0500
+
+    status report will only display ships active
+
+[33mcommit 9f423442b5f4c744035ac2c644a3789cc14ccec4[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Fri Oct 11 10:04:46 2019 -0500
+
+    Ship activation and sunked messaging error fixes
+
+[33mcommit 577a2cce4c82bfc581300fd175bdbceb895ebed0[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Thu Oct 10 15:23:23 2019 -0500
+
+    Ship active message only displays which ships are active during gameplay
+
+[33mcommit bb9a8bc64d6cf215116c0d3311354ccac6dc2738[m
+Merge: b6418c4 26a5388
+Author: Marco-Borth <33106432+Marco-Borth@users.noreply.github.com>
+Date:   Thu Oct 10 14:41:40 2019 -0500
+
+    Merge pull request #2 from Team-Crossover-KU/exectiveExtension
+    
+    Fixed run methods in executive class to undo playerSetup method inclusion.
+
+[33mcommit 26a5388375856129de993976f2a127c450bf9782[m[33m ([m[1;31morigin/exectiveExtension[m[33m)[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Thu Oct 10 14:38:26 2019 -0500
+
+    run methods fixed. Cannot utilize playerSetup method as envisioned.
+
+[33mcommit fb2478292edfa1c111afc46f64c2e81b0d717ac4[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Thu Oct 10 14:09:04 2019 -0500
+
+    latest update
+
+[33mcommit 2d74ee44541f5de8a6ffcabbae91173dc862519b[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Thu Oct 10 14:08:09 2019 -0500
+
+    Player vs AI tinkering. Ship activation messaging still needs fixes.
+
+[33mcommit b6418c4f167a968cb7ead3fc755430f852cc8599[m
+Merge: 1373da5 85ed09d
+Author: Marco-Borth <33106432+Marco-Borth@users.noreply.github.com>
+Date:   Wed Oct 9 12:40:54 2019 -0500
+
+    Merge pull request #1 from Team-Crossover-KU/exectiveExtension
+    
+    Executive player board setup code simplified to a function
+
+[33mcommit 85ed09ddf3b95413f791fa6b5256c52e7c80703c[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Wed Oct 9 12:35:39 2019 -0500
+
+    playerSetup method documentation
+
+[33mcommit a489c0e2431c4519605dc5b55924cfbc1227ca1e[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Wed Oct 9 12:16:12 2019 -0500
+
+    Player board set up code seperated from exec run method into playerSetup method
+
+[33mcommit 1373da5563c7cb33a68dd46da23a79fbafc70736[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Wed Oct 9 11:16:23 2019 -0500
+
+    Player Versus AI Game allows for players to select ship number and place ships.
+
+[33mcommit 5b3238136c5e554bec8f407dc4ba99ef8c2f9f4d[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Wed Oct 9 10:09:03 2019 -0500
+
+    Board Active message bug fixes
+
+[33mcommit 68480598046ddd9052706226558697fee887c121[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Wed Oct 9 09:52:29 2019 -0500
+
+    PvP and AI game selection method created.
+
+[33mcommit 9fb89642b06b2971d846338a76e08bed8a60b6ab[m
+Author: Marco Borth <borthmarco@ku.edu>
+Date:   Mon Oct 7 12:11:16 2019 -0500
+
+    Players are now informed which ships are active and sunken during gameplay
+
+[33mcommit d93b23acfbcf14644e925f245bbe8a2a24cb67ac[m
+Author: Bmorrell23 <blknm4598@gmail.com>
+Date:   Sun Sep 22 23:10:02 2019 -0500
+
+    final commit, added retrospective and documentation
+
+[33mcommit ff33dfa833e2852c5bf9cbcd1d4eab7a3a831bfb[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sun Sep 22 22:57:15 2019 -0500
+
+    fix last change
+    
+    fix comment
+
+[33mcommit b4478cc555d8c51180b6d75894f94bf1792928fd[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sun Sep 22 22:50:17 2019 -0500
+
+    Fix comments
+    
+    Fix comment style for doxygen
+
+[33mcommit a4eb06bc0ab6dcf8a9b5f782fdda5702b12a5bc0[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 22 21:50:22 2019 -0500
+
+    add hitRetry() function
+
+[33mcommit b9a1e6750a98b973329ec19317c35a04a0c728f0[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 22 21:50:01 2019 -0500
+
+    add hitRetry() function
+
+[33mcommit 9a6da62e4b48a20bb04fb1642735d93f339a91d6[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 22 21:49:39 2019 -0500
+
+    add retryCheck() function
+
+[33mcommit c6df72ca64069ac0dd5fa48153080bbcaae5d937[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 22 21:49:23 2019 -0500
+
+    add retryCheck() function
+
+[33mcommit a27a67c64dfd7a8b84cf37b60289b138682c42ab[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 22 21:48:32 2019 -0500
+
+    add hitRetry checkers to prompt retry if you've already hit/miss a spot
+
+[33mcommit 65a25f516af00ea018a41b53107d214121a5c5e1[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 21 18:19:39 2019 -0500
+
+    Fix user input bug. Change board print functions.
+
+[33mcommit c200ba761d7fabff1b2387ed788bcdf068731e69[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 21 15:57:50 2019 -0500
+
+    took out loop that lets players go again if they hit a ship. not part of requirements
+
+[33mcommit 7f7805bf9c996175f0e472137411136b3110c555[m
+Merge: f6b81fb 25c818c
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 21 15:43:45 2019 -0500
+
+    Added method to clear the board after each player's turn, added an additional output of board so player can see attacking board before they actually attack, added condition that allows the player to attack again if they hit the enemy's ship, changed output when attacking to more clearly tell the player how they should enter coordinates
+
+[33mcommit f6b81fb93f433f1b610db673dad965ba0f83ac91[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 21 15:41:59 2019 -0500
+
+    Added method to clear the board after each player's turn, added an additional output of board so player can see attacking board before they actually attack, added condition that allows the player to attack again if they hit the enemy's ship, changed output when attacking to more clearly tell the player how they should enter coordinates
+
+[33mcommit 25c818c7e8ed38dd523d74654b29ceb6ba293823[m
+Merge: a039cec f07c05e
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:31:01 2019 -0500
+
+    fix merge
+
+[33mcommit f07c05e6d7d7a614ab552b23679a7de310377bf9[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:27:49 2019 -0500
+
+    fix merge
+
+[33mcommit 5212c7e45db1df1bea3e56d8a5569ecb864be39e[m
+Merge: 4f329c3 26126e7
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:26:49 2019 -0500
+
+    fix merge
+
+[33mcommit a039cec06d84927f4d84ddb6b88c4d2ca63da382[m
+Merge: 26126e7 581515f
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Sat Sep 21 14:11:45 2019 -0500
+
+    Merge pull request #9 from mefelsen/emilio_branch
+    
+    Emilio branch
+
+[33mcommit 581515fbf9de1ff03f2b73d70c68e668d16a2b41[m[33m ([m[1;31morigin/emilio_branch[m[33m)[m
+Merge: 4f329c3 26126e7
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Sat Sep 21 14:11:32 2019 -0500
+
+    Merge branch 'master' into emilio_branch
+
+[33mcommit 4f329c3058bd82b35e10000231053af33995bdc9[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:06:00 2019 -0500
+
+    update with attack functions
+
+[33mcommit 5218b61a3ef5883baf5e372e03437ba87624e2bd[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:05:46 2019 -0500
+
+    update with attack functions
+
+[33mcommit d6cc4a59184a7c1b798f715589720f07684c7a62[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:04:23 2019 -0500
+
+    update with attack functions
+
+[33mcommit affc74eef79ed7c9ae1ba48485ad9d856216fbd6[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:03:45 2019 -0500
+
+    update with attack functions
+
+[33mcommit 1395a54b8462a27493e8b2dabe8e483cde090fc9[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:02:55 2019 -0500
+
+    initialized win_hits
+
+[33mcommit 68e7fc346225dd5712eca395f3cc235105653d0f[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sat Sep 21 14:02:30 2019 -0500
+
+    fixed attack boundaries, win conditions
+
+[33mcommit 26126e767f0279afcd9e745d04f8269325fbef77[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Thu Sep 19 11:53:19 2019 -0500
+
+    change boundaries
+
+[33mcommit f3d0ac0f47dea8d59f55a73ce301c2a9cca53a4f[m
+Merge: f2466ee 1ad33d9
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 20:33:53 2019 -0500
+
+    Merge pull request #8 from mefelsen/emilio_branch
+    
+    Emilio branch
+
+[33mcommit 1ad33d943e4490f73ac899a486fb7ba913570dd7[m
+Merge: 2961547 ad92353
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Wed Sep 18 20:32:00 2019 -0500
+
+    merge
+
+[33mcommit f2466ee5ca7293eb836137042adc20d4ff1fb1d7[m
+Merge: 91154ea ad92353
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 14:29:21 2019 -0500
+
+    Merge pull request #6 from mefelsen/emilio_branch
+    
+    update boundaries
+
+[33mcommit ad9235393aa4117256d12e34a184566487ce7101[m
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 14:27:52 2019 -0500
+
+    update boundaries
+
+[33mcommit 91154eadaea656d49412c7ff6d0a71abb6d0b0a2[m
+Merge: 82bfc11 d6ed120
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 13:36:25 2019 -0500
+
+    Merge pull request #5 from mefelsen/emilio_branch
+    
+    Emilio branch
+
+[33mcommit d6ed1200733282fa9be1ec3808a62556023fd7a6[m
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 13:35:18 2019 -0500
+
+    fix dimensioncheck() on board.cpp
+
+[33mcommit 2961547d51c15c3fd2f366f4b6746bb6fa02a062[m
+Merge: 2730411 8e208d7
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Wed Sep 18 13:34:40 2019 -0500
+
+    fix dimensioncheck()
+
+[33mcommit d935182357d28f043d2adcb1d5ce51ede283746b[m
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 13:33:09 2019 -0500
+
+    fix placement on board through dimensioncheck()
+
+[33mcommit 82bfc113ae5a6c020ece991fe28c7be1ab98c071[m
+Merge: 7c40172 d74bc4c
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Wed Sep 18 13:20:09 2019 -0500
+
+    Merge pull request #4 from mefelsen/haleigh_branch
+    
+    Add files via upload
+
+[33mcommit d74bc4c5020797985a21a91aedde1ed09f5c8a73[m
+Merge: 00dc3aa 7c40172
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Wed Sep 18 13:19:56 2019 -0500
+
+    Merge branch 'master' into haleigh_branch
+
+[33mcommit 7c40172573c7660af13ccdaff6095bc1e5ba5436[m
+Merge: f9e0a1e 8e208d7
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 13:10:17 2019 -0500
+
+    Merge pull request #3 from mefelsen/emilio_branch
+    
+    fix placement bounds on transfromchar()
+
+[33mcommit 8e208d7c3884ba97da644551b420e3d950d701b2[m
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Wed Sep 18 13:09:47 2019 -0500
+
+    fix placement bounds on transfromchar()
+
+[33mcommit 27304118bda1e512e9bfcdd96b800947381ee8bf[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Wed Sep 18 13:08:51 2019 -0500
+
+    fix bounds on placement()
+
+[33mcommit 00dc3aab638552dcd22172a3c9ee98d421943789[m
+Author: haleigh287 <54862069+haleigh287@users.noreply.github.com>
+Date:   Wed Sep 18 12:23:20 2019 -0500
+
+    Add files via upload
+    
+    *add: attack capability.
+    *add: after attack, updates player map  -- bug: currently access p1 board for both attack and previous moves, when it should attack P2 and update p1 of its choice/coordinate
+
+[33mcommit f9e0a1e76d9300e774ccf3a69d53ddeb5cfc240a[m
+Merge: 97b027f d90297d
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Mon Sep 16 23:24:03 2019 -0500
+
+    Merge pull request #2 from mefelsen/emilio_branch
+    
+    Emilio branch
+
+[33mcommit d90297d21888b58b1794dcbd8d751306987f9bb4[m
+Merge: 13356a8 97b027f
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Mon Sep 16 23:23:43 2019 -0500
+
+    Merge branch 'master' into emilio_branch
+
+[33mcommit 13356a8d705d9af6bc5506bb0138c03e067b6d4d[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Mon Sep 16 23:12:31 2019 -0500
+
+    When entering location, now takes format [col][row] instead of [row][col]
+
+[33mcommit 97b027ffb5ca2183c6246b4e8c9ae7cbdeae6a60[m
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Mon Sep 16 22:44:34 2019 -0500
+
+    fixed variable name for calculatewinhits
+
+[33mcommit ca52c035583494e54a3ca49c0fd92e2c75a66c5d[m
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Mon Sep 16 22:39:32 2019 -0500
+
+    added calculatewinhits() method to check for win condition
+
+[33mcommit 356a2712683858d977cbdcedab968292776778e3[m
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Mon Sep 16 22:37:50 2019 -0500
+
+    added calculatewinhits() method to check for win condition
+
+[33mcommit 160fedc677243e1105acdf59596c38b301608bbd[m
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Mon Sep 16 22:26:04 2019 -0500
+
+    Added num_hits and GetHits() to account for win condition
+
+[33mcommit 472c86c4bb4088d99f1f26bc95f535a4028c9a74[m
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Mon Sep 16 22:25:08 2019 -0500
+
+    Added num_hits and GetHits() to account for win condition
+
+[33mcommit 4a26aee2da7375c19e3712fc3e1258f2a971c479[m
+Author: Emilio Miles <41079141+emiliomiles@users.noreply.github.com>
+Date:   Mon Sep 16 19:08:03 2019 -0500
+
+    add files via upload
+
+[33mcommit e47a4b84e32554bed21b17a486ab0d372c31c6be[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Mon Sep 16 19:03:45 2019 -0500
+
+    add error checking on ships, add error checking on direction input, print board, user interface update, defined inputChecker(), transfor(), transtoint(), transfromchar(), user can place ships.
+
+[33mcommit fc853970d29fb56d9741fdf64e198a68c5f91053[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Mon Sep 16 19:01:56 2019 -0500
+
+    add inputChecker(), transfor(), transtoint(), transfromchar() functions
+
+[33mcommit 0d944011f95fcbfb517aa36f43806c2a87cecacc[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Mon Sep 16 18:59:04 2019 -0500
+
+    add throw to PlaceShip() function
+
+[33mcommit 5a5852392af0371429e9da6b30aaf65b85c4f7ef[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Mon Sep 16 18:57:57 2019 -0500
+
+    updated player.cpp with all methods from master
+
+[33mcommit 1bc36f191533fb6dfa1d662a773b5a778e2a7290[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Mon Sep 16 18:57:20 2019 -0500
+
+    updated player.h with all methods from master
+
+[33mcommit f79d5b9752b178f504fe7f3955c5805543d4474a[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Mon Sep 16 13:36:45 2019 -0500
+
+    Oops. got rid of .o files
+
+[33mcommit 49b0e9bbb017a732d8092088ec5b37e5fb8d2d70[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Mon Sep 16 13:36:05 2019 -0500
+
+    Added win conditions. Added function in player class to return hits
+
+[33mcommit a3ba8c379491fe74ff6f1303cbaef67f7a53b30a[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Mon Sep 16 13:30:31 2019 -0500
+
+    Added Win Condition to BattleExec.
+
+[33mcommit c30640d828b4559608473c9889af580324298331[m
+Author: ziwenwang868 <54573143+ziwenwang868@users.noreply.github.com>
+Date:   Mon Sep 16 13:04:25 2019 -0500
+
+    update player class
+    
+    added functions
+
+[33mcommit 62193a1591f50c825dcae9ea8385f9b844d91f16[m
+Merge: e0e752e 92607cc
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Sun Sep 15 12:38:20 2019 -0500
+
+    Merge pull request #1 from mefelsen/emilio_branch
+    
+    Emilio branch
+
+[33mcommit 92607ccc401682ce9ced184c6d2ebbc32580a05c[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 15 12:25:24 2019 -0500
+
+    added run() function to Executive.cpp and added code to it, added code onto start Menu, added comments.
+
+[33mcommit edb94c1c1a2849bef7f817a96188192ca2b1b21b[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 15 12:23:38 2019 -0500
+
+    added run() funtion to Executive
+
+[33mcommit 37f62c78cbaa18283858c0cca52b7f6536a29ab3[m
+Author: Emilio Miles <e655m216@ku.edu>
+Date:   Sun Sep 15 12:22:07 2019 -0500
+
+    added Executive run function to main.cpp
+
+[33mcommit e0e752efccc9c922fa4d6fb061572756a984f4c6[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 23:43:08 2019 -0500
+
+    Update README.md
+    
+    messing
+
+[33mcommit 717e9bf83a34e9ed514991bc1a201ff528139463[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 23:42:10 2019 -0500
+
+    Update README.md
+    
+    messing
+
+[33mcommit f6f4bb71d7d4ae662441c309082d6a29dc7e7b16[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 23:40:49 2019 -0500
+
+    Update Readme
+    
+    messing with README
+
+[33mcommit ad9850a012aadbd819150ec24ad1a7a4a9199ad5[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 23:38:27 2019 -0500
+
+    Added 448BattleshipFlow.png
+
+[33mcommit 1b9f85fbe19db3926cc1a9ae6677d2f268228307[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 21:11:12 2019 -0500
+
+    Final Diagram
+
+[33mcommit 0754badef024af731ddf64d9d99f0599f2348666[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 21:02:19 2019 -0500
+
+    Update 448BattleshipFlow.drawio
+
+[33mcommit ad2cd4d1b49c6f98da72d6a20df66c1e4c20400d[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 20:43:02 2019 -0500
+
+    Update 448BattleshipFlow.drawio
+
+[33mcommit 14493ffdf05e3ece56a6687ce310a1f223f231f1[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 20:36:44 2019 -0500
+
+    Update 448BattleshipFlow.drawio
+
+[33mcommit 7e678cc154e12e06be53b846963ff1b5352b18c7[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 20:29:23 2019 -0500
+
+    Update 448BattleshipFlow.drawio
+
+[33mcommit 8a751cfc3f491876fced730930ec696c08bf54c0[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 20:22:30 2019 -0500
+
+    Update 448BattleshipFlow.drawio
+
+[33mcommit 09bcadb2bbe4b03e8ead8a0726cf6a6e0ebe5800[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Sat Sep 14 19:41:57 2019 -0500
+
+    Added 448BattleshipFlow.drawio
+
+[33mcommit e0cb481dde4a46afc7be2cb337fe58737fd76b08[m
+Merge: e40abc3 610c8e0
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 14 18:22:24 2019 -0500
+
+    added includes for code to compile, moved clearscreen method to battleexec class
+
+[33mcommit e40abc3a117690f632e864562827d4933a0b54ba[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 14 18:20:02 2019 -0500
+
+    added includes for code to compile, moved clearscreen method to battleexec class
+
+[33mcommit 1baa16a3d9f2b991ae89b327d475a708fe3bd7c4[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 14 18:19:45 2019 -0500
+
+    added includes for code to compile, moved clearscreen method to battleexec class
+
+[33mcommit bd7791fced735e6c13265606a8cc2906be0d4190[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 14 18:13:23 2019 -0500
+
+    moved clearscreen method to battle exec
+
+[33mcommit 610c8e02924bea03b161e0f971e689efacb30779[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 17:24:14 2019 -0500
+
+    clean .o
+
+[33mcommit 6c13cb938d894388d86adad53471e2e3bc09a1c7[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 17:21:17 2019 -0500
+
+    merge to the master
+
+[33mcommit 3131a3021af072af014147af2632b2e5af547a32[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 16:58:57 2019 -0500
+
+    chaged dimensioncheck
+    avoid error when close to edge
+
+[33mcommit 2f457f23b7df0151cd524f6ef2dabee71d685318[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 16:57:30 2019 -0500
+
+    changed on overlapcheck function
+    recustion starts on 0
+
+[33mcommit a8337fd64f68eeb160ae05ac4d6868f86cdbddb7[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 16:53:21 2019 -0500
+
+    add parameter on placeship (char mark)
+    add parameter on markship (char mark)
+
+[33mcommit 388f634d49155c4d2848f4b680144b0d7e789db3[m[33m ([m[1;31morigin/blake_Branch[m[33m)[m
+Author: Matthew Felsen <mefelsen@ku.edu>
+Date:   Sat Sep 14 16:34:20 2019 -0500
+
+    added documention and reformatted functions to fit discussed architecture
+
+[33mcommit 519b18f3355b37c7a254e15e14144f5b57d1c235[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 14:13:20 2019 -0500
+
+    added player class
+    changed board class
+    changed makefile
+    comment out battlexec class
+
+[33mcommit 15a953a6f5fd922d19daf1ee693b13b54a167fed[m
+Author: Ziwen Wang <z005w155@ku.edu>
+Date:   Sat Sep 14 14:00:28 2019 -0500
+
+    player class store two map of char
+
+[33mcommit 0bea6103bea3c2bf7ed1dab729cfb20e00d8cfba[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Fri Sep 13 00:17:24 2019 -0500
+
+    added to README
+
+[33mcommit e5f41a719e49b0dd01abc0c2c235be67d9c7a158[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Thu Sep 12 23:59:36 2019 -0500
+
+    Added user input and updated Makefile
+
+[33mcommit 7be284958532f89625cbbbba3c2320099535fe57[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Thu Sep 12 23:27:33 2019 -0500
+
+    Add files via upload
+    
+    battleExec handles starting screen and user input
+
+[33mcommit 7b2d5b65b470ef2975553aebadd82270647b7313[m
+Author: mefelsen <39935704+mefelsen@users.noreply.github.com>
+Date:   Thu Sep 12 23:22:28 2019 -0500
+
+    added initial files
+
+[33mcommit b562acee230ecda6518277b75fe48b9a455cfe9f[m
+Author: Blake Morrell <blknm4598@gmail.com>
+Date:   Thu Sep 12 22:48:13 2019 -0500
+
+    read me

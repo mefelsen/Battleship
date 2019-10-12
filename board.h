@@ -76,6 +76,12 @@ public:
  *@param None  */
   void PrintGrid();
 
+  /** Prints the PowerUp board. USE FOR TESTING PURPOSES
+ *@pre
+ *@post
+ *@param None  */
+  void PrintPowerUpMap();
+
   /** updates the hidden board to reflect players attack
  *@pre
  *@post
