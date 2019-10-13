@@ -126,6 +126,6 @@ private:
       int dir; //direction that the ship faces
 
       int numPowerUps = 0;
-      char** powerUps = nullptr;
+      char powerUps [8][8];
 };
 #endif
