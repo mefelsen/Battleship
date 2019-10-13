@@ -12,6 +12,7 @@
 #include <string>
 #include <ctime>    // For time()
 #include <cstdlib>  // For srand() and rand()
+#include <limits>
 
 using namespace std;
 
@@ -28,17 +29,7 @@ public:
  @post
  @param None  */
   Board();
-
-  /** Random powerup location generator
- @pre powerUps 2D array is already built and initialized.
- @post powerUps 2D array will have random locations marked for the power ups.
- @param None  */
-void powerUpGenerator();
-
-
-
-
-
+  
   /** notify player of all active ships
  *@pre PrintMap is called
  *@post statusReport will notify the player of any ships active during gameplay
@@ -94,7 +85,7 @@ void powerUpGenerator();
  *@pre
  *@post
  *@param None  */
-  void PrintPowerUpMap();
+  //void PrintPowerUpMap();
 
   /** updates the hidden board to reflect players attack
  *@pre
@@ -116,7 +107,9 @@ void powerUpGenerator();
   *@param  int powerUpPos[] - the array to be shuffled so random number can be selected without repeats.
            int size - the size of the array to be shuffled.
   */
-  void shuffleArray(int powerUpPos[], int size);
+  //void shuffleArray(int powerUpPos[], int size);
+  //void setNumPowerUps(int n);
+
 
 
 private:
@@ -127,8 +120,7 @@ private:
   remainings = is current ship still afloat
   shipsRemaining = number of ships remaining on the personal board during gameplay
   */
-  char powerUps[8][8];
-  int numPowerUps = 10;
+  //char powerUps[8][8];
   char grid[8][8];
   char map[8][8];
   bool aActive, bActive, cActive, dActive, eActive;

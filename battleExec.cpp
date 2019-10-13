@@ -38,6 +38,26 @@ void Executive::runPvP()
 
   CalculateWinHits(ship_num);//ship_num is inputted by user, this function is called to find total hits to win game
 
+  /*
+    Determine number of powerups desired for the game.
+  */
+  cout << "Enter number of power ups desired (Up to 64 allowed): ";
+  cin >> numPowerUps;
+  while(1)
+  {
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(),'\n');
+      cout << "\n\nFor number of power ups, please enter a number between 0 and 64: "; //if not an int, must try again.
+      cin >> numPowerUps;
+    }
+    else
+    {
+      break;
+    }
+  }
+
   HumanPlayer player1; //creates player 1 with the number of ships obtained from input
   player1.setNum(ship_num);
   cout<<"\n---------PLAYER 1----------\n\n";
@@ -168,6 +188,14 @@ void Executive::runPvP()
   cin >> dummy;
   ClearScreen();
 
+  /*
+    Create powerup board here
+  */
+    powerUpGenerator();
+  /*
+
+  */
+
   while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
   {   string x;
 
@@ -175,7 +203,7 @@ void Executive::runPvP()
 
         player1.printHidden();
         player1.print();
-
+        displayPowerUps();
 
       cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
@@ -227,6 +255,7 @@ void Executive::runPvP()
 
       player2.printHidden();
       player2.print();
+      displayPowerUps();
 
       cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
@@ -557,4 +586,65 @@ void Executive::setAIDifficulty(AI& someAI)
   cin >> AIDifficulty;
 
   someAI.setDifficulty(AIDifficulty);
+}
+
+void Executive::powerUpGenerator()
+{
+  //create an initial array of position values to be later shuffled
+  powerUps = new char*[8];
+  for(int i = 0; i < 8; i++)
+  {
+    powerUps[i] = new char[8];
+  }
+  for(int i = 0; i < 8; i++)
+  {
+    for(int j = 0; j < 8; j++)
+    {
+      powerUps[i][j] = '~';
+    }
+  }
+
+  int* powerUpPositions = new int[64];
+  for(int i = 0; i < 64; i++)
+  {
+    powerUpPositions[i] = i;
+  }
+
+  //Shuffle the powerUpPositions array;
+  shuffleArray(powerUpPositions, 64);
+
+  int r = 0;
+  for(int i = 0; i < numPowerUps; i++)
+  {
+    r = powerUpPositions[i];
+    int x = r / 8;
+    int y = r % 8;
+    powerUps[x][y] = 'x';
+  }
+}
+
+void Executive::shuffleArray(int powerUpPos[], int size)
+{
+  srand(time(0));  // Initialize random number generator.
+  for(int i = 0; i < (size * 10); i++)
+  {
+    int index1 = (rand() % size);
+    int index2 = (rand() % size);
+    int placeHolder = powerUpPos[index1];
+    powerUpPos[index1] = powerUpPos[index2];
+    powerUpPos[index2] = placeHolder;
+  }
+}
+
+void Executive::displayPowerUps()
+{
+  cout <<"\n       Power Ups: \n\n";
+  for(int i = 0; i < 8; i++) {
+    if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
+    for(int j = 0; j < 8; j++) {
+      if(j == 0) cout << i+1;
+       cout << "  " << powerUps[i][j];
+    }
+    cout << '\n';
+  }
 }
