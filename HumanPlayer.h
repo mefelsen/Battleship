@@ -10,7 +10,6 @@ class HumanPlayer : public PlayerInterface
 {
     private:
     Board playerBoard;//access the board object
-
     string marks;
     int marked;//ships that are marked
     int unmark;//ships that are unmarked
@@ -39,13 +38,6 @@ class HumanPlayer : public PlayerInterface
  *@post print the map in board object
  *@param None  */
     void print();
-
-    /** Default constructor
-    *@pre none
-    *@post return true if all ships are marked, false otherwise
-    *@param None  */
-
-    void printPowerUps();
 
 /** Default constructor
  *@pre none

@@ -90,9 +90,19 @@ public:
 
     void setAIDifficulty(AI& someAI);
 
+    /** Random powerup location generator
+   @pre powerUps 2D array is already built and initialized.
+   @post powerUps 2D array will have random locations marked for the power ups.
+   @param None  */
+    void powerUpGenerator();
+
+    void shuffleArray(int powerUpPos[], int size);
+
+    void displayPowerUps();
+
 
 private:
-  
+
       /** funtion that runs a player versus player game
       *@pre player_num == 2
       *@post runs the PvP game
@@ -114,5 +124,8 @@ private:
 
       string location; //row and column on the map
       int dir; //direction that the ship faces
+
+      int numPowerUps = 0;
+      char** powerUps = nullptr;
 };
 #endif

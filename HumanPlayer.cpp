@@ -99,11 +99,6 @@ void HumanPlayer::print()
     playerBoard.PrintMap();
 }
 
-void HumanPlayer::printPowerUps()
-{
-  playerBoard.PrintPowerUpMap();
-}
-
 int HumanPlayer::getHits()
 {
   return num_hits;
