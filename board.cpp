@@ -18,10 +18,49 @@ Board::Board() {
     for(int j = 0; j < 8; j++) {
       grid[i][j] = '~';
       map[i][j] = '~';
+      powerUps[i][j] = '~';
+      powerUpGenerator();
     }
   }
 
   shipsRemaining = 0;
+}
+
+void Board::powerUpGenerator()
+{
+  //create an initial array of position values to be later shuffled
+  int* powerUpPositions = new int[64];
+  for(int i = 0; i < 64; i++)
+  {
+    powerUpPositions[i] = i;
+  }
+
+  //Shuffle the powerUpPositions array;
+  shuffleArray(powerUpPositions, 64);
+
+  int r = 0;
+  for(int i = 0; i < numPowerUps; i++)
+  {
+    r = powerUpPositions[i];
+    int x = r / 8;
+    int y = r % 8;
+    powerUps[x][y] = 'x';
+  }
+  //int x = i / 8;
+  //int y = i % 8;
+}
+
+void Board::shuffleArray(int powerUpPos[], int size)
+{
+  srand(time(0));  // Initialize random number generator.
+  for(int i = 0; i < (size * 10); i++)
+  {
+    int index1 = (rand() % size);
+    int index2 = (rand() % size);
+    int placeHolder = powerUpPos[index1];
+    powerUpPos[index1] = powerUpPos[index2];
+    powerUpPos[index2] = placeHolder;
+  }
 }
 
 void Board::PrintMap() {
@@ -48,7 +87,7 @@ void Board::PrintPowerUpMap() {
     if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
     for(int j = 0; j < 8; j++) {
       if(j == 0) cout << i+1;
-       cout << "  " << map[i][j];
+       cout << "  " << powerUps[i][j];
     }
     cout << '\n';
   }
