@@ -10,7 +10,11 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include <string>
+#include <ctime>    // For time()
+#include <cstdlib>  // For srand() and rand()
+
 using namespace std;
+
 class Board {
 public:
   /** Prints board to console
@@ -24,6 +28,16 @@ public:
  @post
  @param None  */
   Board();
+
+  /** Random powerup location generator
+ @pre powerUps 2D array is already built and initialized.
+ @post powerUps 2D array will have random locations marked for the power ups.
+ @param None  */
+void powerUpGenerator();
+
+
+
+
 
   /** notify player of all active ships
  *@pre PrintMap is called
@@ -96,6 +110,14 @@ public:
  the bool is for determining if it was a success or not  */
   bool retryCheck(int x, int y);
 
+  /** Array shuffle function for the powerup board.
+  *@pre powerup array is already made, and the board is already made.
+  *@post will shuffle an array containgin the indecies for where the power ups will be located.
+  *@param  int powerUpPos[] - the array to be shuffled so random number can be selected without repeats.
+           int size - the size of the array to be shuffled.
+  */
+  void shuffleArray(int powerUpPos[], int size);
+
 
 private:
   /**
@@ -105,6 +127,8 @@ private:
   remainings = is current ship still afloat
   shipsRemaining = number of ships remaining on the personal board during gameplay
   */
+  char powerUps[8][8];
+  int numPowerUps = 10;
   char grid[8][8];
   char map[8][8];
   bool aActive, bActive, cActive, dActive, eActive;
