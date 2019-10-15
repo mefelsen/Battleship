@@ -1,0 +1,17 @@
+-Shot1
+Num:
+Power:
+Range:
+
+-Shot2
+Num:
+Power:
+Range:
+
+-Shot3
+Num:
+Power:
+Range:
+
+-cheatermode
+Num:
