@@ -11,7 +11,6 @@ Inventory::Inventory()
 {
 }
 
-//stub to finish
 //Reads from the file "InventoryFile" defined above to populate shotArray
 // and cheatnum variables. Run first if already have inventory file setup
 void Inventory::readFromInventoryFile()
@@ -63,13 +62,30 @@ void Inventory::readFromInventoryFile()
 	file.close();
 }
 
-//stub to finish
 //Writes current inventory to the inventoryFile defined above. Warning
 //WARNING:Default constructor for Shot produces nonsense so only write after
 //Variables have been manually set or read from already existing file
 void Inventory::writeToInventoryFile()
 {
-	
+	std::ofstream file;
+	string input = "";
+
+	file.open(inventoryFile, fstream::trunc);
+	for (int i = 0; NUM_SHOT_TYPES > i; i++)
+	{
+		input = input
+			+ "Name: " + shotArray[i].getShotName() + "\n"
+			+ "Code: " + shotArray[i].getShotCode() + "\n"
+			+ "Pattern: " + shotArray[i].getPattern() + "\n"
+			+ "Ammount: " + to_string(shotArray[i].getAmmount()) + "\n"
+			+ "Range: " + to_string(shotArray[i].getRange()) + "\n\n";
+	}
+
+	input = input + "-cheatermode\nNum: " + to_string(numCheat);
+
+
+	file << input;
+	file.close();
 
 }
 
