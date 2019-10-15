@@ -9,11 +9,19 @@ Shot::Shot() : shotname("z"),
 {
 	
 }
-//Currently a stub
+
 //Run this for a cleaner decrement of shot after being used returnss false if no shots are left for use
 bool Shot::useShot()
 {
-	return true;
+	if (ammount >= 0)
+	{
+		ammount--;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 string Shot::getShotName()
