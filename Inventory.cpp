@@ -16,7 +16,51 @@ Inventory::Inventory()
 // and cheatnum variables. Run first if already have inventory file setup
 void Inventory::readFromInventoryFile()
 {
-	
+	string input;
+	std::ifstream file;
+	file.open(inventoryFile, fstream::in);
+	for (int i = 0; NUM_SHOT_TYPES > i; i++)
+	{
+		for (int j = 0; NUM_SHOT_VARIABLES > j; j++)
+		{
+			file >> input;
+			if (input == "Name:")
+			{
+				file >> input;
+				shotArray[i].setShotName(input);
+			}
+			else if (input == "Code:")
+			{
+				file >> input;
+				shotArray[i].setShotCode(input[0]);
+			}
+			else if (input == "Pattern:")
+			{
+				file >> input;
+				shotArray[i].setPattern(input[0]);
+			}
+			else if (input == "Ammount:")
+			{
+				file >> input;
+				shotArray[i].setAmmount(stoi(input));
+			}
+			else if (input == "Range:")
+			{
+				file >> input;
+				shotArray[i].setRange(stoi(input));
+			}
+		}
+
+	}
+
+	file >> input;
+	if (input == "-cheatermode")
+	{
+		file >> input;
+		if (input == "Num:")
+			file >> numCheat;
+	}
+	file.close();
 }
 
 //stub to finish
