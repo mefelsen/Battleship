@@ -20,36 +20,31 @@ int AI::getMarks()
 
 void AI::placement(int x, int y, int z)
 {
-  srand (time(NULL)); //generate new time seed
-
   string direction;
-  z = rand() % 3;
+    if(z==1)
+    {
+        direction="up";
+    }
 
+    else if (z==2)
+    {
+        direction="down";
+    }
 
-  if(z==1)
-  {
-      direction="up";
-  }
+    else if(z==3)
+    {
+        direction="left";
+    }
 
-  else if (z==2)
-  {
-      direction="down";
-  }
+    else if(z==4)
+    {
+        direction="right";
+    }
 
-  else if(z==3)
-  {
-      direction="left";
-  }
-
-  else if(z==4)
-  {
-      direction="right";
-  }
-
-  else
-  {
-      throw(std::runtime_error(" "));
-  }
+    else
+    {
+        throw(std::runtime_error(" "));
+    }
 
   if(marked < numOfShip)
   {

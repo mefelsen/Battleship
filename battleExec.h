@@ -17,6 +17,7 @@
 #include "AI.h"
 #include <fstream>
 #include <limits>
+#include <time.h>
 using namespace std;
 
 class Executive

@@ -1,4 +1,5 @@
 #include "HumanPlayer.h"
+
 HumanPlayer::HumanPlayer()
 {
   marks = "abcde";

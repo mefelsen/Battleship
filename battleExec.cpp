@@ -325,11 +325,11 @@ void Executive::runPvAI()
   while(!player.isAllMarked())
   {
     cout<<"\nPick which column (A-H) and row (1-8) (Must be in the form [col][row] i.e.: A1): ";
-    cin>>location;
+    cin >> location;
     while(!transfor(location))
     {
       cout<<"Invalid Position. Try again: ";
-      cin>>location;
+      cin >> location;
     }
     cout<<"\nWhich direction will your ship face?\n";
     cout<<"Choose 1 for up, 2 for down, 3 for left, or 4 for right: ";
@@ -378,8 +378,33 @@ void Executive::runPvAI()
     }
   }
 
-  cout << "\nWAIT for AI to finish placing its ships\n";
+
   ClearScreen();
+
+  int tempRow, tempCol;
+  while(!ai.isAllMarked())
+  {
+    srand(time(NULL));
+    row = rand() % 8 * 6 % 8; //generates random number between 0-7
+    col = rand() % 8 * 5 % 8; //generates random number between 0-7
+    dir = rand() % 4 + 1; //generates random number between 1-4
+
+    if(tempRow != row && tempCol != col)
+    {
+      tempRow = row;
+      tempCol = col;
+
+      try
+      {
+        ai.placement(row, col, dir);
+        ai.print(); //enable to see AI choose ship placement
+      }
+      catch (const std::runtime_error &e)
+      {
+
+      }
+    }
+  }
 }
 
 Executive::~Executive()

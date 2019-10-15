@@ -47,5 +47,6 @@ class AI : public PlayerInterface
      void setDifficulty(int difficulty);
 
      string getDifficulty();
+
 };
 #endif
