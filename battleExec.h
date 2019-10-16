@@ -101,6 +101,12 @@ public:
 
     void displayPowerUps();
 
+    void setTargetCoordinates();
+
+    void shuffleCoordinates(string arr[], int n);
+
+    void printRandomCoordinates();
+
 
 private:
 
@@ -128,5 +134,7 @@ private:
 
       int numPowerUps = 0;
       char powerUps [8][8];
+
+      string targetCoordinates[64];
 };
 #endif
