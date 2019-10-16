@@ -15,7 +15,7 @@
 #include <limits>
 #include <iostream>
 #include <unistd.h>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 using namespace std;
 
 Executive::Executive()
@@ -799,6 +799,11 @@ void Executive::displayPowerUps()
   }
 }
 
+string Executive::getTargetCoordinates()
+{
+  return targetCoordinates[0];
+}
+
 void Executive::setTargetCoordinates()
 {
   string letters = "ABCDEFGH";
@@ -861,4 +866,24 @@ void Executive::printRandomCoordinates()
     }
   }
   cout << "\n";
+}
+
+void Executive::fireAtCoordinates()
+{
+  string coordinates = getTargetCoordinates();
+  string array[coordinatesArraySize];
+
+  for (int i = 0; i < coordinatesArraySize; i++)
+  {
+    array[i] = targetCoordinates[i];
+  }
+
+  coordinatesArraySize--;
+
+  targetCoordinates[coordinatesArraySize];
+
+  for (int i = 0; i < coordinatesArraySize; i++)
+  {
+    targetCoordinates[i] = array[i + 1];
+  }
 }
