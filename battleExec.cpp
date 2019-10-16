@@ -20,6 +20,7 @@ using namespace std;
 Executive::Executive()
 {
     ship_num = 0; //sets starting ship amount to zero
+    srand(time(NULL));
 }
 
 void Executive::run()
@@ -197,7 +198,8 @@ void Executive::runPvP()
   */
 
   while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
-  {   string x;
+  {
+     string x;
 
       cout<<"\n---------PLAYER 1----------\n\n";
 
@@ -205,8 +207,8 @@ void Executive::runPvP()
         player1.print();
         displayPowerUps();
 
-      cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
-      cin >>x;
+      cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
+      cin >> x;
       while(!transfor(x))
       {
         // cout <<x;
@@ -226,7 +228,7 @@ void Executive::runPvP()
           cin>>x;
         }
       }
-      if(player2.attack(row,col)) //here we want to change map
+      if(player2.attack(row,col, "")) //here we want to change map
       {
         player1.update(row,col, true); //here, we want to only update grid
 
@@ -278,7 +280,7 @@ void Executive::runPvP()
         }
       }
 
-      if(player1.attack(row,col)) //here we want to change map
+      if(player1.attack(row,col, "")) //here we want to change map
       {
         player2.update(row,col, true); //here, we want to only update grid
         //if(player1.GetHits() == win_hits) break;
@@ -306,6 +308,7 @@ void Executive::runPvP()
 
 void Executive::runPvAI()
 {
+  srand(time(NULL));
   // AI difficulty setting could start either before startMenu() or after player setup, but AI set up must be done after player setup.
 
   startMenu(); //opens start menu
@@ -381,10 +384,13 @@ void Executive::runPvAI()
 
   ClearScreen();
 
+  cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n******************************************\n"
+       << "  WAITING FOR AI TO FINISH PLACING SHIPS\n"
+       << "******************************************\n\n\n\n\n\n\n\n\n\n";
+
   int tempRow, tempCol;
   while(!ai.isAllMarked())
   {
-    srand(time(NULL));
     row = rand() % 8 * 6 % 8; //generates random number between 0-7
     col = rand() % 8 * 5 % 8; //generates random number between 0-7
     dir = rand() % 4 + 1; //generates random number between 1-4
@@ -397,12 +403,93 @@ void Executive::runPvAI()
       try
       {
         ai.placement(row, col, dir);
-        ai.print(); //enable to see AI choose ship placement
+        //ai.print(); //enable to see AI choose ship placement
       }
       catch (const std::runtime_error &e)
       {
 
       }
+    }
+  }
+
+  while(player.getHits() != win_hits && ai.getHits() != win_hits)
+  {
+    string dummy;
+    string x;
+
+     cout << "\n----------PLAYER-----------\n\n";
+
+       player.printHidden();
+       player.print();
+       //displayPowerUps();
+
+     cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
+     cin >> x;
+     while(!transfor(x))
+     {
+       // cout <<x;
+       // cout << row <<" " <<col;
+       cout << "Invalid position. Try again: ";
+       cin >> x;
+     }
+     while(player.hitRetry(row, col))
+     {
+       cout<<"You've already tried that spot before! Try again: ";
+       cin>>x;
+       while(!transfor(x))
+       {
+         // cout <<x;
+         // cout << row <<" " <<col;
+         cout << "Invalid position. Try again: ";
+         cin >> x;
+       }
+     }
+
+    if(ai.attack(row,col)) //here we want to change map
+    {
+      player.update(row,col, true); //here, we want to only update grid
+
+      //if(ai.getHits() == win_hits) break;
+    }
+    else
+    {
+      player.update(row,col, false);
+    }
+
+    if(ai.getHits() == win_hits)
+    {
+      cout << "\nPLAYER WINS. Thanks for playing!\n";
+      break;
+    }
+
+    cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to let the AI attack\n";
+    cin >> dummy;
+
+    cout<<"\n---------AI----------\n\n";
+
+    ai.printHidden();
+    ai.print();
+
+    row = rand() % 8;
+    col = rand() % 8;
+    if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
+    {
+      ai.update(row,col, true); //here, we want to only update grid
+
+      //if(ai.getHits() == win_hits) break;
+    }
+    else
+    {
+      ai.update(row,col, false);
+    }
+
+    ai.printHidden();
+    ai.print();
+
+    if (player.getHits() == win_hits)
+    {
+      cout<<"\nAI WINS. Sorry human :(\n";
+      break;
     }
   }
 }

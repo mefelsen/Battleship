@@ -5,7 +5,6 @@
 #include "board.h"
 #include "PlayerInterface.h"
 #include <time.h>
-
 using namespace std;
 
 class AI : public PlayerInterface
@@ -19,6 +18,7 @@ class AI : public PlayerInterface
     int numOfShip;
 
     string difficultyAI;
+    bool playerCalledAttack;
 
   public:
 
@@ -45,6 +45,8 @@ class AI : public PlayerInterface
      bool hitRetry(int x, int y);
 
      void setDifficulty(int difficulty);
+
+     void setPlayerCalledAttack(bool called);
 
      string getDifficulty();
 

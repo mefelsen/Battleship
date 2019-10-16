@@ -59,7 +59,7 @@ void AI::placement(int x, int y, int z)
 
     catch(const std::runtime_error& e)
     {
-      cout << "Silly AI. Try again.";
+      // cout << "Silly AI. Try again.";
     }
   }
 }
@@ -80,8 +80,16 @@ void AI::update(int x, int y, bool hit)
 
 bool AI::attack(int x, int y)
 {
-  //Where AI difficulty will go
+    if(aiBoard.Attack(x, y))
+    {
+      num_hits++;
+      cout << "\nYour attack was SUCCESSFUL\n";
+      return true;
+    }
+    cout << "\n\n\n\n\n\nSPLOOSH!! No ship here.\n";
+    return false;
 }
+
 
 void AI::printHidden()
 {
@@ -129,4 +137,9 @@ void AI::setDifficulty(int difficulty)
 string AI::getDifficulty()
 {
   return this->difficultyAI;
+}
+
+void AI::setPlayerCalledAttack(bool called)
+{
+  this->playerCalledAttack = called;
 }

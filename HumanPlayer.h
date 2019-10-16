@@ -4,6 +4,8 @@
 #include <iostream>
 #include "board.h"
 #include "PlayerInterface.h"
+#include <time.h>
+
 using namespace std;
 
 class HumanPlayer : public PlayerInterface
@@ -61,7 +63,7 @@ class HumanPlayer : public PlayerInterface
 *@pre none
 *@post handles the attack/comparison
 *@param  takes in the x and y coordiinate of where the player would like to attack*/
- bool attack(int x, int y);
+ bool attack(int x, int y, string diff);
 
  /** calls the board class to compare char and update the board
 *@pre none
@@ -83,6 +85,7 @@ class HumanPlayer : public PlayerInterface
 *@param  takes in the x and y coordiinate of where the player would like to attack
  the bool is for determining if it was a success or not --  "o"  */
  bool hitRetry(int x, int y);
+
 
 };
 #endif

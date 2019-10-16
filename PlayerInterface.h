@@ -18,8 +18,6 @@ class PlayerInterface
 
     virtual void printHidden() = 0;
 
-    virtual bool attack(int x, int y) = 0;
-
     virtual void update(int, int, bool) = 0;
 
     virtual int getMarks() = 0;
