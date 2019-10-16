@@ -29,7 +29,7 @@ public:
  @post
  @param None  */
   Board();
-  
+
   /** notify player of all active ships
  *@pre PrintMap is called
  *@post statusReport will notify the player of any ships active during gameplay
@@ -109,6 +109,8 @@ public:
   */
   //void shuffleArray(int powerUpPos[], int size);
   //void setNumPowerUps(int n);
+
+  char** getMap();
 
 
 

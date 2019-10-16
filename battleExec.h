@@ -135,6 +135,8 @@ private:
       int numPowerUps = 0;
       char powerUps [8][8];
 
+      int turn = 0;
       string targetCoordinates[64];
+
 };
 #endif

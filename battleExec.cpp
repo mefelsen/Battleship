@@ -15,12 +15,14 @@
 #include <limits>
 #include <iostream>
 #include <unistd.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 Executive::Executive()
 {
     ship_num = 0; //sets starting ship amount to zero
     srand(time(NULL));
+    setTargetCoordinates();
 }
 
 void Executive::run()
@@ -388,6 +390,7 @@ void Executive::runPvAI()
        << "  WAITING FOR AI TO FINISH PLACING SHIPS\n"
        << "******************************************\n\n\n\n\n\n\n\n\n\n";
 
+
   int tempRow, tempCol;
   while(!ai.isAllMarked())
   {
@@ -470,29 +473,69 @@ void Executive::runPvAI()
     ai.printHidden();
     ai.print();
 
-    row = rand() % 8;
-    col = rand() % 8;
-    if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
-    {
-      ai.update(row,col, true); //here, we want to only update grid
 
-      //if(ai.getHits() == win_hits) break;
+    if(ai.getDifficulty() == "Easy" && transfor(targetCoordinates[turn]))
+    {
+      if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
+      {
+        ai.update(row,col, true); //here, we want to only update grid
+
+        //if(ai.getHits() == win_hits) break;
+      }
+      else
+      {
+        ai.update(row,col, false);
+      }
+
+      ai.printHidden();
+      ai.print();
+
+      if (player.getHits() == win_hits)
+      {
+        cout<<"\nAI WINS. Sorry human :(\n";
+        break;
+      }
+      turn++;
     }
-    else
+
+    else if(ai.getDifficulty() == "Medium" && transfor(targetCoordinates[turn]))
     {
-      ai.update(row,col, false);
+
     }
 
-    ai.printHidden();
-    ai.print();
-
-    if (player.getHits() == win_hits)
+    else if(ai.getDifficulty() == "Hard")
     {
-      cout<<"\nAI WINS. Sorry human :(\n";
-      break;
+      // for(int i = 0; i < 8; i++)
+      // {
+      //   for(int j = 0; j < 8; j++)
+      //   {
+      //     if(player.getBoard()[i][j] != '~')
+      //       row = i;
+      //       col = j;
+      //   }
+      }
+      if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
+      {
+        ai.update(row,col, true); //here, we want to only update grid
+
+        //if(ai.getHits() == win_hits) break;
+      }
+      else
+      {
+        ai.update(row,col, false);
+      }
+
+      ai.printHidden();
+      ai.print();
+
+      if (player.getHits() == win_hits)
+      {
+        cout<<"\nAI WINS. Sorry human :(\n";
+        break;
+      }
+
     }
   }
-}
 
 Executive::~Executive()
 {
@@ -647,7 +690,7 @@ bool Executive::transfromchar(int x)
 bool Executive::transtoint(char x)
 {
   string y = "ABCDEFGH";
-  string z= "abcdefgh";
+  string z = "abcdefgh";
   bool flag = false;
   for (int i = 0; i < 8; i++)
   {
@@ -756,7 +799,8 @@ void Executive::displayPowerUps()
   }
 }
 
-void Executive::setTargetCoordinates() {
+void Executive::setTargetCoordinates()
+{
   string letters = "ABCDEFGH";
   string nums = "12345678";
   int letterIndex = 0;
@@ -778,7 +822,7 @@ void Executive::setTargetCoordinates() {
       numIndex = 0;
       letterIndex++;
     }
-  }
+}
 
   srand(time(0));
 

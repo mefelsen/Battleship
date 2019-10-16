@@ -130,7 +130,7 @@ void AI::setDifficulty(int difficulty)
 
   else
   {
-
+    cout << "Please input a valid difficulty.\n";
   }
 }
 

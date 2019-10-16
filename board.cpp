@@ -14,6 +14,8 @@ using namespace std;
 
 Board::Board() {
 
+
+
   for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
       grid[i][j] = '~';
@@ -316,4 +318,9 @@ bool Board::retryCheck(int x, int y)
   {
     return false;
   }
+}
+
+char** Board::getMap()
+{
+   //return map;
 }
