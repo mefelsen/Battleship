@@ -136,6 +136,13 @@ bool HumanPlayer::hitRetry(int x, int y)
   return(playerBoard.retryCheck(x, y));
 }
 
+/*
+string AI::getTargetCoordinates()
+{
+  return targetCoordinates[0];
+}
+*/
+
 // void HumanPlayer::setTargetCoordinates() {
 //   string letters = "ABCDEFGH";
 //   string nums = "12345678";
@@ -198,6 +205,28 @@ bool HumanPlayer::hitRetry(int x, int y)
 //   }
 //   cout << "\n";
 // }
+
+/*
+void HumanPlayer::fireAtCoordinates()
+{
+  string coordinates = getTargetCoordinates();
+  string array[coordinatesArraySize];
+
+  for (int i = 0; i < coordinatesArraySize; i++)
+  {
+    array[i] = targetCoordinates[i];
+  }
+
+  coordinatesArraySize--;
+
+  targetCoordinates[coordinatesArraySize];
+
+  for (int i = 0; i < coordinatesArraySize; i++)
+  {
+    targetCoordinates[i] = array[i + 1];
+  }
+}
+*/
 
 Board HumanPlayer::getBoard()
 {

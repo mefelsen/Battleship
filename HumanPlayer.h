@@ -17,6 +17,7 @@ class HumanPlayer : public PlayerInterface
     int unmark;//ships that are unmarked
     int num_hits;
     int numOfShip;
+    int coordinatesArraySize = 64;
     string targetCoordinates[64];
     int turn = 0;
 
@@ -88,9 +89,11 @@ class HumanPlayer : public PlayerInterface
  the bool is for determining if it was a success or not --  "o"  */
  bool hitRetry(int x, int y);
 
+ // string getTargetCoordinates();
  // void setTargetCoordinates();
  // void shuffleCoordinates(string arr[], int n);
  // void printRandomCoordinates();
+ // void fireAtCoordinates();
 
  Board getBoard();
 
