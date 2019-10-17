@@ -140,7 +140,11 @@ private:
 
       int turn = 0;
       int coordinatesArraySize = 64;
+      int tempArraySize = 64;
       string targetCoordinates[64];
+
+      bool targetAquired, tryUp, tryDown, tryLeft, tryRight, tryDirection;
+      string shipCoordinates;
 
 };
 #endif

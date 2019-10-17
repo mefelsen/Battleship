@@ -498,9 +498,225 @@ void Executive::runPvAI()
       turn++;
     }
 
-    else if(ai.getDifficulty() == "Medium" && transfor(targetCoordinates[turn]))
+    else if(ai.getDifficulty() == "Medium")
     {
+      cout << "Randomizing coordinates\n\n";
+      printRandomCoordinates();
+      cout << "Target coordinates: "<< shipCoordinates << "\n\n";
 
+      if (targetAquired)
+      {
+        if (transfor(shipCoordinates))
+        {
+          if (tryDown && tryDirection)
+          {
+            tryDirection = false;
+            tryDown = false;
+            if (row + 1 < 9)
+            {
+              if (ai.getBoard().getGrid()[row + 1][col] != 'x' || ai.getBoard().getGrid()[row + 1][col] != 'o')
+              {
+                if(player.attack(row + 1, col, ai.getDifficulty())) //here we want to change map
+                {
+                  ai.update(row + 1,col, true); //here, we want to only update grid
+                  targetAquired = true;
+                  tryDown = true;
+                  tryUp = true;
+                  //tryLeft = true;
+                  //tryRight = true;
+                  //if(ai.getHits() == win_hits) break;
+                }
+                else
+                {
+                  ai.update(row + 1,col, false);
+                }
+
+                string y = "ABCDEFGH";
+                shipCoordinates = y.at(col);
+                string nums = "12345678";
+                shipCoordinates = shipCoordinates + nums.at(row + 1);
+                fireAtCoordinates();
+
+                ai.printHidden();
+                ai.print();
+
+                if (player.getHits() == win_hits)
+                {
+                  cout<<"\nAI WINS. Sorry human :(\n";
+                  break;
+                }
+              }
+              else {
+                tryDirection = true;
+              }
+            }
+            else {
+              tryDirection = true;
+            }
+          }
+
+          if (tryUp && tryDirection)
+          {
+            tryDirection = false;
+            tryUp = false;
+            if (row - 1 >= 0)
+            {
+              if (ai.getBoard().getGrid()[row - 1][col] != 'x' || ai.getBoard().getGrid()[row - 1][col] != 'o')
+              {
+                if(player.attack(row - 1, col, ai.getDifficulty())) //here we want to change map
+                {
+                  ai.update(row - 1,col, true); //here, we want to only update grid
+                  targetAquired = true;
+                  tryDown = true;
+                  tryUp = true;
+                  //tryLeft = true;
+                  //tryRight = true;
+                  //if(ai.getHits() == win_hits) break;
+                }
+                else
+                {
+                  ai.update(row - 1,col, false);
+                  targetAquired = false;
+                }
+
+                string y = "ABCDEFGH";
+                shipCoordinates = y.at(col);
+                string nums = "12345678";
+                shipCoordinates = shipCoordinates + nums.at(row + 1);
+                fireAtCoordinates();
+
+                ai.printHidden();
+                ai.print();
+
+                if (player.getHits() == win_hits)
+                {
+                  cout<<"\nAI WINS. Sorry human :(\n";
+                  break;
+                }
+              }
+              else {
+                tryDirection = true;
+              }
+            }
+            else {
+              tryDirection = true;
+            }
+          }
+
+          /*
+          if (tryLeft && tryDirection)
+          {
+            tryDirection = false;
+            if (col - 1 >= 0)
+            {
+              if(player.attack(row, col - 1, ai.getDifficulty())) //here we want to change map
+              {
+                ai.update(row,col - 1, true); //here, we want to only update grid
+                //if(ai.getHits() == win_hits) break;
+              }
+              else
+              {
+                ai.update(row,col - 1, false);
+                targetAquired = false;
+              }
+
+              ai.printHidden();
+              ai.print();
+
+              if (player.getHits() == win_hits)
+              {
+                cout<<"\nAI WINS. Sorry human :(\n";
+                break;
+              }
+            }
+            else {
+              tryDirection = true;
+            }
+
+            tryLeft = false;
+          }
+
+          if (tryRight && tryDirection)
+          {
+            tryDirection = false;
+            if (col + 1 >= 0)
+            {
+              if(player.attack(row, col + 1, ai.getDifficulty())) //here we want to change map
+              {
+                ai.update(row,col + 1, true); //here, we want to only update grid
+                //if(ai.getHits() == win_hits) break;
+              }
+              else
+              {
+                ai.update(row,col + 1, false);
+                targetAquired = false;
+              }
+
+              ai.printHidden();
+              ai.print();
+
+              if (player.getHits() == win_hits)
+              {
+                cout<<"\nAI WINS. Sorry human :(\n";
+                break;
+              }
+              else {
+                tryDirection = true;
+              }
+
+              tryRight = false;
+            }
+          }
+          */
+
+          if (!tryDirection)
+          {
+            tryDirection = true;
+          }
+
+          if(!tryUp && !tryDown)
+          {
+            targetAquired = false;
+          }
+        }
+      }
+
+      if (transfor(targetCoordinates[turn]) && !targetAquired)
+      {
+        if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
+        {
+          ai.update(row,col, true); //here, we want to only update grid
+          targetAquired = true;
+          tryUp = true;
+          tryDown = true;
+          tryLeft = true;
+          tryRight = true;
+          tryDirection = true;
+          //if(ai.getHits() == win_hits) break;
+        }
+        else
+        {
+          ai.update(row,col, false);
+          targetAquired = false;
+          tryUp = false;
+          tryDown = false;
+          tryLeft = false;
+          tryRight = false;
+          tryDirection = false;
+        }
+
+        shipCoordinates = getTargetCoordinates();
+        fireAtCoordinates();
+
+        ai.printHidden();
+        ai.print();
+
+        if (player.getHits() == win_hits)
+        {
+          cout<<"\nAI WINS. Sorry human :(\n";
+          break;
+        }
+      }
     }
 
     else if(ai.getDifficulty() == "Hard")
@@ -870,7 +1086,7 @@ void Executive::shuffleCoordinates(string arr[], int n)
 void Executive::printRandomCoordinates()
 {
   int index = 0;
-  for (int i = 0; i < 64; i++) {
+  for (int i = 0; i < tempArraySize; i++) {
     cout << targetCoordinates[i] << ", ";
     index++;
     if(index == 8)
@@ -884,20 +1100,28 @@ void Executive::printRandomCoordinates()
 
 void Executive::fireAtCoordinates()
 {
-  string coordinates = getTargetCoordinates();
-  string array[coordinatesArraySize];
+  string coordinates = shipCoordinates;
+  string array[tempArraySize];
 
-  for (int i = 0; i < coordinatesArraySize; i++)
+  for (int i = 0; i < tempArraySize; i++)
   {
     array[i] = targetCoordinates[i];
   }
 
-  coordinatesArraySize--;
+  tempArraySize--;
 
-  targetCoordinates[coordinatesArraySize];
+  int index = 0;
 
-  for (int i = 0; i < coordinatesArraySize; i++)
+  for (int i = 0; i < tempArraySize; i++)
   {
-    targetCoordinates[i] = array[i + 1];
+    if (array[i] == coordinates) {
+      index++;
+    }
+    targetCoordinates[i] = array[i + index];
+  }
+
+  for (int i = tempArraySize; i < coordinatesArraySize; i++)
+  {
+    targetCoordinates[i] = "";
   }
 }

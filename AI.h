@@ -50,5 +50,7 @@ class AI : public PlayerInterface
 
      string getDifficulty();
 
+     Board getBoard();
+
 };
 #endif
