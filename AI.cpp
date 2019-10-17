@@ -143,3 +143,8 @@ void AI::setPlayerCalledAttack(bool called)
 {
   this->playerCalledAttack = called;
 }
+
+Board AI::getBoard()
+{
+  return aiBoard;
+}

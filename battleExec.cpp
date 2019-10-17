@@ -15,7 +15,7 @@
 #include <limits>
 #include <iostream>
 #include <unistd.h>
-//#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 Executive::Executive()
@@ -502,7 +502,7 @@ void Executive::runPvAI()
     {
       cout << "Randomizing coordinates\n\n";
       printRandomCoordinates();
-      cout << shipCoordinates << "\n\n";
+      cout << "Target coordinates: "<< shipCoordinates << "\n\n";
 
       if (targetAquired)
       {
@@ -514,34 +514,40 @@ void Executive::runPvAI()
             tryDown = false;
             if (row + 1 < 9)
             {
-              if(player.attack(row + 1, col, ai.getDifficulty())) //here we want to change map
+              if (ai.getBoard().getGrid()[row + 1][col] != 'x' || ai.getBoard().getGrid()[row + 1][col] != 'o')
               {
-                ai.update(row + 1,col, true); //here, we want to only update grid
+                if(player.attack(row + 1, col, ai.getDifficulty())) //here we want to change map
+                {
+                  ai.update(row + 1,col, true); //here, we want to only update grid
+                  targetAquired = true;
+                  tryDown = true;
+                  tryUp = true;
+                  //tryLeft = true;
+                  //tryRight = true;
+                  //if(ai.getHits() == win_hits) break;
+                }
+                else
+                {
+                  ai.update(row + 1,col, false);
+                }
+
                 string y = "ABCDEFGH";
                 shipCoordinates = y.at(col);
                 string nums = "12345678";
                 shipCoordinates = shipCoordinates + nums.at(row + 1);
-                targetAquired = true;
-                tryDown = true;
-                tryUp = true;
-                //tryLeft = true;
-                //tryRight = true;
+                fireAtCoordinates();
+
+                ai.printHidden();
+                ai.print();
+
+                if (player.getHits() == win_hits)
+                {
+                  cout<<"\nAI WINS. Sorry human :(\n";
+                  break;
+                }
+              }
+              else {
                 tryDirection = true;
-                //if(ai.getHits() == win_hits) break;
-              }
-              else
-              {
-                ai.update(row + 1,col, false);
-                targetAquired = false;
-              }
-
-              ai.printHidden();
-              ai.print();
-
-              if (player.getHits() == win_hits)
-              {
-                cout<<"\nAI WINS. Sorry human :(\n";
-                break;
               }
             }
             else {
@@ -549,48 +555,53 @@ void Executive::runPvAI()
             }
           }
 
-          /*
           if (tryUp && tryDirection)
           {
             tryDirection = false;
             tryUp = false;
             if (row - 1 >= 0)
             {
-              if(player.attack(row - 1, col, ai.getDifficulty())) //here we want to change map
+              if (ai.getBoard().getGrid()[row - 1][col] != 'x' || ai.getBoard().getGrid()[row - 1][col] != 'o')
               {
-                ai.update(row - 1,col, true); //here, we want to only update grid
+                if(player.attack(row - 1, col, ai.getDifficulty())) //here we want to change map
+                {
+                  ai.update(row - 1,col, true); //here, we want to only update grid
+                  targetAquired = true;
+                  tryDown = true;
+                  tryUp = true;
+                  //tryLeft = true;
+                  //tryRight = true;
+                  //if(ai.getHits() == win_hits) break;
+                }
+                else
+                {
+                  ai.update(row - 1,col, false);
+                  targetAquired = false;
+                }
+
                 string y = "ABCDEFGH";
                 shipCoordinates = y.at(col);
                 string nums = "12345678";
                 shipCoordinates = shipCoordinates + nums.at(row + 1);
-                targetAquired = true;
-                tryDown = true;
-                tryUp = true;
-                //tryLeft = true;
-                //tryRight = true;
+                fireAtCoordinates();
+
+                ai.printHidden();
+                ai.print();
+
+                if (player.getHits() == win_hits)
+                {
+                  cout<<"\nAI WINS. Sorry human :(\n";
+                  break;
+                }
+              }
+              else {
                 tryDirection = true;
-                //if(ai.getHits() == win_hits) break;
-              }
-              else
-              {
-                ai.update(row - 1,col, false);
-                targetAquired = false;
-              }
-
-              ai.printHidden();
-              ai.print();
-
-              if (player.getHits() == win_hits)
-              {
-                cout<<"\nAI WINS. Sorry human :(\n";
-                break;
               }
             }
             else {
               tryDirection = true;
             }
           }
-          */
 
           /*
           if (tryLeft && tryDirection)
@@ -657,9 +668,20 @@ void Executive::runPvAI()
             }
           }
           */
+
+          if (!tryDirection)
+          {
+            tryDirection = true;
+          }
+
+          if(!tryUp && !tryDown)
+          {
+            targetAquired = false;
+          }
         }
       }
-      else if (transfor(targetCoordinates[turn]))
+
+      if (transfor(targetCoordinates[turn]) && !targetAquired)
       {
         if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
         {
@@ -670,7 +692,6 @@ void Executive::runPvAI()
           tryLeft = true;
           tryRight = true;
           tryDirection = true;
-          shipCoordinates = getTargetCoordinates();
           //if(ai.getHits() == win_hits) break;
         }
         else
@@ -684,6 +705,7 @@ void Executive::runPvAI()
           tryDirection = false;
         }
 
+        shipCoordinates = getTargetCoordinates();
         fireAtCoordinates();
 
         ai.printHidden();
@@ -1078,7 +1100,7 @@ void Executive::printRandomCoordinates()
 
 void Executive::fireAtCoordinates()
 {
-  string coordinates = getTargetCoordinates();
+  string coordinates = shipCoordinates;
   string array[tempArraySize];
 
   for (int i = 0; i < tempArraySize; i++)
@@ -1087,8 +1109,6 @@ void Executive::fireAtCoordinates()
   }
 
   tempArraySize--;
-
-  targetCoordinates[tempArraySize];
 
   int index = 0;
 
