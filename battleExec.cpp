@@ -15,7 +15,7 @@
 #include <limits>
 #include <iostream>
 #include <unistd.h>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 using namespace std;
 
 Executive::Executive()
@@ -498,9 +498,142 @@ void Executive::runPvAI()
       turn++;
     }
 
-    else if(ai.getDifficulty() == "Medium" && transfor(targetCoordinates[turn]))
+    else if(ai.getDifficulty() == "Medium")
     {
+      cout << "Randomizing coordinates\n\n";
+      printRandomCoordinates();
 
+      if (targetAquired)
+      {
+        if (transfor(shipCoordinates))
+        {
+          if (tryUp) {
+            if (row + 1 < 9)
+            {
+              if(player.attack(row + 1, col, ai.getDifficulty())) //here we want to change map
+              {
+                ai.update(row + 1,col, true); //here, we want to only update grid
+                shipCoordinates = getTargetCoordinates();
+                //if(ai.getHits() == win_hits) break;
+              }
+              else
+              {
+                ai.update(row + 1,col, false);
+              }
+
+              ai.printHidden();
+              ai.print();
+
+              if (player.getHits() == win_hits)
+              {
+                cout<<"\nAI WINS. Sorry human :(\n";
+                break;
+              }
+            }
+
+            tryUp = false;
+          }
+          else if (row - 1 >= 0)
+          {
+            if(player.attack(row - 1, col, ai.getDifficulty())) //here we want to change map
+            {
+              ai.update(row - 1,col, true); //here, we want to only update grid
+              //if(ai.getHits() == win_hits) break;
+            }
+            else
+            {
+              ai.update(row - 1,col, false);
+            }
+
+            ai.printHidden();
+            ai.print();
+
+            if (player.getHits() == win_hits)
+            {
+              cout<<"\nAI WINS. Sorry human :(\n";
+              break;
+            }
+          }
+          else if (col - 1 >= 0)
+          {
+            if(player.attack(row, col - 1, ai.getDifficulty())) //here we want to change map
+            {
+              ai.update(row,col - 1, true); //here, we want to only update grid
+              //if(ai.getHits() == win_hits) break;
+            }
+            else
+            {
+              ai.update(row,col - 1, false);
+              targetAquired = false;
+            }
+
+            ai.printHidden();
+            ai.print();
+
+            if (player.getHits() == win_hits)
+            {
+              cout<<"\nAI WINS. Sorry human :(\n";
+              break;
+            }
+          }
+          else if (col + 1 >= 0)
+          {
+            if(player.attack(row, col + 1, ai.getDifficulty())) //here we want to change map
+            {
+              ai.update(row,col + 1, true); //here, we want to only update grid
+              //if(ai.getHits() == win_hits) break;
+            }
+            else
+            {
+              ai.update(row,col + 1, false);
+              targetAquired = false;
+            }
+
+            ai.printHidden();
+            ai.print();
+
+            if (player.getHits() == win_hits)
+            {
+              cout<<"\nAI WINS. Sorry human :(\n";
+              break;
+            }
+          }
+        }
+      }
+      else if (transfor(targetCoordinates[turn]))
+      {
+        if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
+        {
+          ai.update(row,col, true); //here, we want to only update grid
+          targetAquired = true;
+          tryUp = true;
+          tryDown = true;
+          tryLeft = true;
+          tryRight = true;
+          shipCoordinates = getTargetCoordinates();
+          //if(ai.getHits() == win_hits) break;
+        }
+        else
+        {
+          ai.update(row,col, false);
+          targetAquired = false;
+          tryUp = false;
+          tryDown = false;
+          tryLeft = false;
+          tryRight = false;
+        }
+
+        fireAtCoordinates();
+
+        ai.printHidden();
+        ai.print();
+
+        if (player.getHits() == win_hits)
+        {
+          cout<<"\nAI WINS. Sorry human :(\n";
+          break;
+        }
+      }
     }
 
     else if(ai.getDifficulty() == "Hard")
@@ -896,8 +1029,13 @@ void Executive::fireAtCoordinates()
 
   targetCoordinates[coordinatesArraySize];
 
+  int index = 0;
+
   for (int i = 0; i < coordinatesArraySize; i++)
   {
-    targetCoordinates[i] = array[i + 1];
+    if (array[i] == coordinates) {
+      index++;
+    }
+    targetCoordinates[i] = array[i + index];
   }
 }

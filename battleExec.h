@@ -142,5 +142,8 @@ private:
       int coordinatesArraySize = 64;
       string targetCoordinates[64];
 
+      bool targetAquired, tryUp, tryDown, tryLeft, tryRight;
+      string shipCoordinates;
+
 };
 #endif
