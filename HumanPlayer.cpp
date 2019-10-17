@@ -82,8 +82,7 @@ bool HumanPlayer::isAllMarked()
 
 bool HumanPlayer::attack(int x, int y, string diff)
 {
-  if(diff == "Easy")
-  {
+
     if(playerBoard.Attack(x, y))
     {
       num_hits++;
@@ -93,27 +92,28 @@ bool HumanPlayer::attack(int x, int y, string diff)
     cout << "\n\n\n\n\n\nSPLOOSH!! No ship here at " << x << ' ' << y << '\n';
     return false;
     turn ++;
-  }
 
-  else if(diff == "Medium")
-  {
-
-  }
-
-  else if(diff == "Hard")
-  {
-  }
-
-  else
-  {
-     if(playerBoard.Attack(x, y)) {
-       num_hits++;
-       cout << "\nYour attack was SUCCESSFUL!\n";
-       return true;
-     }
-     cout <<"\nSPLOOSH!! No ship here.\n";
-     return false;
-  }
+//
+//   else if(diff == "Medium")
+//   {
+//
+//   }
+//
+//   else if(diff == "Hard")
+//   {
+//
+//   }
+//
+//   else
+//  {
+//      if(playerBoard.Attack(x, y)) {
+//        num_hits++;
+//        cout << "\nYour attack was SUCCESSFUL!\n";
+//        return true;
+//      }
+//      cout <<"\nSPLOOSH!! No ship here.\n";
+//      return false;
+// //  }
 }
 
 void HumanPlayer::printHidden()

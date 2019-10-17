@@ -473,7 +473,7 @@ void Executive::runPvAI()
     ai.printHidden();
     ai.print();
 
-
+    turn = 0;
     if(ai.getDifficulty() == "Easy" && transfor(targetCoordinates[turn]))
     {
       if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
@@ -505,17 +505,31 @@ void Executive::runPvAI()
 
     else if(ai.getDifficulty() == "Hard")
     {
-      // for(int i = 0; i < 8; i++)
-      // {
-      //   for(int j = 0; j < 8; j++)
-      //   {
-      //     if(player.getBoard()[i][j] != '~')
-      //       row = i;
-      //       col = j;
-      //   }
+      int tempTurn = 0;
+      cout << "Got here.\n";
+      for(int i = 0; i < 8; i++)
+      {
+        for(int j = 0; j < 8; j++)
+        {
+          if(player.getBoard().getMap()[i][j] != '~' && player.getBoard().getMap()[i][j] != '*')
+          {
+            if(tempTurn == turn)
+            {
+              cout << "got here.\n";
+              row = i;
+              col = j;
+              break;
+            }
+            else
+            {
+              tempTurn++;
+            }
+          }
+        }
       }
       if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
       {
+        turn++;
         ai.update(row,col, true); //here, we want to only update grid
 
         //if(ai.getHits() == win_hits) break;
@@ -533,9 +547,9 @@ void Executive::runPvAI()
         cout<<"\nAI WINS. Sorry human :(\n";
         break;
       }
-
     }
   }
+}
 
 Executive::~Executive()
 {

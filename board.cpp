@@ -14,14 +14,23 @@ using namespace std;
 
 Board::Board() {
 
+grid = new char*[8];
+map = new char*[8];
 
+for(int i = 0; i < 8; i++)
+{
+  grid[i] = new char[8];
+  map[i] = new char[8];
+}
 
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
-      grid[i][j] = '~';
-      map[i][j] = '~';
-    }
+for(int i =0; i < 8; i++)
+{
+  for(int j = 0; j < 8; j++)
+  {
+    grid[i][j] = '~';
+    map[i][j] = '~';
   }
+}
   //powerUpGenerator();
   shipsRemaining = 0;
 }
@@ -322,5 +331,10 @@ bool Board::retryCheck(int x, int y)
 
 char** Board::getMap()
 {
-   //return map;
+   return map;
+}
+
+char** Board::getGrid()
+{
+  return grid;
 }

@@ -112,6 +112,7 @@ public:
 
   char** getMap();
 
+  char** getGrid();
 
 
 private:
@@ -123,8 +124,8 @@ private:
   shipsRemaining = number of ships remaining on the personal board during gameplay
   */
   //char powerUps[8][8];
-  char grid[8][8];
-  char map[8][8];
+  char** grid;
+  char** map;
   bool aActive, bActive, cActive, dActive, eActive;
   int shipsRemaining;
 };
