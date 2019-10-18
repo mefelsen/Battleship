@@ -21,7 +21,7 @@ class HumanPlayer : public PlayerInterface
     int coordinatesArraySize = 64;
     string targetCoordinates[64];
     int turn = 0;
-    Inventory Weapons;
+    Inventory WeaponInventory;
 
     public:
     /** Default constructor
@@ -98,6 +98,10 @@ class HumanPlayer : public PlayerInterface
  // void fireAtCoordinates();
 
  Board getBoard();
+
+ void setInventoryFile(string fileName);
+ void loadInventory();
+ void printInventory();
 
 
 };

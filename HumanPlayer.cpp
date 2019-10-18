@@ -136,6 +136,23 @@ bool HumanPlayer::hitRetry(int x, int y)
   return(playerBoard.retryCheck(x, y));
 }
 
+void HumanPlayer::setInventoryFile(string fileName)
+{
+  cout << "setInventoryFile Called\n\n";
+  WeaponInventory.setInventoryFile(fileName);
+}
+
+void HumanPlayer::loadInventory()
+{
+  cout << "loadInventory Called\n\n";
+  WeaponInventory.readFromInventoryFile();
+}
+
+void HumanPlayer::printInventory()
+{
+  WeaponInventory.printInventory();
+}
+
 /*
 string AI::getTargetCoordinates()
 {

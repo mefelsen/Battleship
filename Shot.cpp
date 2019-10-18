@@ -73,3 +73,5 @@ void Shot::setAmmount(int input)
 {
 	ammount = input;
 }
+
+

@@ -1,17 +1,31 @@
--Shot1
-Num:
-Power:
-Range:
+Name: Bomb
+Code: b
+Pattern: radius
+Amount: 5
+Range: 2
 
--Shot2
-Num:
-Power:
-Range:
+Name: Cross
+Code: c
+Pattern: cross
+Amount: 5
+Range: 8
 
--Shot3
-Num:
-Power:
-Range:
+Name: Vertical
+Code: v
+Pattern: vertical
+Amount: 5
+Range: 2
 
--cheatermode
-Num:
+Name: Horizontal
+Code: h
+Pattern: horizontal
+Amount: 5
+Range: 2
+
+Name: Nuke
+Code: n
+Pattern: all
+Amount: 5
+Range: 2
+
+-cheatermode enabled

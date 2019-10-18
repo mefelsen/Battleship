@@ -190,6 +190,19 @@ void Executive::runPvP()
       }
     }
 
+    cout << "Setting player inventories...\n\n";
+    player1.setInventoryFile("player1_powerUps.txt");
+    player2.setInventoryFile("player2_powerUps.txt");
+    cout << "Reading player inventories...\n\n";
+    player1.loadInventory();
+    player2.loadInventory();
+    cout << "Inventories loaded. Printing Inventories:\n\nPlayer1: \n";
+    player1.printInventory();
+    cout << "-------------------------------------------------------------\n\nPlayer2: \n";
+    player2.printInventory();
+
+
+
 
 
 

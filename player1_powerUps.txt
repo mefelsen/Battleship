@@ -4,5 +4,28 @@ Pattern: radius
 Amount: 3
 Range: 2
 
--cheatermode
-Num:
+Name: Cross
+Code: c
+Pattern: cross
+Amount: 3
+Range: 8
+
+Name: Vertical
+Code: v
+Pattern: vertical
+Amount: 3
+Range: 2
+
+Name: Horizontal
+Code: h
+Pattern: horizontal
+Amount: 3
+Range: 2
+
+Name: Nuke
+Code: n
+Pattern: all
+Amount: 3
+Range: 2
+
+-cheatermode disabled

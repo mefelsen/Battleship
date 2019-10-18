@@ -2,9 +2,10 @@
 
 const int NUM_SHOT_TYPES = 5;
 const int NUM_SHOT_VARIABLES = 5;
-string inventoryFile = "tutorial.txt";
+string inventoryFile = "";
 int numCheat = 0;
 Shot shotArray[NUM_SHOT_TYPES];
+bool cheatermode = false;
 
 //Default Constructor
 Inventory::Inventory()
@@ -16,6 +17,7 @@ Inventory::~Inventory(){}
 // and cheatnum variables. Run first if already have inventory file setup
 void Inventory::readFromInventoryFile()
 {
+	cout << "readFromInventoryFile Called\n\n";
 	string input;
 	std::ifstream file;
 	file.open(inventoryFile, fstream::in);
@@ -25,41 +27,38 @@ void Inventory::readFromInventoryFile()
 		{
 			file >> input;
 			if (input == "Name:")
-			{
+			{			
 				file >> input;
+				cout << "Reading: " + input + "\n";
 				shotArray[i].setShotName(input);
 			}
 			else if (input == "Code:")
-			{
+			{								
 				file >> input;
+				cout << "Reading: " + input + "\n";
 				shotArray[i].setShotCode(input[0]);
 			}
 			else if (input == "Pattern:")
-			{
+			{								
 				file >> input;
+				cout << "Reading: " + input + "\n";
 				shotArray[i].setPattern(input[0]);
 			}
-			else if (input == "Ammount:")
-			{
+			else if (input == "Amount:")
+			{							
 				file >> input;
+				cout << "Reading: " + input + "\n";
 				shotArray[i].setAmmount(stoi(input));
 			}
 			else if (input == "Range:")
-			{
+			{					
 				file >> input;
+				cout << "Reading: " + input + "\n";
 				shotArray[i].setRange(stoi(input));
 			}
 		}
-
 	}
 
-	file >> input;
-	if (input == "-cheatermode")
-	{
-		file >> input;
-		if (input == "Num:")
-			file >> numCheat;
-	}
 	file.close();
 }
 
@@ -112,7 +111,7 @@ Shot* Inventory::getShotArray()
 	return shotArray;
 }
 
-void setShotArray(Shot* input)
+void Inventory::setShotArray(Shot* input)
 {
 	for (int i = 0; NUM_SHOT_TYPES > i; i++)
 	{
@@ -120,3 +119,24 @@ void setShotArray(Shot* input)
 	}
 }
 
+void Inventory::printInventory()
+{
+	for(int i = 0; i < NUM_SHOT_TYPES; i++)
+	{
+		cout << "Name: " << shotArray[i].getShotName() << "\n" <<
+				"ShotCode: " << shotArray[i].getShotCode() << "\n" <<
+				"Pattern: " << shotArray[i].getPattern() << "\n" <<
+				"Amount: " << shotArray[i].getAmmount() << "\n" <<
+				"Range: " << shotArray[i].getRange() << "\n\n";
+	}
+}
+
+void Inventory::setCheaterMode(bool mode)
+{
+	cheatermode = mode;
+}
+
+bool Inventory::getCheaterMode()
+{
+	return cheatermode;
+}
