@@ -991,7 +991,7 @@ void Executive::shuffleCoordinates(string arr[], int n)
 void Executive::printRandomCoordinates()
 {
   int index = 0;
-  for (int i = 0; i < 64; i++) {
+  for (int i = 0; i < tempArraySize; i++) {
     cout << targetCoordinates[i] << ", ";
     index++;
     if(index == 8)
@@ -1005,21 +1005,29 @@ void Executive::printRandomCoordinates()
 
 void Executive::fireAtCoordinates()
 {
-  string coordinates = getTargetCoordinates();
-  string array[coordinatesArraySize];
+  string coordinates = shipCoordinates;
+  string array[tempArraySize];
 
-  for (int i = 0; i < coordinatesArraySize; i++)
+  for (int i = 0; i < tempArraySize; i++)
   {
     array[i] = targetCoordinates[i];
   }
 
-  coordinatesArraySize--;
+  tempArraySize--;
 
-  targetCoordinates[coordinatesArraySize];
+  int index = 0;
 
-  for (int i = 0; i < coordinatesArraySize; i++)
+  for (int i = 0; i < tempArraySize; i++)
   {
-    targetCoordinates[i] = array[i + 1];
+    if (array[i] == coordinates) {
+      index++;
+    }
+    targetCoordinates[i] = array[i + index];
+  }
+
+  for (int i = tempArraySize; i < coordinatesArraySize; i++)
+  {
+    targetCoordinates[i] = "";
   }
 }
 
