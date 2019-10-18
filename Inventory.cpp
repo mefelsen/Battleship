@@ -12,7 +12,6 @@ Inventory::~Inventory(){}
 // and cheatnum variables. Run first if already have inventory file setup
 void Inventory::readFromInventoryFile()
 {
-	cout << "readFromInventoryFile Called " << inventoryFile << "\n\n";
 	string input;
 	std::ifstream file;
 	file.open(inventoryFile, fstream::in);
@@ -24,41 +23,34 @@ void Inventory::readFromInventoryFile()
 			if (input == "Name:")
 			{			
 				file >> input;
-				cout << "Reading: " + input + "\n";
 				shotArray[i].setShotName(input);
 			}
 			else if (input == "Code:")
 			{								
 				file >> input;
-				cout << "Reading: " + input + "\n";
 				shotArray[i].setShotCode(input[0]);
 			}
 			else if (input == "Pattern:")
 			{								
 				file >> input;
-				cout << "Reading: " + input + "\n";
 				shotArray[i].setPattern(input[0]);
 			}
 			else if (input == "Amount:")
 			{							
 				file >> input;
-				cout << "Reading: " + input + "\n";
 				shotArray[i].setAmmount(stoi(input));
 			}
 			else if (input == "Range:")
 			{					
 				file >> input;
-				cout << "Reading: " + input + "\n";
 				shotArray[i].setRange(stoi(input));
 			}
 		}
 	}
 	file >> input;
-	cout << "Reading: " + input + "\n";
 	if(input == "-cheatermode")
 	{
 		file >> input;
-		cout << "Reading: " + input + "\n";
 		if(input == "enabled")
 		{
 			setCheaterMode(true);
@@ -101,7 +93,6 @@ void Inventory::writeToInventoryFile()
 
 void Inventory::setInventoryFile(string input)
 {	
-	cout << "setInventoryFile Called: " << input << " \n\n";
 	inventoryFile = input;
 }
 string Inventory::getInventoryFile()
@@ -159,4 +150,39 @@ void Inventory::setCheaterMode(bool mode)
 bool Inventory::getCheaterMode()
 {
 	return cheatermode;
+}
+
+int Inventory::powerUpSelectMenu()
+{
+	//display menu options
+	cout << "----- Select PowerUp -----\n" << std::endl;
+	cout <<	"(0) - - - None Selected\n";
+	cout << "(1) - - - Bomb\n";
+	cout <<	"(2) - - - Cross\n";
+	cout <<	"(3) - - - Vertical\n";
+	cout <<	"(4) - - - Horizontal\n";
+	cout <<	"(5) - - - Nuke\n";
+	
+
+  //create switch case for return value
+  int x = 0;
+  cin >> x;
+
+  switch(x)
+  {
+	case 0:
+		return (0);
+    case 1:
+      	return (1);
+    case 2:
+      	return (2);
+    case 3:
+      	return (3);
+    case 4:
+      	return (4);
+    case 5:
+      	return (5);
+    default:
+      	return (6);
+  }
 }

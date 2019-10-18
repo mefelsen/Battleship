@@ -127,6 +127,8 @@ private:
     int dir; //direction that the ship faces
 
     PowerUpBoard LootBoard;
+    bool player1_PowerUpEnabled = false;
+    bool player2_PowerUpEnabled = false;
 
     int turn = 0;
     int coordinatesArraySize = 64;
