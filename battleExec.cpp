@@ -546,221 +546,126 @@ void Executive::runPvAI()
 
     else if(ai.getDifficulty() == "Medium")
     {
-      cout << "Randomizing coordinates\n\n";
-      printRandomCoordinates();
-      cout << "Target coordinates: "<< shipCoordinates << "\n\n";
-
-      if (targetAquired)
+      if(!(ai.getIsAHit()))
       {
-        if (transfor(shipCoordinates))
+        if(transfor(targetCoordinates[turn]))
         {
-          if (tryDown && tryDirection)
+          while(ai.hitRetry(row, col))
           {
-            tryDirection = false;
-            tryDown = false;
-            if (row + 1 < 9)
-            {
-              if (ai.getBoard().getGrid()[row + 1][col] != 'x' || ai.getBoard().getGrid()[row + 1][col] != 'o')
-              {
-                if(player.attack(row + 1, col, ai.getDifficulty())) //here we want to change map
-                {
-                  ai.update(row + 1,col, true); //here, we want to only update grid
-                  targetAquired = true;
-                  tryDown = true;
-                  tryUp = true;
-                  //tryLeft = true;
-                  //tryRight = true;
-                  //if(ai.getHits() == win_hits) break;
-                }
-                else
-                {
-                  ai.update(row + 1,col, false);
-                }
-
-                string y = "ABCDEFGH";
-                shipCoordinates = y.at(col);
-                string nums = "12345678";
-                shipCoordinates = shipCoordinates + nums.at(row + 1);
-                fireAtCoordinates();
-
-                ai.printHidden();
-                ai.print();
-
-                if (player.getHits() == win_hits)
-                {
-                  cout<<"\nAI WINS. Sorry human :(\n";
-                  break;
-                }
-              }
-              else {
-                tryDirection = true;
-              }
-            }
-            else {
-              tryDirection = true;
-            }
+            turn++;
+            transfor(targetCoordinates[turn]);
           }
-
-          if (tryUp && tryDirection)
+          if(player.attack(row, col, ai.getDifficulty()))
           {
-            tryDirection = false;
-            tryUp = false;
-            if (row - 1 >= 0)
-            {
-              if (ai.getBoard().getGrid()[row - 1][col] != 'x' || ai.getBoard().getGrid()[row - 1][col] != 'o')
-              {
-                if(player.attack(row - 1, col, ai.getDifficulty())) //here we want to change map
-                {
-                  ai.update(row - 1,col, true); //here, we want to only update grid
-                  targetAquired = true;
-                  tryDown = true;
-                  tryUp = true;
-                  //tryLeft = true;
-                  //tryRight = true;
-                  //if(ai.getHits() == win_hits) break;
-                }
-                else
-                {
-                  ai.update(row - 1,col, false);
-                  targetAquired = false;
-                }
-
-                string y = "ABCDEFGH";
-                shipCoordinates = y.at(col);
-                string nums = "12345678";
-                shipCoordinates = shipCoordinates + nums.at(row + 1);
-                fireAtCoordinates();
-
-                ai.printHidden();
-                ai.print();
-
-                if (player.getHits() == win_hits)
-                {
-                  cout<<"\nAI WINS. Sorry human :(\n";
-                  break;
-                }
-              }
-              else {
-                tryDirection = true;
-              }
-            }
-            else {
-              tryDirection = true;
-            }
+            ai.update(row, col, true);
+            ai.setMediumCol(col);
+            ai.setMediumRow(row);
+            ai.setIsAHit(true);
           }
-
-          /*
-          if (tryLeft && tryDirection)
+          else
           {
-            tryDirection = false;
-            if (col - 1 >= 0)
-            {
-              if(player.attack(row, col - 1, ai.getDifficulty())) //here we want to change map
-              {
-                ai.update(row,col - 1, true); //here, we want to only update grid
-                //if(ai.getHits() == win_hits) break;
-              }
-              else
-              {
-                ai.update(row,col - 1, false);
-                targetAquired = false;
-              }
-
-              ai.printHidden();
-              ai.print();
-
-              if (player.getHits() == win_hits)
-              {
-                cout<<"\nAI WINS. Sorry human :(\n";
-                break;
-              }
-            }
-            else {
-              tryDirection = true;
-            }
-
-            tryLeft = false;
-          }
-
-          if (tryRight && tryDirection)
-          {
-            tryDirection = false;
-            if (col + 1 >= 0)
-            {
-              if(player.attack(row, col + 1, ai.getDifficulty())) //here we want to change map
-              {
-                ai.update(row,col + 1, true); //here, we want to only update grid
-                //if(ai.getHits() == win_hits) break;
-              }
-              else
-              {
-                ai.update(row,col + 1, false);
-                targetAquired = false;
-              }
-
-              ai.printHidden();
-              ai.print();
-
-              if (player.getHits() == win_hits)
-              {
-                cout<<"\nAI WINS. Sorry human :(\n";
-                break;
-              }
-              else {
-                tryDirection = true;
-              }
-
-              tryRight = false;
-            }
-          }
-          */
-
-          if (!tryDirection)
-          {
-            tryDirection = true;
-          }
-
-          if(!tryUp && !tryDown)
-          {
-            targetAquired = false;
+            ai.update(row, col, false);
+            ai.setIsAHit(false);
           }
         }
       }
 
-      if (transfor(targetCoordinates[turn]) && !targetAquired)
+    //Priority
+    //1. Up
+    //2. Right
+    //3. Left
+    //4. Down
+
+      else
       {
-        if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
+
+        // UP
+        if(ai.getMediumRow() > 0 && !(ai.hitRetry(ai.getMediumRow()-1, ai.getMediumCol())))
         {
-          ai.update(row,col, true); //here, we want to only update grid
-          targetAquired = true;
-          tryUp = true;
-          tryDown = true;
-          tryLeft = true;
-          tryRight = true;
-          tryDirection = true;
-          //if(ai.getHits() == win_hits) break;
+          if(player.attack(ai.getMediumRow()-1, ai.getMediumCol(), ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow()-1, ai.getMediumCol(), true);
+            ai.setMediumRow(ai.getMediumRow()-1);
+            ai.setMediumCol(ai.getMediumCol());
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow()-1, ai.getMediumCol(), false);
+          }
         }
+
+        //RIGHT
+        else if(ai.getMediumCol() < 7 && !(ai.hitRetry(ai.getMediumRow(), ai.getMediumCol()+1)))
+        {
+          if(player.attack(ai.getMediumRow(), ai.getMediumCol()+1, ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()+1, true);
+            ai.setMediumRow(ai.getMediumRow());
+            ai.setMediumCol(ai.getMediumCol()+1);
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()+1, false);
+          }
+        }
+
+        //LEFT
+        else if(ai.getMediumCol() > 0 && !(ai.hitRetry(ai.getMediumRow(), ai.getMediumCol()-1)))
+        {
+          if(player.attack(ai.getMediumRow(), ai.getMediumCol()-1, ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()-1, true);
+            ai.setMediumRow(ai.getMediumRow());
+            ai.setMediumCol(ai.getMediumCol()-1);
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()-1, false);
+          }
+        }
+
+        //DOWN
+        else if(ai.getMediumRow() < 7 && !(ai.hitRetry(ai.getMediumRow()+1, ai.getMediumCol())))
+        {
+          if(player.attack(ai.getMediumRow()+1, ai.getMediumCol(), ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow()+1, ai.getMediumCol(), true);
+            ai.setMediumRow(ai.getMediumRow()+1);
+            ai.setMediumCol(ai.getMediumCol());
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow()+1, ai.getMediumCol(), false);
+          }
+        }
+
         else
         {
-          ai.update(row,col, false);
-          targetAquired = false;
-          tryUp = false;
-          tryDown = false;
-          tryLeft = false;
-          tryRight = false;
-          tryDirection = false;
-        }
-
-        shipCoordinates = getTargetCoordinates();
-        fireAtCoordinates();
-
-        ai.printHidden();
-        ai.print();
-
-        if (player.getHits() == win_hits)
-        {
-          cout<<"\nAI WINS. Sorry human :(\n";
-          break;
+          ai.setIsAHit(false);
+          if(transfor(targetCoordinates[turn]))
+          {
+            while(ai.hitRetry(row, col))
+            {
+              turn++;
+              transfor(targetCoordinates[turn]);
+            }
+            if(player.attack(row, col, ai.getDifficulty()))
+            {
+              ai.update(row, col, true);
+              ai.setMediumCol(col);
+              ai.setMediumRow(row);
+              ai.setIsAHit(true);
+            }
+            else
+            {
+              ai.update(row, col, false);
+              ai.setIsAHit(false);
+            }
+          }
         }
       }
     }
@@ -1115,3 +1020,6 @@ void Executive::fireAtCoordinates()
     targetCoordinates[i] = "";
   }
 }
+
+
+//GET HITRETRY WORKING IN MEDIUM DIFFICULTY BEFORE CHECKING FOR RANDOM SHOTS

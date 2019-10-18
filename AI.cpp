@@ -5,6 +5,7 @@ AI::AI()
   marks = "abcde";
   num_hits = 0;
   marked = 0;
+  isAHit = false;
 }
 
 void AI::setNum(int x)
@@ -144,7 +145,32 @@ void AI::setPlayerCalledAttack(bool called)
   this->playerCalledAttack = called;
 }
 
-Board AI::getBoard()
+bool AI::getIsAHit()
 {
-  return aiBoard;
+  return isAHit;
+}
+
+void AI::setIsAHit(bool flag)
+{
+  isAHit = flag;
+}
+
+int AI::getMediumRow()
+{
+  return mediumRow;
+}
+
+int AI::getMediumCol()
+{
+  return mediumCol;
+}
+
+void AI::setMediumRow(int row)
+{
+  mediumRow = row;
+}
+
+void AI::setMediumCol(int col)
+{
+  mediumCol = col;
 }
