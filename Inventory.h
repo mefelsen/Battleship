@@ -29,10 +29,11 @@ public:
 	int getNumCheat();
 	Shot* getShotArray();
 	void setShotArray(Shot*);
-	void printInventory();
-
-	
+	void printInventory();	
 	void setCheaterMode(bool);
 	bool getCheaterMode();
+
+	int powerUpSelectMenu();
+	
 };
 

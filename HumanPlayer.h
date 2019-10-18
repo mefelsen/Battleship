@@ -102,6 +102,8 @@ class HumanPlayer : public PlayerInterface
  void setInventoryFile(string fileName);
  void loadInventory();
  void printInventory();
+ void inventoryRoll();
+ void inventorySelect();
 
 
 };

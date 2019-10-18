@@ -152,6 +152,44 @@ void HumanPlayer::printInventory()
   WeaponInventory.printInventory();
 }
 
+void HumanPlayer::inventorySelect()
+{
+  int x = 0;
+  while(x != 9)
+  {
+    x = WeaponInventory.powerUpSelectMenu();
+    switch(x)
+    {
+      case 0:
+        cout << " Nothing selected\n";
+        x = 9;
+        break;
+      case 1:
+        cout << "Bomb Selected\n\n";
+        x = 9;
+        break;
+      case 2:
+        cout << "Cross Selected\n";
+        x = 9;
+        break;
+      case 3:     
+        cout << "Vertical Selected\n";
+        x = 9;
+        break;
+      case 4:
+        cout << "Horizontal Selected\n";
+        x = 9;
+        break;
+      case 5:
+        cout << "Nuke Selected\n";
+        x = 9;
+        break;
+      default:
+        cout << "Please enter an integer between 0-5\n";
+      break;
+    }
+  }
+}
 /*
 string AI::getTargetCoordinates()
 {

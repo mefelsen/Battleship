@@ -189,42 +189,13 @@ void Executive::runPvP()
         cout << "enter a correct direction!" << endl;
       }
     }
-
     
+    cout << "Setting player inventories...\n\n";
     player1.setInventoryFile("player1_powerUps.txt");
     player2.setInventoryFile("player2_powerUps.txt");
-    
     player1.loadInventory();
     player2.loadInventory();
     
-    player1.printInventory();
-    cout << "-------------------------------------------------------------\n\nPlayer2: \n";
-    player2.printInventory();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
   cin >> dummy;
@@ -276,7 +247,8 @@ void Executive::runPvP()
       player1.print();
       if(LootBoard.update(row, col))
       {
-        cout << "\n\nLOOT FOUND!\n\n";
+        cout << "\n\nLOOT FOUND! Select a desired powerup...\n\n";
+        player1.inventorySelect();
       }
 
 
@@ -334,6 +306,8 @@ void Executive::runPvP()
       if(LootBoard.update(row, col))
       {
         cout << "\n\nLOOT FOUND!\n\n";
+        player2.inventorySelect();
+
       }
 
       if (player1.getHits() == win_hits)
