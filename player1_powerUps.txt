@@ -1,17 +1,8 @@
--Shot1
-Num:
-Power:
-Range:
-
--Shot2
-Num:
-Power:
-Range:
-
--Shot3
-Num:
-Power:
-Range:
+Name: Bomb
+Code: b
+Pattern: radius
+Amount: 3
+Range: 2
 
 -cheatermode
 Num:

@@ -31,53 +31,10 @@ for(int i =0; i < 8; i++)
     map[i][j] = '~';
   }
 }
-  //powerUpGenerator();
   shipsRemaining = 0;
 }
 
-/*
-void Board::powerUpGenerator()
-{
-  //create an initial array of position values to be later shuffled
-  int* powerUpPositions = new int[64];
-  for(int i = 0; i < 64; i++)
-  {
-    powerUpPositions[i] = i;
-  }
 
-  //Shuffle the powerUpPositions array;
-  shuffleArray(powerUpPositions, 64);
-
-  int r = 0;
-  for(int i = 0; i < numPowerUps; i++)
-  {
-    r = powerUpPositions[i];
-    int x = r / 8;
-    int y = r % 8;
-    powerUps[x][y] = 'x';
-  }
-  //int x = i / 8;
-  //int y = i % 8;
-}
-
-void Board::setNumPowerUps(int n)
-{
-  numPowerUps = n;
-}
-
-void Board::shuffleArray(int powerUpPos[], int size)
-{
-  srand(time(0));  // Initialize random number generator.
-  for(int i = 0; i < (size * 10); i++)
-  {
-    int index1 = (rand() % size);
-    int index2 = (rand() % size);
-    int placeHolder = powerUpPos[index1];
-    powerUpPos[index1] = powerUpPos[index2];
-    powerUpPos[index2] = placeHolder;
-  }
-}
-*/
 
 void Board::PrintMap() {
   shipsRemaining = 0;
@@ -93,23 +50,8 @@ void Board::PrintMap() {
   }
   cout<< "\n       Ship Legend:\n         a = Patrol Boat\n         b = Submarine\n         c = Destroyer\n         d = Battleship\n         e = Carrier\n\n";
   statusReport();
-
-  //PrintPowerUpMap();
 }
 
-/*
-void Board::PrintPowerUpMap() {
-  cout <<"\n       Power Ups: \n\n";
-  for(int i = 0; i < 8; i++) {
-    if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
-    for(int j = 0; j < 8; j++) {
-      if(j == 0) cout << i+1;
-       cout << "  " << powerUps[i][j];
-    }
-    cout << '\n';
-  }
-}
-*/
 
 void Board::statusReport() {
   shipsRemaining = 0;

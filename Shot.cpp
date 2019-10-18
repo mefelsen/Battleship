@@ -6,9 +6,9 @@ Shot::Shot() : shotname("z"),
 	           pattern('z'),
 			   range(0),
 			   ammount(0)
-{
-	
-}
+{}
+
+Shot::~Shot(){}
 
 //Run this for a cleaner decrement of shot after being used returnss false if no shots are left for use
 bool Shot::useShot()

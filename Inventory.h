@@ -11,6 +11,7 @@ private:
 
 public:
 	Inventory();
+	~Inventory();
 	void readFromInventoryFile();
 	void writeToInventoryFile();
 	void setInventoryFile(string);
