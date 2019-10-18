@@ -19,6 +19,10 @@ class AI : public PlayerInterface
 
     string difficultyAI;
     bool playerCalledAttack;
+    bool isAHit;
+
+    int mediumRow;
+    int mediumCol;
 
   public:
 
@@ -49,6 +53,18 @@ class AI : public PlayerInterface
      void setPlayerCalledAttack(bool called);
 
      string getDifficulty();
+
+     bool getIsAHit();
+
+     void setIsAHit(bool flag);
+
+     int getMediumRow();
+
+     int getMediumCol();
+
+     void setMediumRow(int row);
+
+     void setMediumCol(int col);
 
 };
 #endif

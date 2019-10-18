@@ -498,9 +498,130 @@ void Executive::runPvAI()
       turn++;
     }
 
-    else if(ai.getDifficulty() == "Medium" && transfor(targetCoordinates[turn]))
+    else if(ai.getDifficulty() == "Medium")
     {
+      if(!(ai.getIsAHit()))
+      {
+        if(transfor(targetCoordinates[turn]))
+        {
+          while(ai.hitRetry(row, col))
+          {
+            turn++;
+            transfor(targetCoordinates[turn]);
+          }
+          if(player.attack(row, col, ai.getDifficulty()))
+          {
+            ai.update(row, col, true);
+            ai.setMediumCol(col);
+            ai.setMediumRow(row);
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(row, col, false);
+            ai.setIsAHit(false);
+          }
+        }
+      }
 
+    //Priority
+    //1. Up
+    //2. Right
+    //3. Left
+    //4. Down
+
+      else
+      {
+
+        // UP
+        if(ai.getMediumRow() > 0 && !(ai.hitRetry(ai.getMediumRow()-1, ai.getMediumCol())))
+        {
+          if(player.attack(ai.getMediumRow()-1, ai.getMediumCol(), ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow()-1, ai.getMediumCol(), true);
+            ai.setMediumRow(ai.getMediumRow()-1);
+            ai.setMediumCol(ai.getMediumCol());
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow()-1, ai.getMediumCol(), false);
+          }
+        }
+
+        //RIGHT
+        else if(ai.getMediumCol() < 7 && !(ai.hitRetry(ai.getMediumRow(), ai.getMediumCol()+1)))
+        {
+          if(player.attack(ai.getMediumRow(), ai.getMediumCol()+1, ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()+1, true);
+            ai.setMediumRow(ai.getMediumRow());
+            ai.setMediumCol(ai.getMediumCol()+1);
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()+1, false);
+          }
+        }
+
+        //LEFT
+        else if(ai.getMediumCol() > 0 && !(ai.hitRetry(ai.getMediumRow(), ai.getMediumCol()-1)))
+        {
+          if(player.attack(ai.getMediumRow(), ai.getMediumCol()-1, ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()-1, true);
+            ai.setMediumRow(ai.getMediumRow());
+            ai.setMediumCol(ai.getMediumCol()-1);
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow(), ai.getMediumCol()-1, false);
+          }
+        }
+
+        //DOWN
+        else if(ai.getMediumRow() < 7 && !(ai.hitRetry(ai.getMediumRow()+1, ai.getMediumCol())))
+        {
+          if(player.attack(ai.getMediumRow()+1, ai.getMediumCol(), ai.getDifficulty()))
+          {
+            ai.update(ai.getMediumRow()+1, ai.getMediumCol(), true);
+            ai.setMediumRow(ai.getMediumRow()+1);
+            ai.setMediumCol(ai.getMediumCol());
+            ai.setIsAHit(true);
+          }
+          else
+          {
+            ai.update(ai.getMediumRow()+1, ai.getMediumCol(), false);
+          }
+        }
+
+        else
+        {
+          ai.setIsAHit(false);
+          if(transfor(targetCoordinates[turn]))
+          {
+            while(ai.hitRetry(row, col))
+            {
+              turn++;
+              transfor(targetCoordinates[turn]);
+            }
+            if(player.attack(row, col, ai.getDifficulty()))
+            {
+              ai.update(row, col, true);
+              ai.setMediumCol(col);
+              ai.setMediumRow(row);
+              ai.setIsAHit(true);
+            }
+            else
+            {
+              ai.update(row, col, false);
+              ai.setIsAHit(false);
+            }
+          }
+        }
+      }
     }
 
     else if(ai.getDifficulty() == "Hard")
@@ -901,3 +1022,6 @@ void Executive::fireAtCoordinates()
     targetCoordinates[i] = array[i + 1];
   }
 }
+
+
+//GET HITRETRY WORKING IN MEDIUM DIFFICULTY BEFORE CHECKING FOR RANDOM SHOTS
