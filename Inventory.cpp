@@ -1,11 +1,6 @@
 #include "Inventory.h"
 
-const int NUM_SHOT_TYPES = 5;
-const int NUM_SHOT_VARIABLES = 5;
-string inventoryFile = "";
-int numCheat = 0;
-Shot shotArray[NUM_SHOT_TYPES];
-bool cheatermode = false;
+
 
 //Default Constructor
 Inventory::Inventory()
@@ -17,7 +12,7 @@ Inventory::~Inventory(){}
 // and cheatnum variables. Run first if already have inventory file setup
 void Inventory::readFromInventoryFile()
 {
-	cout << "readFromInventoryFile Called\n\n";
+	cout << "readFromInventoryFile Called " << inventoryFile << "\n\n";
 	string input;
 	std::ifstream file;
 	file.open(inventoryFile, fstream::in);
@@ -58,6 +53,21 @@ void Inventory::readFromInventoryFile()
 			}
 		}
 	}
+	file >> input;
+	cout << "Reading: " + input + "\n";
+	if(input == "-cheatermode")
+	{
+		file >> input;
+		cout << "Reading: " + input + "\n";
+		if(input == "enabled")
+		{
+			setCheaterMode(true);
+		}
+		else if(input == "disabled")
+		{
+			setCheaterMode(false);
+		}
+	}
 
 	file.close();
 }
@@ -90,7 +100,8 @@ void Inventory::writeToInventoryFile()
 }
 
 void Inventory::setInventoryFile(string input)
-{
+{	
+	cout << "setInventoryFile Called: " << input << " \n\n";
 	inventoryFile = input;
 }
 string Inventory::getInventoryFile()
@@ -129,6 +140,15 @@ void Inventory::printInventory()
 				"Amount: " << shotArray[i].getAmmount() << "\n" <<
 				"Range: " << shotArray[i].getRange() << "\n\n";
 	}
+	if(getCheaterMode())
+	{
+		cout << "cheatermode: enabled\n\n";
+	}
+	else
+	{
+		cout << "cheatermode: disabled\n\n";
+	}
+	
 }
 
 void Inventory::setCheaterMode(bool mode)

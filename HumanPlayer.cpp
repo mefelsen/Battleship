@@ -138,13 +138,12 @@ bool HumanPlayer::hitRetry(int x, int y)
 
 void HumanPlayer::setInventoryFile(string fileName)
 {
-  cout << "setInventoryFile Called\n\n";
+  
   WeaponInventory.setInventoryFile(fileName);
 }
 
 void HumanPlayer::loadInventory()
 {
-  cout << "loadInventory Called\n\n";
   WeaponInventory.readFromInventoryFile();
 }
 
