@@ -5,6 +5,7 @@
 #include "board.h"
 #include "PlayerInterface.h"
 #include <time.h>
+#include "Inventory.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class HumanPlayer : public PlayerInterface
     int coordinatesArraySize = 64;
     string targetCoordinates[64];
     int turn = 0;
+    Inventory Weapons;
 
     public:
     /** Default constructor

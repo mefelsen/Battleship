@@ -45,6 +45,7 @@ void Executive::runPvP()
     Determine number of powerups desired for the game.
   */
   cout << "Enter number of power ups desired (Up to 64 allowed): ";
+  int numPowerUps = 0;
   cin >> numPowerUps;
   while(1)
   {
@@ -54,9 +55,11 @@ void Executive::runPvP()
       cin.ignore(numeric_limits<streamsize>::max(),'\n');
       cout << "\n\nFor number of power ups, please enter a number between 0 and 64: "; //if not an int, must try again.
       cin >> numPowerUps;
+      LootBoard.powerUpSetter(numPowerUps);
     }
     else
     {
+      LootBoard.powerUpSetter(numPowerUps);
       break;
     }
   }
@@ -187,17 +190,32 @@ void Executive::runPvP()
       }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
   cin >> dummy;
   ClearScreen();
-
-  /*
-    Create powerup board here
-  */
-    powerUpGenerator();
-  /*
-
-  */
 
   while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
   {
@@ -207,7 +225,7 @@ void Executive::runPvP()
 
         player1.printHidden();
         player1.print();
-        displayPowerUps();
+        LootBoard.displayPowerUps();
 
       cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >> x;
@@ -243,6 +261,10 @@ void Executive::runPvP()
 
       player1.printHidden();
       player1.print();
+      if(LootBoard.update(row, col))
+      {
+        cout << "\n\nLOOT FOUND!\n\n";
+      }
 
 
       if (player2.getHits() == win_hits)
@@ -259,7 +281,8 @@ void Executive::runPvP()
 
       player2.printHidden();
       player2.print();
-      displayPowerUps();
+      LootBoard.displayPowerUps();
+      //displayPowerUps();
 
       cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
@@ -295,6 +318,10 @@ void Executive::runPvP()
 
       player2.printHidden();
       player2.print();
+      if(LootBoard.update(row, col))
+      {
+        cout << "\n\nLOOT FOUND!\n\n";
+      }
 
       if (player1.getHits() == win_hits)
       {
@@ -307,6 +334,25 @@ void Executive::runPvP()
       ClearScreen();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void Executive::runPvAI()
 {
@@ -971,62 +1017,6 @@ void Executive::setAIDifficulty(AI& someAI)
   cin >> AIDifficulty;
 
   someAI.setDifficulty(AIDifficulty);
-}
-
-void Executive::powerUpGenerator()
-{
-  //create an initial array of position values to be later shuffled
-  for(int i = 0; i < 8; i++)
-  {
-    for(int j = 0; j < 8; j++)
-    {
-      powerUps[i][j] = '~';
-    }
-  }
-
-  int* powerUpPositions = new int[64];
-  for(int i = 0; i < 64; i++)
-  {
-    powerUpPositions[i] = i;
-  }
-
-  //Shuffle the powerUpPositions array;
-  shuffleArray(powerUpPositions, 64);
-
-  int r = 0;
-  for(int i = 0; i < numPowerUps; i++)
-  {
-    r = powerUpPositions[i];
-    int x = r / 8;
-    int y = r % 8;
-    powerUps[x][y] = 'x';
-  }
-}
-
-void Executive::shuffleArray(int powerUpPos[], int size)
-{
-  srand(time(0));  // Initialize random number generator.
-  for(int i = 0; i < (size * 10); i++)
-  {
-    int index1 = (rand() % size);
-    int index2 = (rand() % size);
-    int placeHolder = powerUpPos[index1];
-    powerUpPos[index1] = powerUpPos[index2];
-    powerUpPos[index2] = placeHolder;
-  }
-}
-
-void Executive::displayPowerUps()
-{
-  cout <<"\n       Power Ups: \n\n";
-  for(int i = 0; i < 8; i++) {
-    if(i == 0) cout << "   A  B  C  D  E  F  G  H\n";
-    for(int j = 0; j < 8; j++) {
-      if(j == 0) cout << i+1;
-       cout << "  " << powerUps[i][j];
-    }
-    cout << '\n';
-  }
 }
 
 string Executive::getTargetCoordinates()

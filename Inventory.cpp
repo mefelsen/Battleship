@@ -8,8 +8,9 @@ Shot shotArray[NUM_SHOT_TYPES];
 
 //Default Constructor
 Inventory::Inventory()
-{
-}
+{}
+
+Inventory::~Inventory(){}
 
 //Reads from the file "InventoryFile" defined above to populate shotArray
 // and cheatnum variables. Run first if already have inventory file setup

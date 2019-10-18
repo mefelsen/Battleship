@@ -15,6 +15,7 @@ private:
 	int ammount;
 public:
 	Shot();
+	~Shot();
 	bool useShot();
 	string getShotName();
 	void setShotName(string input);

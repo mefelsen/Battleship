@@ -18,6 +18,7 @@
 #include <fstream>
 #include <limits>
 #include <time.h>
+#include "PowerUpBoard.h"
 using namespace std;
 
 class Executive
@@ -91,16 +92,6 @@ public:
 
     void setAIDifficulty(AI& someAI);
 
-    /** Random powerup location generator
-   @pre powerUps 2D array is already built and initialized.
-   @post powerUps 2D array will have random locations marked for the power ups.
-   @param None  */
-    void powerUpGenerator();
-
-    void shuffleArray(int powerUpPos[], int size);
-
-    void displayPowerUps();
-
     string getTargetCoordinates();
 
     void setTargetCoordinates();
@@ -113,38 +104,37 @@ public:
 
 private:
 
-      /** funtion that runs a player versus player game
-      *@pre player_num == 2
-      *@post runs the PvP game
-      *@param None  */
-      void runPvP();
+    /** funtion that runs a player versus player game
+     *@pre player_num == 2
+    *@post runs the PvP game
+    *@param None  */
+    void runPvP();
 
-      /** funtion that runs a player versus AI game
-      *@pre player_num == 1
-      *@post runs the PvAI game
-      *@param None  */
-      void runPvAI();
+    /** funtion that runs a player versus AI game
+     *@pre player_num == 1
+    *@post runs the PvAI game
+    *@param None  */
+    void runPvAI();
 
-      int row;
-      int col;
-      int ship_num;
-      int player_num;
+    int row;
+    int col;
+    int ship_num;
+    int player_num;
 
-      int win_hits = 0;
+    int win_hits = 0;
 
-      string location; //row and column on the map
-      int dir; //direction that the ship faces
+    string location; //row and column on the map
+    int dir; //direction that the ship faces
 
-      int numPowerUps = 0;
-      char powerUps [8][8];
+    PowerUpBoard LootBoard;
 
-      int turn = 0;
-      int coordinatesArraySize = 64;
-      int tempArraySize = 64;
-      string targetCoordinates[64];
+    int turn = 0;
+    int coordinatesArraySize = 64;
+    int tempArraySize = 64;
+    string targetCoordinates[64];
 
-      bool targetAquired, tryUp, tryDown, tryLeft, tryRight, tryDirection;
-      string shipCoordinates;
+    bool targetAquired, tryUp, tryDown, tryLeft, tryRight, tryDirection;
+    string shipCoordinates;
 
 };
 #endif

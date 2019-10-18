@@ -1,5 +1,5 @@
-battleship: main.o board.o battleExec.o HumanPlayer.o AI.o
-	g++ -std=c++11 -g -Wall main.o board.o battleExec.o HumanPlayer.o AI.o -o battleship
+battleship: main.o board.o battleExec.o HumanPlayer.o AI.o PowerUpBoard.o Inventory.o Shot.o
+	g++ -std=c++11 -g -Wall main.o board.o battleExec.o HumanPlayer.o AI.o PowerUpBoard.o Inventory.o Shot.o -o battleship
 
 main.o: main.cpp battleExec.h
 	g++ -std=c++11 -g -Wall -c main.cpp
@@ -15,6 +15,15 @@ HumanPlayer.o: HumanPlayer.h HumanPlayer.cpp PlayerInterface.h board.h
 
 AI.o: AI.h AI.cpp PlayerInterface.h board.h
 	g++ -std=c++11 -g -Wall -c AI.cpp
+
+PowerUpBoard.o: PowerUpBoard.h 
+	g++ -std=c++11 -g -Wall -c PowerUpBoard.cpp
+
+Inventory.o: Inventory.h 
+	g++ -std=c++11 -g -Wall -c Inventory.cpp
+
+Shot.o: Shot.h 
+	g++ -std=c++11 -g -Wall -c Shot.cpp
 
 clean:
 	rm *.o battleship
