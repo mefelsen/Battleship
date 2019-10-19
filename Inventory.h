@@ -26,6 +26,7 @@ public:
 	~Inventory();
 	void readFromInventoryFile();
 	void writeToInventoryFile();
+	void addShot(string shotName);
 	void setInventoryFile(string);
 	string getInventoryFile();
 	void setNumCheat(int);

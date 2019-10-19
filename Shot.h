@@ -12,7 +12,7 @@ private:
 	char shotCode;
 	char pattern;
 	int range;
-	int ammount;
+	int amount;
 
 public:
 	Shot();
@@ -31,8 +31,8 @@ public:
 	int getRange();
 	void setRange(int input);
 
-	int getAmmount();
-	void setAmmount(int input);
+	int getAmount();
+	void setAmount(int input);
 
 };
 
