@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <array>
+#include <limits>
+#include <time.h>
 
 using namespace std;
 
@@ -13,6 +15,7 @@ class Inventory
 {
 private:
 	
+	string rollArray[5] = {"Bomb", "Cross", "Vertical", "Horizontal", "Nuke"};
 	string inventoryFile = "";
 	int numCheat = 0;
 	Shot shotArray[NUM_SHOT_TYPES];
@@ -32,8 +35,9 @@ public:
 	void printInventory();	
 	void setCheaterMode(bool);
 	bool getCheaterMode();
-
-	int powerUpSelectMenu();
+	void shuffleArray(string rollArray[], int size);
+	void shuffleInventoryArray();
+	//int powerUpSelectMenu();
 	
 };
 

@@ -152,7 +152,7 @@ void HumanPlayer::printInventory()
   WeaponInventory.printInventory();
 }
 
-void HumanPlayer::inventorySelect()
+/*void HumanPlayer::inventorySelect()
 {
   int x = 0;
   while(x != 9)
@@ -190,6 +190,7 @@ void HumanPlayer::inventorySelect()
     }
   }
 }
+*/
 /*
 string AI::getTargetCoordinates()
 {
@@ -286,3 +287,8 @@ Board HumanPlayer::getBoard()
 {
   return playerBoard;
 }
+
+ void HumanPlayer::inventoryRoll()
+ {
+   WeaponInventory.shuffleInventoryArray();
+ }

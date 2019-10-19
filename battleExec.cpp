@@ -247,8 +247,8 @@ void Executive::runPvP()
       player1.print();
       if(LootBoard.update(row, col))
       {
-        cout << "\n\nLOOT FOUND! Select a desired powerup...\n\n";
-        player1.inventorySelect();
+        cout << "\n\nLOOT FOUND!\n\n";
+        player1.inventoryRoll();
       }
 
 
@@ -306,8 +306,7 @@ void Executive::runPvP()
       if(LootBoard.update(row, col))
       {
         cout << "\n\nLOOT FOUND!\n\n";
-        player2.inventorySelect();
-
+        player2.inventoryRoll();
       }
 
       if (player1.getHits() == win_hits)

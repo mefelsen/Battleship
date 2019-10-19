@@ -152,6 +152,7 @@ bool Inventory::getCheaterMode()
 	return cheatermode;
 }
 
+/*
 int Inventory::powerUpSelectMenu()
 {
 	//display menu options
@@ -185,4 +186,26 @@ int Inventory::powerUpSelectMenu()
     default:
       	return (6);
   }
+}
+*/
+
+void Inventory::shuffleInventoryArray()
+{
+	shuffleArray(rollArray, 5);
+}
+
+
+void Inventory::shuffleArray(string rollArray[], int size)
+{
+    srand(time(0));  // Initialize random number generator.
+  for(int i = 0; i < (size * 10); i++)
+  {
+    int index1 = (rand() % size);
+    int index2 = (rand() % size);
+    string placeHolder = rollArray[index1];
+    rollArray[index1] = rollArray[index2];
+    rollArray[index2] = placeHolder;
+  }
+
+  cout << "Power Up from loot box is: " + rollArray[0] + "\n\n";
 }

@@ -103,7 +103,7 @@ class HumanPlayer : public PlayerInterface
  void loadInventory();
  void printInventory();
  void inventoryRoll();
- void inventorySelect();
+ //void inventorySelect();
 
 
 };
