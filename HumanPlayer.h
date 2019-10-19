@@ -91,12 +91,6 @@ class HumanPlayer : public PlayerInterface
  the bool is for determining if it was a success or not --  "o"  */
  bool hitRetry(int x, int y);
 
- // string getTargetCoordinates();
- // void setTargetCoordinates();
- // void shuffleCoordinates(string arr[], int n);
- // void printRandomCoordinates();
- // void fireAtCoordinates();
-
  Board getBoard();
 
  void setInventoryFile(string fileName);
@@ -105,7 +99,6 @@ class HumanPlayer : public PlayerInterface
  void printInventory2();
  void inventoryRoll();
  void inventorySelect();
-
-
+ 
 };
 #endif

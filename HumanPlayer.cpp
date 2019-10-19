@@ -196,104 +196,12 @@ void HumanPlayer::inventorySelect()
   }
 }
 
-/*
-string AI::getTargetCoordinates()
-{
-  return targetCoordinates[0];
-}
-*/
-
-// void HumanPlayer::setTargetCoordinates() {
-//   string letters = "ABCDEFGH";
-//   string nums = "12345678";
-//   int letterIndex = 0;
-//   int numIndex = 0;
-//
-//   for (int i = 0; i < 64; i++) {
-//     targetCoordinates[i] = letters.at(letterIndex);
-//     numIndex++;
-//     if (numIndex >= 8) {
-//       numIndex = 0;
-//       letterIndex++;
-//     }
-//   }
-//
-//   for (int i = 0; i < 64; i++) {
-//     targetCoordinates[i] = targetCoordinates[i] + nums.at(numIndex);
-//     numIndex++;
-//     if (numIndex >= 8) {
-//       numIndex = 0;
-//       letterIndex++;
-//     }
-//   }
-//
-//   srand(time(0));
-//
-//   int shuffleNumber = rand() % 1024;
-//   cout << "Shuffling " << shuffleNumber << " times\n\n";
-//
-//   cout << "Coordiantes obtained\n\n";
-//   printRandomCoordinates();
-//
-//   for (int i = 0; i < shuffleNumber; i++) {
-//     shuffleCoordinates(targetCoordinates, 64);
-//   }
-//
-//   cout << "Randomizing coordinates\n\n";
-//   printRandomCoordinates();
-// }
-//
-// // shuffle vs random_shuffle in C++
-// // https://www.geeksforgeeks.org/shuffle-vs-random_shuffle-c/
-// void HumanPlayer::shuffleCoordinates(string arr[], int n)
-// {
-//   // Shuffling our array using random_shuffle
-//   random_shuffle(arr, arr + n);
-// }
-//
-// void HumanPlayer::printRandomCoordinates()
-// {
-//   int index = 0;
-//   for (int i = 0; i < 64; i++) {
-//     cout << targetCoordinates[i] << ", ";
-//     index++;
-//     if(index == 8)
-//     {
-//       cout << "\n";
-//       index = 0;
-//     }
-//   }
-//   cout << "\n";
-// }
-
-/*
-void HumanPlayer::fireAtCoordinates()
-{
-  string coordinates = getTargetCoordinates();
-  string array[coordinatesArraySize];
-
-  for (int i = 0; i < coordinatesArraySize; i++)
-  {
-    array[i] = targetCoordinates[i];
-  }
-
-  coordinatesArraySize--;
-
-  targetCoordinates[coordinatesArraySize];
-
-  for (int i = 0; i < coordinatesArraySize; i++)
-  {
-    targetCoordinates[i] = array[i + 1];
-  }
-}
-*/
-
 Board HumanPlayer::getBoard()
 {
   return playerBoard;
 }
 
- void HumanPlayer::inventoryRoll()
- {
-   WeaponInventory.shuffleInventoryArray();
- }
+void HumanPlayer::inventoryRoll()
+{
+ WeaponInventory.shuffleInventoryArray();
+}
