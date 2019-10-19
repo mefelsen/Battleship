@@ -2,29 +2,29 @@ Name: Bomb
 Code: b
 Pattern: r
 Ammount: 1
-Range: 2
+Range: 0
 
 Name: Cross
 Code: c
 Pattern: c
 Ammount: 0
-Range: 8
+Range: 2
 
 Name: Vertical
 Code: v
 Pattern: v
-Ammount: 1
-Range: 2
+Ammount: 0
+Range: 8
 
 Name: Horizontal
 Code: h
-Pattern: h
-Ammount: 0
+Pattern: z
+Ammount: 1
 Range: 2
 
 Name: Nuke
-Code: n
-Pattern: a
+Code: z
+Pattern: h
 Ammount: 0
 Range: 2
 

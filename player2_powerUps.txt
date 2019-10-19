@@ -1,31 +1,31 @@
 Name: Bomb
 Code: b
 Pattern: r
-Ammount: 0
-Range: 2
+Amount: 0
+Range: 0
 
 Name: Cross
 Code: c
 Pattern: c
-Ammount: 1
-Range: 8
+Amount: 0
+Range: 2
 
 Name: Vertical
 Code: v
 Pattern: v
-Ammount: 0
-Range: 2
+Amount: 0
+Range: 8
 
 Name: Horizontal
 Code: h
-Pattern: h
-Ammount: 0
+Pattern: z
+Amount: 0
 Range: 2
 
 Name: Nuke
-Code: n
-Pattern: a
-Ammount: 0
+Code: z
+Pattern: h
+Amount: 1
 Range: 2
 
 -cheatermode
