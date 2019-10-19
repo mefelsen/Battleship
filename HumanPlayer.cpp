@@ -138,7 +138,7 @@ bool HumanPlayer::hitRetry(int x, int y)
 
 void HumanPlayer::setInventoryFile(string fileName)
 {
-  
+
   WeaponInventory.setInventoryFile(fileName);
 }
 
@@ -154,7 +154,7 @@ void HumanPlayer::printInventory()
 
 void HumanPlayer::printInventory2()
 {
-  WeaponInventory.printInventory2();	
+  WeaponInventory.printInventory2();
 }
 
 void HumanPlayer::inventorySelect()
@@ -177,7 +177,7 @@ void HumanPlayer::inventorySelect()
         cout << "Cross Selected\n";
         x = 9;
         break;
-      case 3:     
+      case 3:
         cout << "Vertical Selected\n";
         x = 9;
         break;

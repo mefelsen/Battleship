@@ -92,15 +92,24 @@ public:
 
     void setAIDifficulty(AI& someAI);
 
-    string getTargetCoordinates();
-
+    /** set targetCoordinates array
+     *@pre none
+     *@post populates targetCoordinates with all board coordinates and then shuffles the array values
+     *@param none */
     void setTargetCoordinates();
 
+    /** shuffles targetCoordinates array values
+     *@pre setTargetCoordinates() is called.
+     *@post uses random_shuffle function to shuffle targetCoordinates array
+     *@param arr[] is the targetCoordinates array
+     *@param n is size of the targetCoordinates array */
     void shuffleCoordinates(string arr[], int n);
 
+    /** prints targetCoordinates array values
+     *@pre none
+     *@post prints targetCoordinates array,
+     *@post targetCoordinates array can also be shuffled and contain coordinates not called for random firing from AI. */
     void printRandomCoordinates();
-
-    void fireAtCoordinates();
 
 private:
 
@@ -132,11 +141,7 @@ private:
 
     int turn = 0;
     int coordinatesArraySize = 64;
-    int tempArraySize = 64;
     string targetCoordinates[64];
-
-    bool targetAquired, tryUp, tryDown, tryLeft, tryRight, tryDirection;
-    string shipCoordinates;
 
 };
 #endif

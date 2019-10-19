@@ -119,8 +119,7 @@ private:
   /**
   grid = enemy board
   map = personal board
-  actives = is ship being used for current game
-  remainings = is current ship still afloat
+  actives = is ship being used and not sunken during current game
   shipsRemaining = number of ships remaining on the personal board during gameplay
   */
   //char powerUps[8][8];
