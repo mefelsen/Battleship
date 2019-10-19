@@ -1,31 +1,32 @@
 Name: Bomb
 Code: b
-Pattern: radius
-Amount: 0
+Pattern: r
+Ammount: 1
 Range: 2
 
 Name: Cross
 Code: c
-Pattern: cross
-Amount: 0
+Pattern: c
+Ammount: 0
 Range: 8
 
 Name: Vertical
 Code: v
-Pattern: vertical
-Amount: 0
+Pattern: v
+Ammount: 1
 Range: 2
 
 Name: Horizontal
 Code: h
-Pattern: horizontal
-Amount: 0
+Pattern: h
+Ammount: 0
 Range: 2
 
 Name: Nuke
 Code: n
-Pattern: all
-Amount: 0
+Pattern: a
+Ammount: 0
 Range: 2
 
--cheatermode disabled
+-cheatermode
+Num: 0

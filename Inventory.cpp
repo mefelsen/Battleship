@@ -243,4 +243,5 @@ void Inventory::shuffleArray(string rollArray[], int size)
   cout << "Power Up from loot box is: " + rollArray[0] + "\n\n";
   addShot(rollArray[0]);
   printInventory2();
+  writeToInventoryFile();
 }
