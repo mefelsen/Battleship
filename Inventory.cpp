@@ -38,7 +38,7 @@ void Inventory::readFromInventoryFile()
 			else if (input == "Amount:")
 			{							
 				file >> input;
-				shotArray[i].setAmmount(stoi(input));
+				shotArray[i].setAmount(stoi(input));
 			}
 			else if (input == "Range:")
 			{					
@@ -79,7 +79,7 @@ void Inventory::writeToInventoryFile()
 			+ "Name: " + shotArray[i].getShotName() + "\n"
 			+ "Code: " + shotArray[i].getShotCode() + "\n"
 			+ "Pattern: " + shotArray[i].getPattern() + "\n"
-			+ "Ammount: " + to_string(shotArray[i].getAmmount()) + "\n"
+			+ "Ammount: " + to_string(shotArray[i].getAmount()) + "\n"
 			+ "Range: " + to_string(shotArray[i].getRange()) + "\n\n";
 	}
 
@@ -89,6 +89,17 @@ void Inventory::writeToInventoryFile()
 	file << input;
 	file.close();
 
+}
+
+void Inventory::addShot(string shotName)
+{
+	for(int i = 0; i < NUM_SHOT_TYPES; i++)
+	{
+		if(shotArray[i].getShotName() == shotName)
+		{
+			shotArray[i].setAmount(shotArray[i].getAmount() + 1);
+		}
+	}
 }
 
 void Inventory::setInventoryFile(string input)
@@ -128,7 +139,7 @@ void Inventory::printInventory()
 		cout << "Name: " << shotArray[i].getShotName() << "\n" <<
 				"ShotCode: " << shotArray[i].getShotCode() << "\n" <<
 				"Pattern: " << shotArray[i].getPattern() << "\n" <<
-				"Amount: " << shotArray[i].getAmmount() << "\n" <<
+				"Amount: " << shotArray[i].getAmount() << "\n" <<
 				"Range: " << shotArray[i].getRange() << "\n\n";
 	}
 	if(getCheaterMode())
@@ -146,11 +157,11 @@ void Inventory::printInventory2()
 {
 	for(int i = 0; i < NUM_SHOT_TYPES; i++)
 	{
-		if(shotArray[i].getAmmount() > 0)
+		if(shotArray[i].getAmount() > 0)
 		cout << "Name: " << shotArray[i].getShotName() << "\n" <<
 				"ShotCode: " << shotArray[i].getShotCode() << "\n" <<
 				"Pattern: " << shotArray[i].getPattern() << "\n" <<
-				"Amount: " << shotArray[i].getAmmount() << "\n" <<
+				"Amount: " << shotArray[i].getAmount() << "\n" <<
 				"Range: " << shotArray[i].getRange() << "\n\n";
 	}
 	if(getCheaterMode())
@@ -230,4 +241,6 @@ void Inventory::shuffleArray(string rollArray[], int size)
   }
 
   cout << "Power Up from loot box is: " + rollArray[0] + "\n\n";
+  addShot(rollArray[0]);
+  printInventory2();
 }

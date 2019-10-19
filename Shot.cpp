@@ -5,7 +5,7 @@ Shot::Shot() : shotname("z"),
 			   shotCode('z'),
 	           pattern('z'),
 			   range(0),
-			   ammount(0)
+			   amount(0)
 {}
 
 Shot::~Shot(){}
@@ -13,9 +13,9 @@ Shot::~Shot(){}
 //Run this for a cleaner decrement of shot after being used returnss false if no shots are left for use
 bool Shot::useShot()
 {
-	if (ammount >= 0)
+	if (amount >= 0)
 	{
-		ammount--;
+		amount--;
 		return true;
 	}
 	else
@@ -64,14 +64,14 @@ void Shot::setRange(int input)
 	range = input;
 }
 
-int Shot::getAmmount()
+int Shot::getAmount()
 {
-	return ammount;
+	return amount;
 }
 
-void Shot::setAmmount(int input)
+void Shot::setAmount(int input)
 {
-	ammount = input;
+	amount = input;
 }
 
 
