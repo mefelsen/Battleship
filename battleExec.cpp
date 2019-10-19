@@ -909,11 +909,6 @@ void Executive::setAIDifficulty(AI& someAI)
   someAI.setDifficulty(AIDifficulty);
 }
 
-string Executive::getTargetCoordinates()
-{
-  return targetCoordinates[0];
-}
-
 void Executive::setTargetCoordinates()
 {
   string letters = "ABCDEFGH";
@@ -966,7 +961,7 @@ void Executive::shuffleCoordinates(string arr[], int n)
 void Executive::printRandomCoordinates()
 {
   int index = 0;
-  for (int i = 0; i < tempArraySize; i++) {
+  for (int i = 0; i < coordinatesArraySize; i++) {
     cout << targetCoordinates[i] << ", ";
     index++;
     if(index == 8)
@@ -976,34 +971,6 @@ void Executive::printRandomCoordinates()
     }
   }
   cout << "\n";
-}
-
-void Executive::fireAtCoordinates()
-{
-  string coordinates = shipCoordinates;
-  string array[tempArraySize];
-
-  for (int i = 0; i < tempArraySize; i++)
-  {
-    array[i] = targetCoordinates[i];
-  }
-
-  tempArraySize--;
-
-  int index = 0;
-
-  for (int i = 0; i < tempArraySize; i++)
-  {
-    if (array[i] == coordinates) {
-      index++;
-    }
-    targetCoordinates[i] = array[i + index];
-  }
-
-  for (int i = tempArraySize; i < coordinatesArraySize; i++)
-  {
-    targetCoordinates[i] = "";
-  }
 }
 
 
