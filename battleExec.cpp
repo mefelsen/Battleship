@@ -189,13 +189,13 @@ void Executive::runPvP()
         cout << "enter a correct direction!" << endl;
       }
     }
-    
+
     cout << "Setting player inventories...\n\n";
     player1.setInventoryFile("player1_powerUps.txt");
     player2.setInventoryFile("player2_powerUps.txt");
     player1.loadInventory();
     player2.loadInventory();
-    
+
 
   cout << "\nATTACK phase, TYPE anything and PRESS ENTER to begin -> \n";
   cin >> dummy;
@@ -660,7 +660,7 @@ void Executive::runPvAI()
     else if(ai.getDifficulty() == "Hard")
     {
       int tempTurn = 0;
-      cout << "Got here.\n";
+      turn = 0;
       for(int i = 0; i < 8; i++)
       {
         for(int j = 0; j < 8; j++)
@@ -669,7 +669,6 @@ void Executive::runPvAI()
           {
             if(tempTurn == turn)
             {
-              cout << "got here.\n";
               row = i;
               col = j;
               break;
