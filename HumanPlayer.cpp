@@ -195,7 +195,7 @@ void HumanPlayer::inventorySelect()
     }
   }
 }
-*/
+
 /*
 string AI::getTargetCoordinates()
 {

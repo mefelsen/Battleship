@@ -174,7 +174,7 @@ bool Inventory::getCheaterMode()
 	return cheatermode;
 }
 
-/*
+
 int Inventory::powerUpSelectMenu()
 {
 	//display menu options
@@ -209,7 +209,7 @@ int Inventory::powerUpSelectMenu()
       	return (6);
   }
 }
-*/
+
 
 void Inventory::shuffleInventoryArray()
 {

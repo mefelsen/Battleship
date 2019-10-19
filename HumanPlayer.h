@@ -104,7 +104,7 @@ class HumanPlayer : public PlayerInterface
  void printInventory();
  void printInventory2();
  void inventoryRoll();
- //void inventorySelect();
+ void inventorySelect();
 
 
 };

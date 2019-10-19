@@ -38,7 +38,7 @@ public:
 	bool getCheaterMode();
 	void shuffleArray(string rollArray[], int size);
 	void shuffleInventoryArray();
-	//int powerUpSelectMenu();
+	int powerUpSelectMenu();
 	
 };
 
