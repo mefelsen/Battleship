@@ -142,6 +142,28 @@ void Inventory::printInventory()
 	
 }
 
+void Inventory::printInventory2()
+{
+	for(int i = 0; i < NUM_SHOT_TYPES; i++)
+	{
+		if(shotArray[i].getAmmount() > 0)
+		cout << "Name: " << shotArray[i].getShotName() << "\n" <<
+				"ShotCode: " << shotArray[i].getShotCode() << "\n" <<
+				"Pattern: " << shotArray[i].getPattern() << "\n" <<
+				"Amount: " << shotArray[i].getAmmount() << "\n" <<
+				"Range: " << shotArray[i].getRange() << "\n\n";
+	}
+	if(getCheaterMode())
+	{
+		cout << "cheatermode: enabled\n\n";
+	}
+	else
+	{
+		cout << "cheatermode: disabled\n\n";
+	}
+
+}
+
 void Inventory::setCheaterMode(bool mode)
 {
 	cheatermode = mode;

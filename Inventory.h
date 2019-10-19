@@ -30,6 +30,7 @@ public:
 	Shot* getShotArray();
 	void setShotArray(Shot*);
 	void printInventory();	
+	void printInventory2();
 	void setCheaterMode(bool);
 	bool getCheaterMode();
 
