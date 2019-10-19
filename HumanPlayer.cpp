@@ -152,6 +152,11 @@ void HumanPlayer::printInventory()
   WeaponInventory.printInventory();
 }
 
+void HumanPlayer::printInventory2()
+{
+  WeaponInventory.printInventory2();	
+}
+
 void HumanPlayer::inventorySelect()
 {
   int x = 0;
