@@ -1,9 +1,21 @@
 #include "PatternManager.h"
 
-
+/* Will need to include the ability to shoot then replace
+   the cout call with this once inclusion is done*/ 
 void PatternManager::bomb(int range, string cordinates)
 {
-	
+	string strike = "  ";
+	for (int i = -range; range >= i; i++)
+	{
+		for (int j = -range; range >= j; j++)
+		{
+			strike[0] = (cordinates[0] + i);
+			strike[1] = (cordinates[1] + j);
+			if (checkFirstAxis(strike[0]) && checkSecondAxis(strike[1]))
+				cout << strike[0] << strike[1] << "\n";
+		}
+
+	}
 }
 
 void PatternManager::cross(int range, string cordinates)
