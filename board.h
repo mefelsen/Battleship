@@ -112,8 +112,18 @@ public:
   //void shuffleArray(int powerUpPos[], int size);
   //void setNumPowerUps(int n);
 
+ /**
+  *@pre None.
+  *@post returns 2D array getMap
+  *@param None.
+  *@return char** map */
   char** getMap();
 
+ /**
+  *@pre None.
+  *@post returns 2D array getGrid
+  *@param None.
+  *@return char** grid */
   char** getGrid();
 
 
