@@ -84,14 +84,42 @@ void PatternManager::vertical(int range, string cordinates)
 	}
 }
 
+/* Will need to include the ability to shoot then replace
+   the cout call with this once inclusion is done*/ 
 void PatternManager::coldWarGoneWrong()
 {
-	
+	string strike = "  ";
+	string baseStrike = "A1";
+	for (int i = 0; 7 >= i; i++)
+	{
+		for (int j = 0; 7 >= j; j++)
+		{
+			strike[0] = (baseStrike[0] + i);
+			strike[1] = (baseStrike[1] + j);
+			if (checkFirstAxis(strike[0]) && checkSecondAxis(strike[1]))
+				cout << strike[0] << strike[1] << "\n";
+		}
+
+	}
 }
 
+/* Will need to include the ability to shoot then replace
+   the cout call with this once inclusion is done*/ 
 void PatternManager::coldWarGoneWrong(int range, string cordinates)
 {
-	
+	string strike = "  ";
+	string baseStrike = "A1";
+	for (int i = 0; 7 >= i; i++)
+	{
+		for (int j = 0; 7 >= j; j++)
+		{
+			strike[0] = (baseStrike[0] + i);
+			strike[1] = (baseStrike[1] + j);
+			if (checkFirstAxis(strike[0]) && checkSecondAxis(strike[1]))
+				cout << strike[0] << strike[1] << "\n";
+		}
+
+	}
 }
 
 
