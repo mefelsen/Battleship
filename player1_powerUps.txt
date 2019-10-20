@@ -1,13 +1,13 @@
 Name: Bomb
 Code: b
 Pattern: r
-Amount: 1
+Amount: 0
 Range: 0
 
 Name: Cross
 Code: c
 Pattern: c
-Amount: 1
+Amount: 0
 Range: 2
 
 Name: Vertical
