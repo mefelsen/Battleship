@@ -1,0 +1,6 @@
+<map id="Board::PlaceShip" name="Board::PlaceShip">
+<area shape="rect" id="node1" title=" " alt="" coords="221,56,344,83"/>
+<area shape="rect" id="node2" href="$classplayer.html#a65df4f589ef2a58029b2f0a2a6af413a" title=" " alt="" coords="27,5,152,32"/>
+<area shape="rect" id="node3" href="$class_human_player.html#af1faf72cd1f0546c5e6826fc2d2b87ce" title=" " alt="" coords="5,56,173,83"/>
+<area shape="rect" id="node4" href="$class_a_i.html#a2011f5d6bbe6112592da8f5e9033fac3" title=" " alt="" coords="38,107,141,133"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Inventory::powerUpSelectMenu" name="Inventory::powerUpSelectMenu">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,205,108"/>
+<area shape="rect" id="node2" href="$class_shot.html#a23f33108038eb94a68ab176d94b82df2" title=" " alt="" coords="516,107,652,133"/>
+<area shape="rect" id="node3" href="$class_inventory.html#a381a517b880f6a2f8ff2e9734392c56f" title=" " alt="" coords="261,5,441,32"/>
+<area shape="rect" id="node5" href="$class_inventory.html#aaad8c069a1cc202867dde89e25bc08f9" title=" " alt="" coords="269,56,433,83"/>
+<area shape="rect" id="node7" href="$class_inventory.html#ae8c9d675fcec6b6390e83224e23828ac" title=" " alt="" coords="253,157,448,184"/>
+<area shape="rect" id="node4" href="$class_shot.html#a4f03a434032a493314e9e043698002b4" title=" " alt="" coords="524,5,644,32"/>
+<area shape="rect" id="node6" href="$class_inventory.html#a0d23f7fb38169e8f5c05bc841b323771" title=" " alt="" coords="496,56,672,83"/>
+<area shape="rect" id="node8" href="$class_shot.html#aed0c95cd60fd8ae8d0cf3048b91d4bc8" title=" " alt="" coords="525,208,643,235"/>
+<area shape="rect" id="node9" href="$class_shot.html#ac3ff65f945897b952bdb24af26837b5e" title=" " alt="" coords="518,157,650,184"/>
+</map>

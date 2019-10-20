@@ -1,0 +1,7 @@
+<map id="Executive::crossShot" name="Executive::crossShot">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,151,57"/>
+<area shape="rect" id="node2" href="$class_human_player.html#a779da74ea6dace4ea1d38a541f0b876d" title=" " alt="" coords="200,5,344,32"/>
+<area shape="rect" id="node4" href="$class_human_player.html#a1750844393bc158e5c4d6ca3a1afa25a" title=" " alt="" coords="199,56,345,83"/>
+<area shape="rect" id="node3" href="$class_board.html#aca77a93405c65e71836e9d5daaf07579" title=" " alt="" coords="393,5,496,32"/>
+<area shape="rect" id="node5" href="$class_board.html#a23f35479c4831f85dc2d7bbdeacecc68" title=" " alt="" coords="393,56,496,83"/>
+</map>

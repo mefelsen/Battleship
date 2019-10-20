@@ -1,0 +1,9 @@
+<map id="Inventory::printInventory" name="Inventory::printInventory">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,163,159"/>
+<area shape="rect" id="node2" href="$class_shot.html#a4f03a434032a493314e9e043698002b4" title=" " alt="" coords="239,5,359,32"/>
+<area shape="rect" id="node3" href="$class_inventory.html#a0d23f7fb38169e8f5c05bc841b323771" title=" " alt="" coords="211,56,387,83"/>
+<area shape="rect" id="node4" href="$class_shot.html#aed0c95cd60fd8ae8d0cf3048b91d4bc8" title=" " alt="" coords="240,107,357,133"/>
+<area shape="rect" id="node5" href="$class_shot.html#a2a85a40bb0fd2d5d1cae6e4ea142d95c" title=" " alt="" coords="243,157,355,184"/>
+<area shape="rect" id="node6" href="$class_shot.html#ac3ff65f945897b952bdb24af26837b5e" title=" " alt="" coords="233,208,365,235"/>
+<area shape="rect" id="node7" href="$class_shot.html#a23f33108038eb94a68ab176d94b82df2" title=" " alt="" coords="231,259,367,285"/>
+</map>

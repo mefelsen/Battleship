@@ -1,0 +1,10 @@
+<map id="HumanPlayer::printInventory" name="HumanPlayer::printInventory">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,189,159"/>
+<area shape="rect" id="node2" href="$class_inventory.html#a5cb1aef60080e1835c90a66c3e4b29fe" title=" " alt="" coords="237,132,395,159"/>
+<area shape="rect" id="node3" href="$class_shot.html#a4f03a434032a493314e9e043698002b4" title=" " alt="" coords="471,5,591,32"/>
+<area shape="rect" id="node4" href="$class_inventory.html#a0d23f7fb38169e8f5c05bc841b323771" title=" " alt="" coords="443,56,619,83"/>
+<area shape="rect" id="node5" href="$class_shot.html#aed0c95cd60fd8ae8d0cf3048b91d4bc8" title=" " alt="" coords="472,107,589,133"/>
+<area shape="rect" id="node6" href="$class_shot.html#a2a85a40bb0fd2d5d1cae6e4ea142d95c" title=" " alt="" coords="475,157,587,184"/>
+<area shape="rect" id="node7" href="$class_shot.html#ac3ff65f945897b952bdb24af26837b5e" title=" " alt="" coords="465,208,597,235"/>
+<area shape="rect" id="node8" href="$class_shot.html#a23f33108038eb94a68ab176d94b82df2" title=" " alt="" coords="463,259,599,285"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="HumanPlayer::attack" name="HumanPlayer::attack">
+<area shape="rect" id="node1" title=" " alt="" coords="236,233,380,260"/>
+<area shape="rect" id="node2" href="$class_executive.html#a85741bbf2cd85c8c9f65aa29b8ae1258" title=" " alt="" coords="24,5,169,32"/>
+<area shape="rect" id="node3" href="$class_executive.html#a9a18b1aa0216eec8e3cd2fb822458f45" title=" " alt="" coords="24,56,169,83"/>
+<area shape="rect" id="node4" href="$class_executive.html#a802ac4615bf54562b1ab6490d3a4c89b" title=" " alt="" coords="15,107,179,133"/>
+<area shape="rect" id="node5" href="$class_executive.html#a8c33435dca09a4762a76b4ab7350bb45" title=" " alt="" coords="16,157,177,184"/>
+<area shape="rect" id="node6" href="$class_executive.html#ada324c634b0c0782f3bf3680e1899b73" title=" " alt="" coords="12,208,181,235"/>
+<area shape="rect" id="node7" href="$class_executive.html#a2d233567a45f61367de9757780fe20b3" title=" " alt="" coords="5,259,188,285"/>
+<area shape="rect" id="node8" href="$class_executive.html#a9b4ee21cb106f61ff74fe3307abee43c" title=" " alt="" coords="26,309,167,336"/>
+<area shape="rect" id="node9" href="$class_executive.html#ad1563f3ee8761b570af949936e01b7eb" title=" " alt="" coords="7,360,186,387"/>
+<area shape="rect" id="node10" href="$class_executive.html#a48257c098efeba39b0256fb3e7bd0c73" title=" " alt="" coords="7,411,186,437"/>
+<area shape="rect" id="node11" href="$class_executive.html#a6ae14d4ec361127e5ec9ee2b87bcd496" title=" " alt="" coords="20,461,173,488"/>
+</map>

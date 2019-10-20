@@ -1,0 +1,8 @@
+<map id="Inventory::addShot" name="Inventory::addShot">
+<area shape="rect" id="node1" title=" " alt="" coords="876,31,1005,57"/>
+<area shape="rect" id="node2" href="$class_inventory.html#a5220890a41771678a27ba094c6944c2d" title=" " alt="" coords="679,31,828,57"/>
+<area shape="rect" id="node3" href="$class_inventory.html#a4e0b8bc650e7474eb4bcb004c4679e80" title=" " alt="" coords="461,23,631,65"/>
+<area shape="rect" id="node4" href="$class_human_player.html#a1743d3c18ea36e334ad29685674f18b7" title=" " alt="" coords="232,31,413,57"/>
+<area shape="rect" id="node5" href="$class_executive.html#ad1563f3ee8761b570af949936e01b7eb" title=" " alt="" coords="5,5,184,32"/>
+<area shape="rect" id="node6" href="$class_executive.html#a48257c098efeba39b0256fb3e7bd0c73" title=" " alt="" coords="5,56,184,83"/>
+</map>

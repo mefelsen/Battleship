@@ -1,0 +1,15 @@
+<map id="Executive::mediumAIAttack" name="Executive::mediumAIAttack">
+<area shape="rect" id="node1" title=" " alt="" coords="5,208,188,235"/>
+<area shape="rect" id="node2" href="$class_human_player.html#a779da74ea6dace4ea1d38a541f0b876d" title=" " alt="" coords="236,5,380,32"/>
+<area shape="rect" id="node4" href="$class_a_i.html#a943839e8597a340d4b75a0ea0edba293" title=" " alt="" coords="261,56,355,83"/>
+<area shape="rect" id="node5" href="$class_a_i.html#a927a83f781b9ed0f66f2ac2a0009bdc0" title=" " alt="" coords="245,107,371,133"/>
+<area shape="rect" id="node6" href="$class_a_i.html#ae7233702a9f4fc349cf2fd13be20ac97" title=" " alt="" coords="243,157,373,184"/>
+<area shape="rect" id="node7" href="$class_a_i.html#a67557576a8a47403381add481fed6e30" title=" " alt="" coords="265,208,351,235"/>
+<area shape="rect" id="node9" href="$class_a_i.html#a2fd236bb0dfb51637192268381304bf0" title=" " alt="" coords="261,259,355,285"/>
+<area shape="rect" id="node10" href="$class_a_i.html#af8ea6856c4934216df70a0053ab65f68" title=" " alt="" coords="245,309,371,336"/>
+<area shape="rect" id="node11" href="$class_a_i.html#ab961d9779c4a49942360909478f9d73b" title=" " alt="" coords="243,360,373,387"/>
+<area shape="rect" id="node12" href="$class_a_i.html#a07723c8143461c9725f999d6d7b74422" title=" " alt="" coords="267,411,349,437"/>
+<area shape="rect" id="node3" href="$class_board.html#aca77a93405c65e71836e9d5daaf07579" title=" " alt="" coords="440,5,543,32"/>
+<area shape="rect" id="node8" href="$class_board.html#a6ad656bd7a88006cb33e8590c522d1a0" title=" " alt="" coords="428,208,555,235"/>
+<area shape="rect" id="node13" href="$class_board.html#a23f35479c4831f85dc2d7bbdeacecc68" title=" " alt="" coords="440,411,543,437"/>
+</map>

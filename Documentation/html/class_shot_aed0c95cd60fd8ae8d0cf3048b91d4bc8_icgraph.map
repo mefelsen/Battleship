@@ -1,0 +1,13 @@
+<map id="Shot::getPattern" name="Shot::getPattern">
+<area shape="rect" id="node1" title=" " alt="" coords="1196,31,1313,57"/>
+<area shape="rect" id="node2" href="$class_inventory.html#a5cb1aef60080e1835c90a66c3e4b29fe" title=" " alt="" coords="972,5,1129,32"/>
+<area shape="rect" id="node4" href="$class_inventory.html#ae8c9d675fcec6b6390e83224e23828ac" title=" " alt="" coords="953,56,1148,83"/>
+<area shape="rect" id="node3" href="$class_human_player.html#a89b165870ffb08db235fe2329ca81655" title=" " alt="" coords="713,5,897,32"/>
+<area shape="rect" id="node5" href="$class_inventory.html#ada3a759087e26fd2c6c428585caf6319" title=" " alt="" coords="705,56,905,83"/>
+<area shape="rect" id="node7" href="$class_inventory.html#a5220890a41771678a27ba094c6944c2d" title=" " alt="" coords="731,108,880,135"/>
+<area shape="rect" id="node6" href="$class_human_player.html#ab595c9a81ebf91b078d138502e068d7f" title=" " alt="" coords="461,53,657,80"/>
+<area shape="rect" id="node8" href="$class_inventory.html#a4e0b8bc650e7474eb4bcb004c4679e80" title=" " alt="" coords="475,105,644,146"/>
+<area shape="rect" id="node9" href="$class_human_player.html#a1743d3c18ea36e334ad29685674f18b7" title=" " alt="" coords="232,112,413,139"/>
+<area shape="rect" id="node10" href="$class_executive.html#ad1563f3ee8761b570af949936e01b7eb" title=" " alt="" coords="5,87,184,113"/>
+<area shape="rect" id="node11" href="$class_executive.html#a48257c098efeba39b0256fb3e7bd0c73" title=" " alt="" coords="5,137,184,164"/>
+</map>

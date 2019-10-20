@@ -1,0 +1,9 @@
+<map id="Board::PrintMap" name="Board::PrintMap">
+<area shape="rect" id="node1" title=" " alt="" coords="413,56,529,83"/>
+<area shape="rect" id="node2" href="$classplayer.html#a168d28a3dd2c4f4ce3b7148072027bcf" title=" " alt="" coords="253,31,344,57"/>
+<area shape="rect" id="node3" href="$class_human_player.html#abf9f25f9fe00ec6c83fc527766081cbd" title=" " alt="" coords="232,81,365,108"/>
+<area shape="rect" id="node4" href="$class_executive.html#aece2914d0f04f3af74735fadd3dc5177" title=" " alt="" coords="13,5,176,32"/>
+<area shape="rect" id="node5" href="$class_executive.html#ad1563f3ee8761b570af949936e01b7eb" title=" " alt="" coords="5,56,184,83"/>
+<area shape="rect" id="node6" href="$class_executive.html#ac1c9913c54c2ca8650a44351ceae910f" title=" " alt="" coords="13,107,176,133"/>
+<area shape="rect" id="node7" href="$class_executive.html#a48257c098efeba39b0256fb3e7bd0c73" title=" " alt="" coords="5,157,184,184"/>
+</map>

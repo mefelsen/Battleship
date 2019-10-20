@@ -1,0 +1,5 @@
+<map id="PlayerInterface" name="PlayerInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="62,5,198,185"/>
+<area shape="rect" id="node2" href="$class_a_i.html" title=" " alt="" coords="5,233,116,457"/>
+<area shape="rect" id="node3" href="$class_human_player.html" title=" " alt="" coords="141,233,261,457"/>
+</map>

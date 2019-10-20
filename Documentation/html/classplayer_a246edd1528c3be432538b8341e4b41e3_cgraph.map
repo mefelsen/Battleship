@@ -1,0 +1,4 @@
+<map id="player::attack" name="player::attack">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,107,32"/>
+<area shape="rect" id="node2" href="$class_board.html#aca77a93405c65e71836e9d5daaf07579" title=" " alt="" coords="155,5,257,32"/>
+</map>

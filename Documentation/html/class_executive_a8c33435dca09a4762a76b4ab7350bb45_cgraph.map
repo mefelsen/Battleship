@@ -1,0 +1,9 @@
+<map id="Executive::hardAIAttack" name="Executive::hardAIAttack">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,167,108"/>
+<area shape="rect" id="node2" href="$class_human_player.html#a779da74ea6dace4ea1d38a541f0b876d" title=" " alt="" coords="223,5,367,32"/>
+<area shape="rect" id="node4" href="$class_human_player.html#a56704076142df55418bd2287e5b39212" title=" " alt="" coords="215,56,375,83"/>
+<area shape="rect" id="node5" href="$class_board.html#aab1881b0f0fa8639d84a7f05e018cbcd" title=" " alt="" coords="241,107,348,133"/>
+<area shape="rect" id="node6" href="$class_a_i.html#a07723c8143461c9725f999d6d7b74422" title=" " alt="" coords="254,157,335,184"/>
+<area shape="rect" id="node3" href="$class_board.html#aca77a93405c65e71836e9d5daaf07579" title=" " alt="" coords="423,5,525,32"/>
+<area shape="rect" id="node7" href="$class_board.html#a23f35479c4831f85dc2d7bbdeacecc68" title=" " alt="" coords="423,157,525,184"/>
+</map>

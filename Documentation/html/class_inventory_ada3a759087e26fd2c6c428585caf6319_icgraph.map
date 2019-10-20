@@ -1,0 +1,4 @@
+<map id="Inventory::powerUpSelectMenu" name="Inventory::powerUpSelectMenu">
+<area shape="rect" id="node1" title=" " alt="" coords="249,5,449,32"/>
+<area shape="rect" id="node2" href="$class_human_player.html#ab595c9a81ebf91b078d138502e068d7f" title=" " alt="" coords="5,5,201,32"/>
+</map>

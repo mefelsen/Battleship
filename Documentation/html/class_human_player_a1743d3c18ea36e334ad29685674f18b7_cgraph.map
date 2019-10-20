@@ -1,0 +1,14 @@
+<map id="HumanPlayer::inventoryRoll" name="HumanPlayer::inventoryRoll">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,187,133"/>
+<area shape="rect" id="node2" href="$class_inventory.html#a4e0b8bc650e7474eb4bcb004c4679e80" title=" " alt="" coords="235,99,404,141"/>
+<area shape="rect" id="node3" href="$class_inventory.html#a5220890a41771678a27ba094c6944c2d" title=" " alt="" coords="452,107,601,133"/>
+<area shape="rect" id="node4" href="$class_inventory.html#af6eaf22d6790ade4915360c36fd02266" title=" " alt="" coords="682,31,811,57"/>
+<area shape="rect" id="node6" href="$class_inventory.html#aaad8c069a1cc202867dde89e25bc08f9" title=" " alt="" coords="665,107,829,133"/>
+<area shape="rect" id="node10" href="$class_inventory.html#ae8c9d675fcec6b6390e83224e23828ac" title=" " alt="" coords="649,183,844,209"/>
+<area shape="rect" id="node5" href="$class_shot.html#a883fa8fa3a30f9df32754ea95f2f39e5" title=" " alt="" coords="920,5,1040,32"/>
+<area shape="rect" id="node7" href="$class_shot.html#a4f03a434032a493314e9e043698002b4" title=" " alt="" coords="920,56,1040,83"/>
+<area shape="rect" id="node8" href="$class_inventory.html#a0d23f7fb38169e8f5c05bc841b323771" title=" " alt="" coords="892,107,1068,133"/>
+<area shape="rect" id="node9" href="$class_shot.html#a23f33108038eb94a68ab176d94b82df2" title=" " alt="" coords="912,157,1048,184"/>
+<area shape="rect" id="node11" href="$class_shot.html#aed0c95cd60fd8ae8d0cf3048b91d4bc8" title=" " alt="" coords="921,208,1039,235"/>
+<area shape="rect" id="node12" href="$class_shot.html#ac3ff65f945897b952bdb24af26837b5e" title=" " alt="" coords="914,259,1046,285"/>
+</map>

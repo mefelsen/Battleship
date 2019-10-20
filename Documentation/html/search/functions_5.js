@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['getamount_187',['getAmount',['../class_shot.html#a4f03a434032a493314e9e043698002b4',1,'Shot']]],
+  ['getboard_188',['getBoard',['../class_human_player.html#a56704076142df55418bd2287e5b39212',1,'HumanPlayer']]],
+  ['getcheatermode_189',['getCheaterMode',['../class_inventory.html#a0d23f7fb38169e8f5c05bc841b323771',1,'Inventory']]],
+  ['getdifficulty_190',['getDifficulty',['../class_a_i.html#a6bb65d0da45254f0de2acd3622afd80a',1,'AI']]],
+  ['getgrid_191',['getGrid',['../class_board.html#a7367c6ee26d01e8343e878a9019d02d4',1,'Board']]],
+  ['gethits_192',['GetHits',['../classplayer.html#af818d7a0a7877db7b26fab5725e475fd',1,'player::GetHits()'],['../class_a_i.html#a1ddea3e1c4be91099253a623fd4387c9',1,'AI::getHits()'],['../class_human_player.html#a518a6ad4d10a0d6a981cfd4bc4249484',1,'HumanPlayer::getHits()'],['../class_player_interface.html#a37743f2703b94be902b3a68b93932335',1,'PlayerInterface::getHits()']]],
+  ['getinventoryfile_193',['getInventoryFile',['../class_inventory.html#a16aff9c92f4a5f7af16d5bac423b70af',1,'Inventory']]],
+  ['getisahit_194',['getIsAHit',['../class_a_i.html#a943839e8597a340d4b75a0ea0edba293',1,'AI']]],
+  ['getmap_195',['getMap',['../class_board.html#aab1881b0f0fa8639d84a7f05e018cbcd',1,'Board']]],
+  ['getmarks_196',['getmarks',['../classplayer.html#ac2a00c7b5880380847ff19cb6a9fc1b4',1,'player::getmarks()'],['../class_human_player.html#afba1ee7c877a50919dc0e17ddad0f58d',1,'HumanPlayer::getMarks()']]],
+  ['getmediumcol_197',['getMediumCol',['../class_a_i.html#a927a83f781b9ed0f66f2ac2a0009bdc0',1,'AI']]],
+  ['getmediumrow_198',['getMediumRow',['../class_a_i.html#ae7233702a9f4fc349cf2fd13be20ac97',1,'AI']]],
+  ['getnumcheat_199',['getNumCheat',['../class_inventory.html#a23dbd26d87d5b4df7bf2c6fd03b81ec8',1,'Inventory']]],
+  ['getpattern_200',['getPattern',['../class_shot.html#aed0c95cd60fd8ae8d0cf3048b91d4bc8',1,'Shot']]],
+  ['getrange_201',['getRange',['../class_shot.html#a2a85a40bb0fd2d5d1cae6e4ea142d95c',1,'Shot']]],
+  ['getshotarray_202',['getShotArray',['../class_inventory.html#af8cd9e6a1ec7980e5ce4538bc8ffaef1',1,'Inventory']]],
+  ['getshotcode_203',['getShotCode',['../class_shot.html#ac3ff65f945897b952bdb24af26837b5e',1,'Shot']]],
+  ['getshotname_204',['getShotName',['../class_shot.html#a23f33108038eb94a68ab176d94b82df2',1,'Shot']]]
+];
