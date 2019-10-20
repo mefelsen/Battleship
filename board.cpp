@@ -36,6 +36,7 @@ for(int i =0; i < 8; i++)
 
 Board::~Board()
 {
+  /*
   for(int i = 0; i < 8; i++)
   {
     delete grid[i];
@@ -44,6 +45,7 @@ Board::~Board()
 
   delete grid;
   delete map;
+  */
 }
 
 
