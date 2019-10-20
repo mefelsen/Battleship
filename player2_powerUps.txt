@@ -25,7 +25,7 @@ Range: 2
 Name: Nuke
 Code: n
 Pattern: a
-Amount: 10
+Amount: 9
 Range: 2
 
 -cheatermode
