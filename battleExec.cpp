@@ -1492,7 +1492,23 @@ void Executive::horizontalShot(HumanPlayer& player1, HumanPlayer& player2, int c
 
 void Executive::nukeShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
 {
+  for (int i = 0; 7 >= i; i++)
+	{
+		for (int j = 0; 7 >= j; j++)
+		{
+			if(player2.attack(i,j)) //here we want to change map
+      {
+        player1.update(i,j, true); //here, we want to only update grid
 
+        //if(player2.getHits() == win_hits) break;
+      }
+      else   
+      {
+        player1.update(i,j, false);
+
+      }
+		}
+	}
 }
 
 
