@@ -1184,7 +1184,38 @@ void Executive::p1PowerShot(HumanPlayer& player1, HumanPlayer& player2, string s
 
   p1InputCheck(player1, player2);
 
-  if(player2.attack(row,col)) //here we want to change map
+  /*
+    Here we select and implement power shots
+  */
+
+  if(shotType == "Bomb")
+  {
+    bombShot(player1, player2, row, col);
+  }
+  else if(shotType == "Cross")
+  {
+    
+  }
+  else if(shotType == "Vertical")
+  {
+    
+  }
+  else if(shotType == "Horizontal")
+  {
+    
+  }
+  else if(shotType == "Nuke")
+  {
+    
+  }
+  else
+  {
+    
+  }
+  
+
+
+  /*if(player2.attack(row,col)) //here we want to change map
   {
     player1.update(row,col, true); //here, we want to only update grid
 
@@ -1194,6 +1225,11 @@ void Executive::p1PowerShot(HumanPlayer& player1, HumanPlayer& player2, string s
     player1.update(row,col, false);
 
   }
+  */
+
+   /*
+    End selecttion and implementation of power shots
+  */
 
   player1.printHidden();
   player1.print();
@@ -1310,4 +1346,64 @@ void Executive::p2InputCheck(HumanPlayer& player2, HumanPlayer& player1)
       cin>>x;
     }
   }
+}
+
+void Executive::bombShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
+{
+  int row;
+  int col;
+
+  for (int i = -2; 2 >= i; i++)
+	{
+		for (int j = -2; 2 >= j; j++)
+		{
+      row = coordinateR + i;
+      col = coordinateC + j;
+			if (checkFirstAxis(row) && checkSecondAxis(col))
+      {
+        if(player2.attack(row,col)) //here we want to change map
+        {
+          player1.update(row,col, true); //here, we want to only update grid
+
+          //if(player2.getHits() == win_hits) break;
+        }
+        else   
+        {
+          player1.update(row,col, false);
+
+        }
+      }
+		}
+	} 
+}
+
+bool Executive::checkFirstAxis(int Check)
+{
+	if (Check == 0 ||
+		Check == 1 ||
+		Check == 2 ||
+		Check == 3 ||
+		Check == 4 ||
+		Check == 5 ||
+		Check == 6 ||
+		Check == 7)
+		return true;
+	else
+		return false;
+}
+
+
+bool Executive::checkSecondAxis(int Check)
+{
+	if (Check == 0 ||
+		Check == 1 ||
+		Check == 2 ||
+		Check == 3 ||
+		Check == 4 ||
+		Check == 5 ||
+		Check == 6 ||
+		Check == 7)
+		return true;
+	else
+		return false;
 }
