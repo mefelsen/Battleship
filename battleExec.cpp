@@ -249,7 +249,7 @@ void Executive::runPvP()
     {
       if(player2.inventorySelect(shotType))
       {
-        cout << "Player 1 shotType is: " << shotType << "\n";
+        cout << "Player 2 shotType is: " << shotType << "\n";
         p2PowerShot(player2, player1, shotType);
 
         if (player1.getHits() == win_hits)
@@ -1194,23 +1194,27 @@ void Executive::p1PowerShot(HumanPlayer& player1, HumanPlayer& player2, string s
   }
   else if(shotType == "Cross")
   {
-    
+    crossShot(player1, player2, row, col);
+
   }
   else if(shotType == "Vertical")
   {
-    
+    verticalShot(player1, player2, row, col);
+
   }
   else if(shotType == "Horizontal")
   {
-    
+    horizontalShot(player1, player2, row, col);
+
   }
   else if(shotType == "Nuke")
   {
-    
+    nukeShot(player1, player2, row, col);
+
   }
   else
   {
-    
+    cout << "Invalid shotType...\n\n";
   }
   
 
@@ -1271,23 +1275,23 @@ void Executive::p2PowerShot(HumanPlayer& player2, HumanPlayer& player1, string s
   }
   else if(shotType == "Cross")
   {
-    
+    crossShot(player2, player1, row, col);
   }
   else if(shotType == "Vertical")
   {
-    
+    verticalShot(player2, player1, row, col);
   }
   else if(shotType == "Horizontal")
   {
-    
+    horizontalShot(player2, player1, row, col);
   }
   else if(shotType == "Nuke")
   {
-    
+    nukeShot(player2, player1, row, col);
   }
   else
   {
-    
+    cout << "Invalid shotType...\n\n";
   }
 
 
@@ -1391,6 +1395,65 @@ void Executive::bombShot(HumanPlayer& player1, HumanPlayer& player2, int coordin
 		}
 	} 
 }
+
+void Executive::crossShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
+{
+  int row;
+  int col;
+
+  for (int j = -8; 8 >= j; j++)
+  {
+    row = coordinateR + j;
+    col = coordinateC;
+    if (checkFirstAxis(row) && checkSecondAxis(col))
+    {
+      if(player2.attack(row,col)) //here we want to change map
+      {
+        player1.update(row,col, true); //here, we want to only update grid
+
+        //if(player2.getHits() == win_hits) break;
+      }
+      else   
+      {
+        player1.update(row,col, false);
+
+      }      
+    }
+    row = coordinateR;
+      col = coordinateC + j;
+      if (checkFirstAxis(row) && checkSecondAxis(col))
+      {
+        if(player2.attack(row,col)) //here we want to change map
+        {
+          player1.update(row,col, true); //here, we want to only update grid
+
+          //if(player2.getHits() == win_hits) break;
+        }
+        else   
+        {
+          player1.update(row,col, false);
+
+        }
+      }
+  } 
+}
+
+void Executive::verticalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
+{
+
+}
+
+void Executive::horizontalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
+{
+
+}
+
+void Executive::nukeShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
+{
+
+}
+
+
 
 bool Executive::checkFirstAxis(int Check)
 {

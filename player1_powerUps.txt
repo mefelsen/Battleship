@@ -7,7 +7,7 @@ Range: 0
 Name: Cross
 Code: c
 Pattern: c
-Amount: 0
+Amount: 4
 Range: 2
 
 Name: Vertical

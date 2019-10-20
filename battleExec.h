@@ -156,6 +156,10 @@ public:
     void p2InputCheck(HumanPlayer& player2, HumanPlayer& player1);
 
     void bombShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+    void crossShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+    void verticalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+    void horizontalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+    void nukeShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
 
     bool checkFirstAxis(int Check);
 	bool checkSecondAxis(int Check);
