@@ -90,6 +90,11 @@ public:
      *@param ship_num is the number of ships each player has. used to calcualte total hits needed to win */
     void CalculateWinHits(int ship_num);
 
+    /**
+     *@pre Single Player only. Prints difficulty menu for user to select from.
+     *@post someAI's difficulty gets set to user selected value 1. Easy, 2. Medium, 3. Hard. Checks user for bad input.
+     *@param someAI is an AI object that will set it's difficulty to a string after passing an int (1, 2, 3) into it's own setDifficulty method.
+     *return None. */
     void setAIDifficulty(AI& someAI);
 
     /** set targetCoordinates array
@@ -110,6 +115,36 @@ public:
      *@post prints targetCoordinates array,
      *@post targetCoordinates array can also be shuffled and contain coordinates not called for random firing from AI. */
     void printRandomCoordinates();
+
+    /**
+     *@pre User selects AI difficulty to be 'Easy'
+     *@post AI attacks spaces based on a shuffled array of Battleship labels (A1, A2...) then converts label into integer coordinates
+     *@param someAI AI object to update its grid
+     *@param somePlayer HumanPlayer object to access its attack method
+     *@param row update member variable row
+     *@param col update member variable col
+     *@return None.*/
+    void easyAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col);
+
+    /**
+     *@pre User selects AI difficulty to be 'Medium'
+     *@post Default: AI attacks at random. Refer to easyAIAttack. If AI hits: checks above that space, then right, then left, then down.
+     *@param someAI AI object to update its grid
+     *@param somePlayer HumanPlayer object to access its attack method
+     *@param row update member variable row
+     *@param col update member variable col
+     *@return None.*/
+    void mediumAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col, int& turn);
+
+    /**
+     *@pre User selects AI difficulty to be 'Hard'
+     *@post AI knows exactly where somePlayer hid their ships and will only attack those spaces occupied by ships.
+     *@param someAI AI object to update its grid
+     *@param somePlayer HumanPlayer object to access its attack method
+     *@param row update member variable row
+     *@param col update member variable col
+     *@return None.*/
+    void hardAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col, int& turn);
 
 private:
 
@@ -140,8 +175,8 @@ private:
     bool player2_PowerUpEnabled = false;
 
     int turn = 0;
-    int coordinatesArraySize = 64;
-    string targetCoordinates[64];
+    int coordinatesArraySize = 64; //size of shuffled battleship labels
+    string targetCoordinates[64]; //array of shuffled battleship labels
 
 };
 #endif

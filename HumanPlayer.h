@@ -18,9 +18,6 @@ class HumanPlayer : public PlayerInterface
     int unmark;//ships that are unmarked
     int num_hits;
     int numOfShip;
-    int coordinatesArraySize = 64;
-    string targetCoordinates[64];
-    int turn = 0;
     Inventory WeaponInventory;
 
     public:
@@ -68,7 +65,7 @@ class HumanPlayer : public PlayerInterface
 *@pre none
 *@post handles the attack/comparison
 *@param  takes in the x and y coordiinate of where the player would like to attack*/
- bool attack(int x, int y, string diff);
+ bool attack(int x, int y);
 
  /** calls the board class to compare char and update the board
 *@pre none
@@ -80,15 +77,13 @@ class HumanPlayer : public PlayerInterface
 /** calls the board class to see if the attacking player has already shot at this position
 *@pre none
 *@post none
-*@param  none
- the bool is for determining if it was a success or not  "o"  */
+*@param  none */
  int getMarks();
 
 /** retry if you've already shot at the same location twice
 *@pre none
-*@post handles the attack/comparison
-*@param  takes in the x and y coordiinate of where the player would like to attack
- the bool is for determining if it was a success or not --  "o"  */
+*@post checks to see if a space has already been hit or not.
+*@param  takes in the x and y coordiinate of where the player would like to attack */
  bool hitRetry(int x, int y);
 
  Board getBoard();
@@ -99,6 +94,6 @@ class HumanPlayer : public PlayerInterface
  void printInventory2();
  void inventoryRoll();
  void inventorySelect();
- 
+
 };
 #endif

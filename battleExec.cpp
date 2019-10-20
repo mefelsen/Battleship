@@ -232,7 +232,7 @@ void Executive::runPvP()
           cin>>x;
         }
       }
-      if(player2.attack(row,col, "")) //here we want to change map
+      if(player2.attack(row,col)) //here we want to change map
       {
         player1.update(row,col, true); //here, we want to only update grid
 
@@ -290,7 +290,7 @@ void Executive::runPvP()
         }
       }
 
-      if(player1.attack(row,col, "")) //here we want to change map
+      if(player1.attack(row,col)) //here we want to change map
       {
         player2.update(row,col, true); //here, we want to only update grid
         //if(player1.GetHits() == win_hits) break;
@@ -438,7 +438,6 @@ void Executive::runPvAI()
       try
       {
         ai.placement(row, col, dir);
-        //ai.print(); //enable to see AI choose ship placement
       }
       catch (const std::runtime_error &e)
       {
@@ -500,199 +499,32 @@ void Executive::runPvAI()
     cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to let the AI attack\n";
     cin >> dummy;
 
-    cout<<"\n---------AI----------\n\n";
-
-    ai.printHidden();
-    ai.print();
-
-    turn = 0;
     if(ai.getDifficulty() == "Easy" && transfor(targetCoordinates[turn]))
     {
-      if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
-      {
-        ai.update(row,col, true); //here, we want to only update grid
-
-        //if(ai.getHits() == win_hits) break;
-      }
-      else
-      {
-        ai.update(row,col, false);
-      }
-
-      ai.printHidden();
-      ai.print();
+      easyAIAttack(ai, player, row, col);
 
       if (player.getHits() == win_hits)
       {
         cout<<"\nAI WINS. Sorry human :(\n";
         break;
       }
-      turn++;
     }
 
     else if(ai.getDifficulty() == "Medium")
     {
-      if(!(ai.getIsAHit()))
+
+      mediumAIAttack(ai, player, row, col, turn);
+
+      if (player.getHits() == win_hits)
       {
-        if(transfor(targetCoordinates[turn]))
-        {
-          while(ai.hitRetry(row, col))
-          {
-            turn++;
-            transfor(targetCoordinates[turn]);
-          }
-          if(player.attack(row, col, ai.getDifficulty()))
-          {
-            ai.update(row, col, true);
-            ai.setMediumCol(col);
-            ai.setMediumRow(row);
-            ai.setIsAHit(true);
-          }
-          else
-          {
-            ai.update(row, col, false);
-            ai.setIsAHit(false);
-          }
-        }
-      }
-
-    //Priority
-    //1. Up
-    //2. Right
-    //3. Left
-    //4. Down
-
-      else
-      {
-
-        // UP
-        if(ai.getMediumRow() > 0 && !(ai.hitRetry(ai.getMediumRow()-1, ai.getMediumCol())))
-        {
-          if(player.attack(ai.getMediumRow()-1, ai.getMediumCol(), ai.getDifficulty()))
-          {
-            ai.update(ai.getMediumRow()-1, ai.getMediumCol(), true);
-            ai.setMediumRow(ai.getMediumRow()-1);
-            ai.setMediumCol(ai.getMediumCol());
-            ai.setIsAHit(true);
-          }
-          else
-          {
-            ai.update(ai.getMediumRow()-1, ai.getMediumCol(), false);
-          }
-        }
-
-        //RIGHT
-        else if(ai.getMediumCol() < 7 && !(ai.hitRetry(ai.getMediumRow(), ai.getMediumCol()+1)))
-        {
-          if(player.attack(ai.getMediumRow(), ai.getMediumCol()+1, ai.getDifficulty()))
-          {
-            ai.update(ai.getMediumRow(), ai.getMediumCol()+1, true);
-            ai.setMediumRow(ai.getMediumRow());
-            ai.setMediumCol(ai.getMediumCol()+1);
-            ai.setIsAHit(true);
-          }
-          else
-          {
-            ai.update(ai.getMediumRow(), ai.getMediumCol()+1, false);
-          }
-        }
-
-        //LEFT
-        else if(ai.getMediumCol() > 0 && !(ai.hitRetry(ai.getMediumRow(), ai.getMediumCol()-1)))
-        {
-          if(player.attack(ai.getMediumRow(), ai.getMediumCol()-1, ai.getDifficulty()))
-          {
-            ai.update(ai.getMediumRow(), ai.getMediumCol()-1, true);
-            ai.setMediumRow(ai.getMediumRow());
-            ai.setMediumCol(ai.getMediumCol()-1);
-            ai.setIsAHit(true);
-          }
-          else
-          {
-            ai.update(ai.getMediumRow(), ai.getMediumCol()-1, false);
-          }
-        }
-
-        //DOWN
-        else if(ai.getMediumRow() < 7 && !(ai.hitRetry(ai.getMediumRow()+1, ai.getMediumCol())))
-        {
-          if(player.attack(ai.getMediumRow()+1, ai.getMediumCol(), ai.getDifficulty()))
-          {
-            ai.update(ai.getMediumRow()+1, ai.getMediumCol(), true);
-            ai.setMediumRow(ai.getMediumRow()+1);
-            ai.setMediumCol(ai.getMediumCol());
-            ai.setIsAHit(true);
-          }
-          else
-          {
-            ai.update(ai.getMediumRow()+1, ai.getMediumCol(), false);
-          }
-        }
-
-        else
-        {
-          ai.setIsAHit(false);
-          if(transfor(targetCoordinates[turn]))
-          {
-            while(ai.hitRetry(row, col))
-            {
-              turn++;
-              transfor(targetCoordinates[turn]);
-            }
-            if(player.attack(row, col, ai.getDifficulty()))
-            {
-              ai.update(row, col, true);
-              ai.setMediumCol(col);
-              ai.setMediumRow(row);
-              ai.setIsAHit(true);
-            }
-            else
-            {
-              ai.update(row, col, false);
-              ai.setIsAHit(false);
-            }
-          }
-        }
+        cout<<"\nAI WINS. Sorry human :(\n";
+        break;
       }
     }
 
     else if(ai.getDifficulty() == "Hard")
     {
-      int tempTurn = 0;
-      turn = 0;
-      for(int i = 0; i < 8; i++)
-      {
-        for(int j = 0; j < 8; j++)
-        {
-          if(player.getBoard().getMap()[i][j] != '~' && player.getBoard().getMap()[i][j] != '*')
-          {
-            if(tempTurn == turn)
-            {
-              row = i;
-              col = j;
-              break;
-            }
-            else
-            {
-              tempTurn++;
-            }
-          }
-        }
-      }
-      if(player.attack(row, col, ai.getDifficulty())) //here we want to change map
-      {
-        turn++;
-        ai.update(row,col, true); //here, we want to only update grid
-
-        //if(ai.getHits() == win_hits) break;
-      }
-      else
-      {
-        ai.update(row,col, false);
-      }
-
-      ai.printHidden();
-      ai.print();
+      hardAIAttack(ai, player, row, col, turn);
 
       if (player.getHits() == win_hits)
       {
@@ -897,14 +729,35 @@ void Executive::setAIDifficulty(AI& someAI)
 {
   int AIDifficulty;
 
-  cout << "\n\n";
-  cout << "What difficulty of AI do you wish to play against? \n";
-  cout << "1. Easy\n"
-       << "2. Medium\n"
-       << "3. Hard\n";
-  cout << "Choice: ";
+    cout << "\n\n";
+    cout << "What difficulty of AI do you wish to play against? \n";
+    cout << "1. Easy\n"
+         << "2. Medium\n"
+         << "3. Hard\n";
+    cout << "Choice: ";
 
-  cin >> AIDifficulty;
+    cin >> AIDifficulty;
+
+    while(AIDifficulty < 1 || AIDifficulty > 3)
+    {
+      cout << "You must enter a number between 1 and 3. Please try again: ";
+      cin >> AIDifficulty;
+
+      while(1)
+      {
+        if(cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(),'\n');
+          cout << "Bad entry.  Enter a NUMBER: "; //if not an int, must try again.
+          cin >> AIDifficulty;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
 
   someAI.setDifficulty(AIDifficulty);
 }
@@ -937,17 +790,10 @@ void Executive::setTargetCoordinates()
   srand(time(0));
 
   int shuffleNumber = rand() % 1024;
-  cout << "Shuffling " << shuffleNumber << " times\n\n";
-
-  cout << "Coordiantes obtained\n\n";
-  printRandomCoordinates();
 
   for (int i = 0; i < shuffleNumber; i++) {
     shuffleCoordinates(targetCoordinates, 64);
   }
-
-  cout << "Randomizing coordinates\n\n";
-  printRandomCoordinates();
 }
 
 // shuffle vs random_shuffle in C++
@@ -973,5 +819,181 @@ void Executive::printRandomCoordinates()
   cout << "\n";
 }
 
+void Executive::easyAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col)
+{
+  if(somePlayer.attack(row, col)) //here we want to change map
+  {
+    someAI.update(row,col, true); //here, we want to only update grid
 
-//GET HITRETRY WORKING IN MEDIUM DIFFICULTY BEFORE CHECKING FOR RANDOM SHOTS
+    //if(ai.getHits() == win_hits) break;
+  }
+  else
+  {
+    someAI.update(row,col, false);
+  }
+
+  this->turn = this->turn + 1;
+}
+
+void Executive::mediumAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col, int& turn)
+{
+  if(!(someAI.getIsAHit()))
+  {
+    if(transfor(this->targetCoordinates[turn]))
+    {
+      while(someAI.hitRetry(row, col))
+      {
+        turn++;
+        transfor(this->targetCoordinates[turn]);
+      }
+      if(somePlayer.attack(row, col))
+      {
+        someAI.update(row, col, true);
+        someAI.setMediumCol(col);
+        someAI.setMediumRow(row);
+        someAI.setIsAHit(true);
+      }
+      else
+      {
+        someAI.update(row, col, false);
+        someAI.setIsAHit(false);
+      }
+    }
+  }
+
+//Priority
+//1. Up
+//2. Right
+//3. Left
+//4. Down
+
+  else
+  {
+
+    // UP
+    if(someAI.getMediumRow() > 0 && !(someAI.hitRetry(someAI.getMediumRow()-1, someAI.getMediumCol())))
+    {
+      if(somePlayer.attack(someAI.getMediumRow()-1, someAI.getMediumCol()))
+      {
+        someAI.update(someAI.getMediumRow()-1, someAI.getMediumCol(), true);
+        someAI.setMediumRow(someAI.getMediumRow()-1);
+        someAI.setMediumCol(someAI.getMediumCol());
+        someAI.setIsAHit(true);
+      }
+      else
+      {
+        someAI.update(someAI.getMediumRow()-1, someAI.getMediumCol(), false);
+      }
+    }
+
+    //RIGHT
+    else if(someAI.getMediumCol() < 7 && !(someAI.hitRetry(someAI.getMediumRow(), someAI.getMediumCol()+1)))
+    {
+      if(somePlayer.attack(someAI.getMediumRow(), someAI.getMediumCol()+1))
+      {
+        someAI.update(someAI.getMediumRow(), someAI.getMediumCol()+1, true);
+        someAI.setMediumRow(someAI.getMediumRow());
+        someAI.setMediumCol(someAI.getMediumCol()+1);
+        someAI.setIsAHit(true);
+      }
+      else
+      {
+        someAI.update(someAI.getMediumRow(), someAI.getMediumCol()+1, false);
+      }
+    }
+
+    //LEFT
+    else if(someAI.getMediumCol() > 0 && !(someAI.hitRetry(someAI.getMediumRow(), someAI.getMediumCol()-1)))
+    {
+      if(somePlayer.attack(someAI.getMediumRow(), someAI.getMediumCol()-1))
+      {
+        someAI.update(someAI.getMediumRow(), someAI.getMediumCol()-1, true);
+        someAI.setMediumRow(someAI.getMediumRow());
+        someAI.setMediumCol(someAI.getMediumCol()-1);
+        someAI.setIsAHit(true);
+      }
+      else
+      {
+        someAI.update(someAI.getMediumRow(), someAI.getMediumCol()-1, false);
+      }
+    }
+
+    //DOWN
+    else if(someAI.getMediumRow() < 7 && !(someAI.hitRetry(someAI.getMediumRow()+1, someAI.getMediumCol())))
+    {
+      if(somePlayer.attack(someAI.getMediumRow()+1, someAI.getMediumCol()))
+      {
+        someAI.update(someAI.getMediumRow()+1, someAI.getMediumCol(), true);
+        someAI.setMediumRow(someAI.getMediumRow()+1);
+        someAI.setMediumCol(someAI.getMediumCol());
+        someAI.setIsAHit(true);
+      }
+      else
+      {
+        someAI.update(someAI.getMediumRow()+1, someAI.getMediumCol(), false);
+      }
+    }
+
+    else
+    {
+      someAI.setIsAHit(false);
+      if(transfor(this->targetCoordinates[turn]))
+      {
+        while(someAI.hitRetry(row, col))
+        {
+          turn++;
+          transfor(this->targetCoordinates[turn]);
+        }
+        if(somePlayer.attack(row, col))
+        {
+          someAI.update(row, col, true);
+          someAI.setMediumCol(col);
+          someAI.setMediumRow(row);
+          someAI.setIsAHit(true);
+        }
+        else
+        {
+          someAI.update(row, col, false);
+          someAI.setIsAHit(false);
+        }
+      }
+    }
+  }
+}
+
+void Executive::hardAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col, int& turn)
+{
+  int tempTurn = 0;
+  turn = 0;
+  for(int i = 0; i < 8; i++)
+  {
+    for(int j = 0; j < 8; j++)
+    {
+      if(somePlayer.getBoard().getMap()[i][j] != '~' && somePlayer.getBoard().getMap()[i][j] != '*')
+      {
+        if(tempTurn == turn)
+        {
+          row = i;
+          col = j;
+          break;
+        }
+        else
+        {
+          tempTurn++;
+        }
+      }
+    }
+  }
+  if(somePlayer.attack(row, col)) //here we want to change map
+  {
+    turn++;
+    someAI.update(row,col, true); //here, we want to only update grid
+
+    //if(ai.getHits() == win_hits) break;
+  }
+  else
+  {
+    someAI.update(row,col, false);
+  }
+
+}

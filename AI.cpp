@@ -14,11 +14,6 @@ void AI::setNum(int x)
   numOfShip = x;
 }
 
-int AI::getMarks()
-{
-  return marked;
-}
-
 void AI::placement(int x, int y, int z)
 {
   string direction;
@@ -91,17 +86,6 @@ bool AI::attack(int x, int y)
     return false;
 }
 
-
-void AI::printHidden()
-{
-  aiBoard.PrintGrid();
-}
-
-void AI::print()
-{
-  aiBoard.PrintMap();
-}
-
 int AI::getHits()
 {
   return num_hits;
@@ -138,11 +122,6 @@ void AI::setDifficulty(int difficulty)
 string AI::getDifficulty()
 {
   return this->difficultyAI;
-}
-
-void AI::setPlayerCalledAttack(bool called)
-{
-  this->playerCalledAttack = called;
 }
 
 bool AI::getIsAHit()
