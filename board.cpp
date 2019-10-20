@@ -34,6 +34,18 @@ for(int i =0; i < 8; i++)
   shipsRemaining = 0;
 }
 
+Board::~Board()
+{
+  for(int i = 0; i < 8; i++)
+  {
+    delete grid[i];
+    delete map[i];
+  }
+
+  delete grid;
+  delete map;
+}
+
 
 
 void Board::PrintMap() {

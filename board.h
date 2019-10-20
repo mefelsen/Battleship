@@ -30,6 +30,8 @@ public:
  @param None  */
   Board();
 
+  ~Board();
+
   /** notify player of all active ships
  *@pre PrintMap is called
  *@post statusReport will notify the player of any ships active during gameplay
