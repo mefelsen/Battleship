@@ -133,8 +133,9 @@ void HumanPlayer::printInventory2()
   WeaponInventory.printInventory2();
 }
 
-void HumanPlayer::inventorySelect()
+bool HumanPlayer::inventorySelect()
 {
+  bool powerUpSelected = false;
   int x = 0;
   while(x != 9)
   {
@@ -147,22 +148,27 @@ void HumanPlayer::inventorySelect()
         break;
       case 1:
         cout << "Bomb Selected\n\n";
+        powerUpSelected = true;
         x = 9;
         break;
       case 2:
         cout << "Cross Selected\n";
+        powerUpSelected = true;
         x = 9;
         break;
       case 3:
         cout << "Vertical Selected\n";
+        powerUpSelected = true;
         x = 9;
         break;
       case 4:
         cout << "Horizontal Selected\n";
+        powerUpSelected = true;
         x = 9;
         break;
       case 5:
         cout << "Nuke Selected\n";
+        powerUpSelected = true;
         x = 9;
         break;
       default:
@@ -170,6 +176,7 @@ void HumanPlayer::inventorySelect()
       break;
     }
   }
+  return powerUpSelected;
 }
 
 Board HumanPlayer::getBoard()

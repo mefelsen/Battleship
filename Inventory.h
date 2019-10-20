@@ -40,6 +40,7 @@ public:
 	void shuffleArray(string rollArray[], int size);
 	void shuffleInventoryArray();
 	int powerUpSelectMenu();
+	bool isInventoryEmpty();
 	
 };
 

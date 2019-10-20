@@ -79,7 +79,7 @@ void Inventory::writeToInventoryFile()
 			+ "Name: " + shotArray[i].getShotName() + "\n"
 			+ "Code: " + shotArray[i].getShotCode() + "\n"
 			+ "Pattern: " + shotArray[i].getPattern() + "\n"
-			+ "Ammount: " + to_string(shotArray[i].getAmount()) + "\n"
+			+ "Amount: " + to_string(shotArray[i].getAmount()) + "\n"
 			+ "Range: " + to_string(shotArray[i].getRange()) + "\n\n";
 	}
 
@@ -188,37 +188,106 @@ bool Inventory::getCheaterMode()
 
 int Inventory::powerUpSelectMenu()
 {
-	//display menu options
-	cout << "----- Select PowerUp -----\n" << std::endl;
-	cout <<	"(0) - - - None Selected\n";
-	cout << "(1) - - - Bomb\n";
-	cout <<	"(2) - - - Cross\n";
-	cout <<	"(3) - - - Vertical\n";
-	cout <<	"(4) - - - Horizontal\n";
-	cout <<	"(5) - - - Nuke\n";
-	
+	if(isInventoryEmpty())
+	{
+		cout << "Inventroy is empty...\n\n";
+		return 0;
+	}
+	else
+	{	
+		//display menu options
+		cout << "----- Select PowerUp -----\n" << std::endl;
+		cout <<	"(0) - - - None Selected\n";
+		cout << "(1) - - - Bomb\n";
+		cout <<	"(2) - - - Cross\n";
+		cout <<	"(3) - - - Vertical\n";
+		cout <<	"(4) - - - Horizontal\n";
+		cout <<	"(5) - - - Nuke\n\n";
+		
+		cout << "-----Inventory-----\n";
+		printInventory2();
 
-  //create switch case for return value
-  int x = 0;
-  cin >> x;
-
-  switch(x)
-  {
-	case 0:
-		return (0);
-    case 1:
-      	return (1);
-    case 2:
-      	return (2);
-    case 3:
-      	return (3);
-    case 4:
-      	return (4);
-    case 5:
-      	return (5);
-    default:
-      	return (6);
-  }
+		//create switch case for return value
+		while(true)
+		{
+			int x = 0;
+			cin >> x;
+			/*check for amounts here for each shot type*/
+			switch(x)
+			{
+				case 0:
+					return (0);
+				case 1:
+				{
+					//check for bombs
+					if(shotArray[0].useShot())
+					{
+						return (1);
+					}      
+					else
+					{
+						cout << shotArray[0].getShotName() << " is not available. Select another power up: "; 
+					}
+					break;
+				}
+				case 2:
+				{
+					//check for cross
+					if(shotArray[1].useShot())
+					{
+						return (2);
+					}      
+					else
+					{
+						cout << shotArray[1].getShotName() << " is not available. Select another power up: "; 
+					}
+					break;
+				}
+				case 3:
+				{
+					//check for vertical
+					if(shotArray[2].useShot())
+					{
+						return (3);
+					}      
+					else
+					{
+						cout << shotArray[2].getShotName() << " is not available. Select another power up: "; 
+					}
+					break;
+				}
+				case 4:
+				{
+					//check for horizontal
+					if(shotArray[3].useShot())
+					{
+						return (4);
+					}      
+					else
+					{
+						cout << shotArray[3].getShotName() << " is not available. Select another power up: "; 
+					}
+					break;
+				}
+				case 5:
+				{
+					//check for nuke
+					if(shotArray[4].useShot())
+					{
+						return (5);
+					}      
+					else
+					{
+						cout << shotArray[4].getShotName() << " is not available. Select another power up: "; 
+					}
+					break;
+				}
+				default:
+					return (6);
+			}
+		}
+		
+	}	
 }
 
 
@@ -244,4 +313,22 @@ void Inventory::shuffleArray(string rollArray[], int size)
   addShot(rollArray[0]);
   printInventory2();
   writeToInventoryFile();
+}
+
+bool Inventory::isInventoryEmpty()
+{
+	int inventorySize = 0;
+	for(int i = 0; i < NUM_SHOT_TYPES; i++)
+	{
+		if(shotArray[i].getAmount() > 0)
+		{
+			inventorySize = inventorySize + shotArray[i].getAmount();
+		}
+	}
+	if(inventorySize > 0)
+	{
+		return false;
+	}
+		return true;
+
 }

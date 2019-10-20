@@ -13,7 +13,7 @@ Shot::~Shot(){}
 //Run this for a cleaner decrement of shot after being used returnss false if no shots are left for use
 bool Shot::useShot()
 {
-	if (amount >= 0)
+	if (amount > 0) 
 	{
 		amount--;
 		return true;

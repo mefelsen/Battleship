@@ -210,6 +210,12 @@ void Executive::runPvP()
         player1.printHidden();
         player1.print();
         LootBoard.displayPowerUps();
+        cout << "Would you like to use a power up? (y/n): ";
+        cin >> x;
+        if(x == "y")
+        {
+          player1.inventorySelect();
+        }
 
       cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >> x;
@@ -267,7 +273,12 @@ void Executive::runPvP()
       player2.printHidden();
       player2.print();
       LootBoard.displayPowerUps();
-      //displayPowerUps();
+      cout << "Would you like to use a power up? (y/n): ";
+      cin >> x;
+      if(x == "y")
+      {
+        player2.inventorySelect();
+      }
 
       cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
       cin >>x;
