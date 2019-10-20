@@ -70,9 +70,18 @@ void PatternManager::horizontal(int range, string cordinates)
 	}
 }
 
+/* Will need to include the ability to shoot then replace
+   the cout call with this once inclusion is done*/ 
 void PatternManager::vertical(int range, string cordinates)
 {
-	
+	string strike = "  ";
+	for (int i = -range; range >= i; i++)
+	{
+		strike[0] = (cordinates[0]);
+		strike[1] = (cordinates[1] + i);
+		if (checkFirstAxis(strike[0]) && checkSecondAxis(strike[1]))
+			cout << strike[0] << strike[1] << "\n";
+	}
 }
 
 void PatternManager::coldWarGoneWrong()
