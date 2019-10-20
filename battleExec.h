@@ -149,8 +149,11 @@ public:
     void p1StandardShot(HumanPlayer& player1, HumanPlayer& player2);
     void p2StandardShot(HumanPlayer& player2, HumanPlayer& player1);
 
-    void p1PowerShot(HumanPlayer& player1, HumanPlayer& player2);
-    void p2PowerShot(HumanPlayer& player2, HumanPlayer& player1);
+    void p1PowerShot(HumanPlayer& player1, HumanPlayer& player2, string shotType);
+    void p2PowerShot(HumanPlayer& player2, HumanPlayer& player1, string shotType);
+
+    void p1InputCheck(HumanPlayer& player1, HumanPlayer& player2);
+    void p2InputCheck(HumanPlayer& player2, HumanPlayer& player1);
 private:
 
     /** funtion that runs a player versus player game

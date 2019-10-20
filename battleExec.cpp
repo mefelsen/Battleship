@@ -203,15 +203,23 @@ void Executive::runPvP()
 
   while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
   { 
+    string shotType = "";
     string x;
     cout<<"\n---------PLAYER 1----------\n\n";
     cout << "Would you like to use a power up? (y/n): ";
     cin >> x;
     if(x == "y")
     {
-      if(player1.inventorySelect())
+      if(player1.inventorySelect(shotType))
       {
-        p1PowerShot(player1, player2);
+        cout << "Player 1 shotType is: " << shotType << "\n";
+        p1PowerShot(player1, player2, shotType);
+
+        if (player2.getHits() == win_hits)
+        {
+          cout<<"\nPLAYER 1 WINS. Thanks for playing!\n";
+          break;
+        }
       }
       else
       {
@@ -235,12 +243,20 @@ void Executive::runPvP()
 
     cout<<"\n---------PLAYER 2----------\n\n";
     cout << "Would you like to use a power up? (y/n): ";
+    shotType = "";
     cin >> x;
     if(x == "y")
     {
-      if(player2.inventorySelect())
+      if(player2.inventorySelect(shotType))
       {
-        p2PowerShot(player2, player1);
+        cout << "Player 1 shotType is: " << shotType << "\n";
+        p2PowerShot(player2, player1, shotType);
+
+        if (player1.getHits() == win_hits)
+        {
+          cout<<"\nPLAYER 2 WINS. Thanks for playing!\n";
+          break;
+        }
       }
       else
       {
@@ -1078,33 +1094,13 @@ void Executive::hardAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int&
 void Executive::p1StandardShot(HumanPlayer& player1, HumanPlayer& player2)
 {
   string dummy;
-  string x; 
 
     player1.printHidden();
     player1.print();
     LootBoard.displayPowerUps();
 
-  cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
-  cin >> x;
-  while(!transfor(x))
-  {
-    // cout <<x;
-    // cout << row <<" " <<col;
-    cout<<"Invalid position. Try again: ";
-    cin>>x;
-  }
-  while(player1.hitRetry(row, col))
-  {
-    cout<<"You've already tried that spot before! Try again: ";
-    cin>>x;
-    while(!transfor(x))
-    {
-      // cout <<x;
-      // cout << row <<" " <<col;
-      cout<<"Invalid position. Try again: ";
-      cin>>x;
-    }
-  }
+  p1InputCheck(player1, player2);
+
   if(player2.attack(row,col)) //here we want to change map
   {
     player1.update(row,col, true); //here, we want to only update grid
@@ -1139,32 +1135,12 @@ void Executive::p1StandardShot(HumanPlayer& player1, HumanPlayer& player2)
 void Executive::p2StandardShot(HumanPlayer& player2, HumanPlayer& player1)
 {
   string dummy;
-  string x;
 
   player2.printHidden();
   player2.print();
   LootBoard.displayPowerUps();
 
-  cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
-  cin >>x;
-
-  while(!transfor(x))
-  {
-    cout<<"Invalid position. Try again: ";
-    cin>>x;
-  }
-  while(player2.hitRetry(row, col))
-  {
-    cout<<"You've already tried that spot before! Try again: ";
-    cin>>x;
-    while(!transfor(x))
-    {
-      // cout <<x;
-      // cout << row <<" " <<col;
-      cout<<"Invalid position. Try again: ";
-      cin>>x;
-    }
-  }
+  p2InputCheck(player2, player1);
 
   if(player1.attack(row,col)) //here we want to change map
   {
@@ -1196,14 +1172,142 @@ void Executive::p2StandardShot(HumanPlayer& player2, HumanPlayer& player1)
   ClearScreen();
 }
 
-void Executive::p1PowerShot(HumanPlayer& player1, HumanPlayer& player2)
+void Executive::p1PowerShot(HumanPlayer& player1, HumanPlayer& player2, string shotType)
 {
-  cout << ">>>>>>>>>>PLAYER 1 POWERSHOT CALLED<<<<<<<<<<\n\n";
+  cout << ">>>>>>>>>>PLAYER 1 POWERSHOT CALLED<<<<<<<<<<\n";
+  cout << "shotType: " << shotType << "\n\n";
+  string dummy;
+
+    player1.printHidden();
+    player1.print();
+    LootBoard.displayPowerUps();
+
+  p1InputCheck(player1, player2);
+
+  if(player2.attack(row,col)) //here we want to change map
+  {
+    player1.update(row,col, true); //here, we want to only update grid
+
+    //if(player2.getHits() == win_hits) break;
+  }
+  else   {
+    player1.update(row,col, false);
+
+  }
+
+  player1.printHidden();
+  player1.print();
+
+  /*
+  if(LootBoard.update(row, col))
+  {
+    cout << "\n\nLOOT FOUND!\n\n";
+    player1.inventoryRoll();
+  }
+  */
+
+  if (player2.getHits() == win_hits)
+  {
+    return;
+  }
+  
+  cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
+  cin >> dummy;
   ClearScreen();
 }
 
-void Executive::p2PowerShot(HumanPlayer& player2, HumanPlayer& player1)
+void Executive::p2PowerShot(HumanPlayer& player2, HumanPlayer& player1, string shotType)
 {
-  cout << ">>>>>>>>>>PLAYER 2 POWERSHOT CALLED<<<<<<<<<<\n\n";
+  cout << ">>>>>>>>>>PLAYER 2 POWERSHOT CALLED<<<<<<<<<<\n";
+  cout << "shotType: " << shotType << "\n\n";
+
+  string dummy;
+
+  player2.printHidden();
+  player2.print();
+  LootBoard.displayPowerUps();
+
+  p2InputCheck(player2, player1);
+
+  if(player1.attack(row,col)) //here we want to change map
+  {
+    player2.update(row,col, true); //here, we want to only update grid
+    //if(player1.GetHits() == win_hits) break;
+  }
+  else {
+    player2.update(row,col, false);
+
+  }
+
+
+  player2.printHidden();
+  player2.print();
+
+  /*
+  if(LootBoard.update(row, col))
+  {
+    cout << "\n\nLOOT FOUND!\n\n";
+    player2.inventoryRoll();
+  }
+  */
+  
+  if (player1.getHits() == win_hits)
+  {
+    return;
+  }
+  
+  cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
+  cin >> dummy;
   ClearScreen();
+}
+
+void Executive::p1InputCheck(HumanPlayer& player1, HumanPlayer& player2)
+{
+  string x;
+  cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
+  cin >> x;
+  while(!transfor(x))
+  {
+    // cout <<x;
+    // cout << row <<" " <<col;
+    cout<<"Invalid position. Try again: ";
+    cin>>x;
+  }
+  while(player1.hitRetry(row, col))
+  {
+    cout<<"You've already tried that spot before! Try again: ";
+    cin>>x;
+    while(!transfor(x))
+    {
+      // cout <<x;
+      // cout << row <<" " <<col;
+      cout<<"Invalid position. Try again: ";
+      cin>>x;
+    }
+  }
+}
+
+void Executive::p2InputCheck(HumanPlayer& player2, HumanPlayer& player1)
+{
+  string x;
+  cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
+  cin >>x;
+
+  while(!transfor(x))
+  {
+    cout<<"Invalid position. Try again: ";
+    cin>>x;
+  }
+  while(player2.hitRetry(row, col))
+  {
+    cout<<"You've already tried that spot before! Try again: ";
+    cin>>x;
+    while(!transfor(x))
+    {
+      // cout <<x;
+      // cout << row <<" " <<col;
+      cout<<"Invalid position. Try again: ";
+      cin>>x;
+    }
+  }
 }

@@ -133,7 +133,7 @@ void HumanPlayer::printInventory2()
   WeaponInventory.printInventory2();
 }
 
-bool HumanPlayer::inventorySelect()
+bool HumanPlayer::inventorySelect(string& shotType)
 {
   bool powerUpSelected = false;
   int x = 0;
@@ -148,26 +148,31 @@ bool HumanPlayer::inventorySelect()
         break;
       case 1:
         cout << "Bomb Selected\n\n";
+        shotType = "Bomb";
         powerUpSelected = true;
         x = 9;
         break;
       case 2:
         cout << "Cross Selected\n";
+        shotType = "Cross";
         powerUpSelected = true;
         x = 9;
         break;
       case 3:
         cout << "Vertical Selected\n";
+        shotType = "Vertical";
         powerUpSelected = true;
         x = 9;
         break;
       case 4:
         cout << "Horizontal Selected\n";
+        shotType = "Horizontal";
         powerUpSelected = true;
         x = 9;
         break;
       case 5:
         cout << "Nuke Selected\n";
+        shotType = "Nuke";
         powerUpSelected = true;
         x = 9;
         break;

@@ -93,7 +93,7 @@ class HumanPlayer : public PlayerInterface
  void printInventory();
  void printInventory2();
  void inventoryRoll();
- bool inventorySelect();
+ bool inventorySelect(string& shotType);
 
 };
 #endif
