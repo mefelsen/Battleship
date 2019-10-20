@@ -154,6 +154,11 @@ public:
 
     void p1InputCheck(HumanPlayer& player1, HumanPlayer& player2);
     void p2InputCheck(HumanPlayer& player2, HumanPlayer& player1);
+
+    void bombShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+
+    bool checkFirstAxis(int Check);
+	bool checkSecondAxis(int Check);
 private:
 
     /** funtion that runs a player versus player game
