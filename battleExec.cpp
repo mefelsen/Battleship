@@ -1265,14 +1265,29 @@ void Executive::p2PowerShot(HumanPlayer& player2, HumanPlayer& player1, string s
 
   p2InputCheck(player2, player1);
 
-  if(player1.attack(row,col)) //here we want to change map
+  if(shotType == "Bomb")
   {
-    player2.update(row,col, true); //here, we want to only update grid
-    //if(player1.GetHits() == win_hits) break;
+    bombShot(player2, player1, row, col);
   }
-  else {
-    player2.update(row,col, false);
-
+  else if(shotType == "Cross")
+  {
+    
+  }
+  else if(shotType == "Vertical")
+  {
+    
+  }
+  else if(shotType == "Horizontal")
+  {
+    
+  }
+  else if(shotType == "Nuke")
+  {
+    
+  }
+  else
+  {
+    
   }
 
 

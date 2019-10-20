@@ -1,7 +1,7 @@
 Name: Bomb
 Code: b
 Pattern: r
-Amount: 0
+Amount: 1
 Range: 0
 
 Name: Cross
