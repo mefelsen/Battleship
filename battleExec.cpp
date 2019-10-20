@@ -1440,12 +1440,54 @@ void Executive::crossShot(HumanPlayer& player1, HumanPlayer& player2, int coordi
 
 void Executive::verticalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
 {
+  int row;
+  int col;
 
+  for (int j = -8; 8 >= j; j++)
+  {
+    row = coordinateR + j;
+    col = coordinateC;
+    if (checkFirstAxis(row) && checkSecondAxis(col))
+    {
+      if(player2.attack(row,col)) //here we want to change map
+      {
+        player1.update(row,col, true); //here, we want to only update grid
+
+        //if(player2.getHits() == win_hits) break;
+      }
+      else   
+      {
+        player1.update(row,col, false);
+
+      }      
+    }
+  }
 }
 
 void Executive::horizontalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
 {
+  int row;
+  int col;
 
+  for (int j = -8; 8 >= j; j++)
+  {
+    row = coordinateR;
+    col = coordinateC + j;
+    if (checkFirstAxis(row) && checkSecondAxis(col))
+    {
+      if(player2.attack(row,col)) //here we want to change map
+      {
+        player1.update(row,col, true); //here, we want to only update grid
+
+        //if(player2.getHits() == win_hits) break;
+      }
+      else   
+      {
+        player1.update(row,col, false);
+
+      }      
+    }
+  }
 }
 
 void Executive::nukeShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC)
