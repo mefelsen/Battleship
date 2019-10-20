@@ -146,6 +146,11 @@ public:
      *@return None.*/
     void hardAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col, int& turn);
 
+    void p1StandardShot(HumanPlayer& player1, HumanPlayer& player2);
+    void p2StandardShot(HumanPlayer& player2, HumanPlayer& player1);
+
+    void p1PowerShot(HumanPlayer& player1, HumanPlayer& player2);
+    void p2PowerShot(HumanPlayer& player2, HumanPlayer& player1);
 private:
 
     /** funtion that runs a player versus player game

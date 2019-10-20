@@ -155,14 +155,19 @@ void Inventory::printInventory()
 
 void Inventory::printInventory2()
 {
+	cout << "--- Inventory ---\n\n";
 	for(int i = 0; i < NUM_SHOT_TYPES; i++)
 	{
 		if(shotArray[i].getAmount() > 0)
+		/*
 		cout << "Name: " << shotArray[i].getShotName() << "\n" <<
 				"ShotCode: " << shotArray[i].getShotCode() << "\n" <<
 				"Pattern: " << shotArray[i].getPattern() << "\n" <<
 				"Amount: " << shotArray[i].getAmount() << "\n" <<
 				"Range: " << shotArray[i].getRange() << "\n\n";
+		*/
+		cout << "Name: " << shotArray[i].getShotName() << "\n" <<
+					"Amount: " << shotArray[i].getAmount() << "\n\n";
 	}
 	if(getCheaterMode())
 	{
@@ -204,7 +209,6 @@ int Inventory::powerUpSelectMenu()
 		cout <<	"(4) - - - Horizontal\n";
 		cout <<	"(5) - - - Nuke\n\n";
 		
-		cout << "-----Inventory-----\n";
 		printInventory2();
 
 		//create switch case for return value
@@ -222,6 +226,7 @@ int Inventory::powerUpSelectMenu()
 					//check for bombs
 					if(shotArray[0].useShot())
 					{
+						writeToInventoryFile();
 						return (1);
 					}      
 					else
@@ -235,6 +240,7 @@ int Inventory::powerUpSelectMenu()
 					//check for cross
 					if(shotArray[1].useShot())
 					{
+						writeToInventoryFile();
 						return (2);
 					}      
 					else
@@ -248,6 +254,7 @@ int Inventory::powerUpSelectMenu()
 					//check for vertical
 					if(shotArray[2].useShot())
 					{
+						writeToInventoryFile();
 						return (3);
 					}      
 					else
@@ -261,6 +268,7 @@ int Inventory::powerUpSelectMenu()
 					//check for horizontal
 					if(shotArray[3].useShot())
 					{
+						writeToInventoryFile();
 						return (4);
 					}      
 					else
@@ -274,6 +282,7 @@ int Inventory::powerUpSelectMenu()
 					//check for nuke
 					if(shotArray[4].useShot())
 					{
+						writeToInventoryFile();
 						return (5);
 					}      
 					else
@@ -285,8 +294,7 @@ int Inventory::powerUpSelectMenu()
 				default:
 					return (6);
 			}
-		}
-		
+		}	
 	}	
 }
 

@@ -202,7 +202,72 @@ void Executive::runPvP()
   ClearScreen();
 
   while(player1.getHits() != win_hits && player2.getHits() != win_hits)   /////add while loop to check win condition
-  {
+  { 
+    string x;
+    cout<<"\n---------PLAYER 1----------\n\n";
+    cout << "Would you like to use a power up? (y/n): ";
+    cin >> x;
+    if(x == "y")
+    {
+      if(player1.inventorySelect())
+      {
+        p1PowerShot(player1, player2);
+      }
+      else
+      {
+        p1StandardShot(player1, player2);
+        if (player2.getHits() == win_hits)
+        {
+          cout<<"\nPLAYER 1 WINS. Thanks for playing!\n";
+          break;
+        }
+      }      
+    }
+    else
+    {
+      p1StandardShot(player1, player2);
+      if (player2.getHits() == win_hits)
+      {
+        cout<<"\nPLAYER 1 WINS. Thanks for playing!\n";
+        break;
+      }
+    }
+
+    cout<<"\n---------PLAYER 2----------\n\n";
+    cout << "Would you like to use a power up? (y/n): ";
+    cin >> x;
+    if(x == "y")
+    {
+      if(player2.inventorySelect())
+      {
+        p2PowerShot(player2, player1);
+      }
+      else
+      {
+        p2StandardShot(player2, player1);
+        if (player1.getHits() == win_hits)
+        {
+          cout<<"\nPLAYER 2 WINS. Thanks for playing!\n";
+          break;
+        }
+      }      
+    }
+    else
+    {
+      p2StandardShot(player2, player1);
+      if (player1.getHits() == win_hits)
+      {
+        cout<<"\nPLAYER 2 WINS. Thanks for playing!\n";
+        break;
+      }
+    }
+    
+
+    
+    
+
+    
+    /*
      string x;
 
       cout<<"\n---------PLAYER 1----------\n\n";
@@ -329,7 +394,8 @@ void Executive::runPvP()
       cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
       //cin >> dummy;
       ClearScreen();
-  }
+      */
+  }  
 }
 
 
@@ -1007,4 +1073,137 @@ void Executive::hardAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int&
     someAI.update(row,col, false);
   }
 
+}
+
+void Executive::p1StandardShot(HumanPlayer& player1, HumanPlayer& player2)
+{
+  string dummy;
+  string x; 
+
+    player1.printHidden();
+    player1.print();
+    LootBoard.displayPowerUps();
+
+  cout << "\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
+  cin >> x;
+  while(!transfor(x))
+  {
+    // cout <<x;
+    // cout << row <<" " <<col;
+    cout<<"Invalid position. Try again: ";
+    cin>>x;
+  }
+  while(player1.hitRetry(row, col))
+  {
+    cout<<"You've already tried that spot before! Try again: ";
+    cin>>x;
+    while(!transfor(x))
+    {
+      // cout <<x;
+      // cout << row <<" " <<col;
+      cout<<"Invalid position. Try again: ";
+      cin>>x;
+    }
+  }
+  if(player2.attack(row,col)) //here we want to change map
+  {
+    player1.update(row,col, true); //here, we want to only update grid
+
+    //if(player2.getHits() == win_hits) break;
+  }
+  else   {
+    player1.update(row,col, false);
+
+  }
+
+  player1.printHidden();
+  player1.print();
+  if(LootBoard.update(row, col))
+  {
+    cout << "\n\nLOOT FOUND!\n\n";
+    player1.inventoryRoll();
+  }
+
+  
+  if (player2.getHits() == win_hits)
+  {
+    return;
+  }
+  
+
+  cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
+  cin >> dummy;
+  ClearScreen();
+}
+
+void Executive::p2StandardShot(HumanPlayer& player2, HumanPlayer& player1)
+{
+  string dummy;
+  string x;
+
+  player2.printHidden();
+  player2.print();
+  LootBoard.displayPowerUps();
+
+  cout <<"\nEnter attack coordinates (A-H),(1-8) (i.e. A1): ";
+  cin >>x;
+
+  while(!transfor(x))
+  {
+    cout<<"Invalid position. Try again: ";
+    cin>>x;
+  }
+  while(player2.hitRetry(row, col))
+  {
+    cout<<"You've already tried that spot before! Try again: ";
+    cin>>x;
+    while(!transfor(x))
+    {
+      // cout <<x;
+      // cout << row <<" " <<col;
+      cout<<"Invalid position. Try again: ";
+      cin>>x;
+    }
+  }
+
+  if(player1.attack(row,col)) //here we want to change map
+  {
+    player2.update(row,col, true); //here, we want to only update grid
+    //if(player1.GetHits() == win_hits) break;
+  }
+  else {
+    player2.update(row,col, false);
+
+  }
+
+
+  player2.printHidden();
+  player2.print();
+  if(LootBoard.update(row, col))
+  {
+    cout << "\n\nLOOT FOUND!\n\n";
+    player2.inventoryRoll();
+  }
+  
+  if (player1.getHits() == win_hits)
+  {
+    return;
+  }
+  
+
+  cout << "\nEND OF TURN, TYPE anything and PRESS ENTER to SWITCH players -> \n";
+  cin >> dummy;
+  ClearScreen();
+}
+
+void Executive::p1PowerShot(HumanPlayer& player1, HumanPlayer& player2)
+{
+  cout << ">>>>>>>>>>PLAYER 1 POWERSHOT CALLED<<<<<<<<<<\n\n";
+  ClearScreen();
+}
+
+void Executive::p2PowerShot(HumanPlayer& player2, HumanPlayer& player1)
+{
+  cout << ">>>>>>>>>>PLAYER 2 POWERSHOT CALLED<<<<<<<<<<\n\n";
+  ClearScreen();
 }
