@@ -146,23 +146,117 @@ public:
      *@return None.*/
     void hardAIAttack(AI& someAI, HumanPlayer& somePlayer, int& row, int& col, int& turn);
 
+    /**
+     *@pre Player 1's turn
+     *@post Player 1 fires a regular shot at Player 2's board.
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@return None.*/
     void p1StandardShot(HumanPlayer& player1, HumanPlayer& player2);
+
+    /**
+     *@pre Player 2's turn
+     *@post Player 2 fires a regular shot at Player 1's board.
+     *@param player2 HumanPlayer object to access its attack method
+     *@param player1 HumanPlayer object to access its update methods
+     *@return None.*/
     void p2StandardShot(HumanPlayer& player2, HumanPlayer& player1);
 
+    /**
+     *@pre Player 1's turn
+     *@post Player 1 fires a special shot at Player 2's board.
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@param shotType uses an acceptable special shot type from Inventory
+     *@return None.*/
     void p1PowerShot(HumanPlayer& player1, HumanPlayer& player2, string shotType);
+
+    /**
+     *@pre Player 2's turn
+     *@post Player 2 fires a special shot at Player 2's board.
+     *@param player2 HumanPlayer object to access its attack method
+     *@param player1 HumanPlayer object to access its update methods
+     *@param shotType uses an acceptable special shot type from Inventory
+     *@return None.*/
     void p2PowerShot(HumanPlayer& player2, HumanPlayer& player1, string shotType);
 
+    /**
+     *@pre Player 1's turn
+     *@post Player 1 register's shot as either hit or miss.
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@return None.*/
     void p1InputCheck(HumanPlayer& player1, HumanPlayer& player2);
+
+    /**
+     *@pre Player 1's turn
+     *@post Player 1 register's shot as either hit or miss.
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@return None.*/
     void p2InputCheck(HumanPlayer& player2, HumanPlayer& player1);
 
+    /**
+     *@pre Player 1 or 2 fires at opposing player
+     *@post Player fires a Area of Effect (AoE) shot with a defined range at opposing player's board
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@param coordinateR update board at row coordinate relative to center row coordinate
+     *@param coordinateC update board at column coordinate relative to center col coordinate
+     *@return None.*/
     void bombShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+
+    /**
+     *@pre Player 1 or 2 fires at opposing player
+     *@post Player fires an orthogonal cross shot at opposing player's board
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@param coordinateR update board at row coordinate relative to center row coordinate
+     *@param coordinateC update board at column coordinate relative to center col coordinate
+     *@return None.*/
     void crossShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+
+    /**
+     *@pre Player 1 or 2 fires at opposing player
+     *@post Player fires a horizontal shot (acrooss the column) at opposing player's board
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@param coordinateR update board at row coordinate relative to center row coordinate
+     *@param coordinateC update board at column coordinate relative to center col coordinate
+     *@return None.*/
     void verticalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+
+    /**
+     *@pre Player 1 or 2 fires at opposing player
+     *@post Player fires a vertical shot (acrooss the row) at opposing player's board
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@param coordinateR update board at row coordinate relative to center row coordinate
+     *@param coordinateC update board at column coordinate relative to center col coordinate
+     *@return None.*/
     void horizontalShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
+
+    /**
+     *@pre Player 1 or 2 fires at opposing player
+     *@post Player fires a devistating shot (fires at every coordinate) at opposing player's board
+     *@param player1 HumanPlayer object to access its attack method
+     *@param player2 HumanPlayer object to access its update methods
+     *@param coordinateR update board at row coordinate relative to center row coordinate
+     *@param coordinateC update board at column coordinate relative to center col coordinate
+     *@return None.*/
     void nukeShot(HumanPlayer& player1, HumanPlayer& player2, int coordinateR, int coordinateC);
 
+    /**
+     *@pre Check must be between 0 and 7
+     *@post returns true if within bounds, false otherwise
+     *@param check is an int*/
     bool checkFirstAxis(int Check);
-	bool checkSecondAxis(int Check);
+
+    /**
+     *@pre Check must be between 0 and 7
+     *@post returns true if within bounds, false otherwise
+     *@param check is an int*/
+    bool checkSecondAxis(int Check);
 private:
 
     /** funtion that runs a player versus player game
