@@ -4,6 +4,10 @@
 class PlayerInterface //Interface class for both HumanPlayer and AI to implement from.
 {
   public:
+    /**
+     *@pre none
+     *@post destroy player interface
+     *@return None. */
     virtual ~PlayerInterface() {}
 
    /**
